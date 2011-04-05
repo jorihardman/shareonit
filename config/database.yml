@@ -1,0 +1,24 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: neighborly
+  pool: 5
+  username: neighborly
+  password: neigh.borly!
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: neighborly
+  pool: 5
+  username: neighborly
+  password: neigh.borly!
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: neighborly
+  pool: 5
+  username: neighborly
+  password: neigh.borly!
+
