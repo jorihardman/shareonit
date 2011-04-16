@@ -1,0 +1,14 @@
+<%= form_for(@posting) do |f| %>
+  <% f.error_messages  %>
+  <p>
+    I <%= f.select :posting_type, ["have", "need"] %>
+    a <%= f.text_field :name %>
+    from <%= f.text_field :from_date %>
+    to <%= f.text_field :to_date %>
+  </p>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

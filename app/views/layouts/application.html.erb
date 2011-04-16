@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Neighborly</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <title>schwap.it</title>
+  <%= stylesheet_link_tag "main" %>
+  <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
+  <!–[if IE]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]–>
+  <%= javascript_include_tag "jquery.min", "jquery-ui.min", "application" %>
+  <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <div id="logo" class="span-4"><h1>schwap.it</h1></div>
+    <div id="topnav" class="span-20 last">
+      <ul class="nav">
+	      <li><a href="#">Products</a></li>
+	      <li><a href="#">Services</a></li>
+	      <li><a href="#">My Stuff</a></li>
+      </ul>
+    </div>
+    <hr/>
+    <div id="sidenav" class="span-2 colborder">
+      <ul class="nav">
+	      <li><a href="#">Request</a></li>
+	      <li><a href="#">Share</a></li>
+      </ul>
+    </div>
+    <div id="content" class="span-21 last"><%= yield %></div>
+  </div>
 </body>
 </html>
+
