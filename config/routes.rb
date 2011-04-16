@@ -1,4 +1,8 @@
 Neighborly::Application.routes.draw do
+  resources :messages
+
+  resources :communities
+
   resources :postings
 
   resources :users

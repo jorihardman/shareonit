@@ -10,7 +10,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110416211753) do
+ActiveRecord::Schema.define(:version => 20110416220253) do
+
+  create_table "communities", :force => true do |t|
+    t.string   "name"
+    t.integer  "zip_code"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "community_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "subject"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "postings", :force => true do |t|
     t.string   "name"
@@ -21,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20110416211753) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "posting_type"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "reviewer_id"
+    t.integer  "reviewee_id"
+    t.integer  "posting_id"
+    t.text     "content"
+    t.integer  "stars"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|
