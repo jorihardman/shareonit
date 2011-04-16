@@ -1,4 +1,5 @@
 class Posting < ActiveRecord::Base
+  belongs_to :user
 
   def requests
     where(:posting_type => "need")

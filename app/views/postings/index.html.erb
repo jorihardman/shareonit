@@ -15,12 +15,12 @@
 
 <% @postings.each do |posting| %>
   <tr>
-    <td><%= posting.type %></td>
+    <td><%= posting.posting_type %></td>
     <td><%= posting.name %></td>
     <td><%= posting.description %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
-    <td><%= posting.user_id %></td>
+    <td><%= posting.user.login %></td>
     <td><%= link_to 'Show', posting %></td>
     <td><%= link_to 'Edit', edit_posting_path(posting) %></td>
     <td><%= link_to 'Destroy', posting, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -28,6 +28,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Posting', new_posting_path %>
