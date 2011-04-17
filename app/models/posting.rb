@@ -1,13 +1,8 @@
 class Posting < ActiveRecord::Base
   belongs_to :user
 
-  def requests
-    where(:posting_type => "need")
-  end
-
-  def possessions
-    where(:posting_type => "have")
-  end
+  scope :requests, where({:posting_type => "have"})
+  scope :inventory, where({:posting_type => "want"})
 
 end
 

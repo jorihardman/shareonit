@@ -23,8 +23,8 @@
     <hr/>
     <div id="sidenav" class="span-2 colborder">
       <ul class="nav">
-	      <li><a href="#">Request</a></li>
-	      <li><a href="#">Share</a></li>
+	      <li><%= link_to 'Requests', postings_requests_path %></li>
+	      <li><%= link_to 'Inventory', postings_inventory_path %></li>
       </ul>
     </div>
     <div id="content" class="span-21 last"><%= yield %></div>

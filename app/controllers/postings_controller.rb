@@ -2,11 +2,24 @@ class PostingsController < ApplicationController
   before_filter :require_user
 
   def index
-    @postings = Posting.all
+    redirect_to :action => "requests"
+  end
+
+  def requests
+    @postings = Posting.requests
 
     respond_to do |format|
-      format.html
-      format.xml  { render :xml => @postings }
+      format.html { render :template => "postings/index" }
+      format.xml { render :xml => @postings }
+    end
+  end
+
+  def inventory
+    @postings = Posting.inventory
+
+    respond_to do |format|
+      format.html { render :template => "postings/index" }
+      format.xml { render :xml => @postings }
     end
   end
 

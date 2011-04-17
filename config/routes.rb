@@ -1,8 +1,9 @@
 Neighborly::Application.routes.draw do
   resources :messages
-
   resources :communities
 
+  match '/postings/requests'
+  match '/postings/inventory'
   resources :postings
 
   resources :users
