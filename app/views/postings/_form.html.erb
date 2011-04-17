@@ -1,12 +1,18 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'form', 'text_hints' %>
+<% end %>
+
 <%= form_for(@posting) do |f| %>
   <% f.error_messages  %>
   <p>
-    I <%= f.select :posting_type, ["have", "need"] %>
-    a <%= f.text_field :name %>
-    from <%= f.text_field :from_date %>
-    to <%= f.text_field :to_date %>
+    I <%= f.select :have_need, ["have", "need"] %>
+    a <%= f.text_field :name, :title => 'e.g. toy boat' %>
+    <br/>
+    available from <%= f.text_field :from_date, :title => 'click to select date'%>
+    to <%= f.text_field :to_date, :title => 'click to select date' %>.
   </p>
   <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :product_service, :value => 'product' %>
   <div class="actions">
     <%= f.submit %>
   </div>

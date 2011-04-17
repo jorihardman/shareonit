@@ -2,18 +2,18 @@
 <html>
 <head>
   <title>schwap.it</title>
-  <%= stylesheet_link_tag "main" %>
   <link rel="stylesheet" href="/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection">
   <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
   <!–[if IE]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]–>
+  <%= stylesheet_link_tag 'main' %>
   <%= javascript_include_tag "jquery.min", "jquery-ui.min", "application" %>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
 <body>
   <div class="container">
-    <div id="logo" class="span-4"><h1>schwap.it</h1></div>
-    <div id="topnav" class="span-20 last">
+    <div id="logo" class="span-5"><h1>schwap.it</h1></div>
+    <div id="topnav" class="span-19 last">
       <ul class="nav">
 	      <li><a href="#">Products</a></li>
 	      <li><a href="#">Services</a></li>
@@ -27,7 +27,10 @@
 	      <li><%= link_to 'Inventory', postings_inventory_path %></li>
       </ul>
     </div>
-    <div id="content" class="span-21 last"><%= yield %></div>
+    <div id="content" class="span-21 last">
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

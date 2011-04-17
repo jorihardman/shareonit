@@ -83,3 +83,7 @@ div.field, div.actions {
 	background-color: transparent;
 }
 
+input.blur {
+  color: gray;
+}
+

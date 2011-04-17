@@ -1,8 +1,9 @@
 <h1>Listing postings</h1>
 
+<%= link_to 'Create New Posting', new_posting_path %>
+
 <table>
   <tr>
-    <th>Type</th>
     <th>Name</th>
     <th>Description</th>
     <th>From date</th>
@@ -15,7 +16,6 @@
 
 <% @postings.each do |posting| %>
   <tr>
-    <td><%= posting.posting_type %></td>
     <td><%= posting.name %></td>
     <td><%= posting.description %></td>
     <td><%= posting.from_date %></td>

@@ -1,32 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Type:</b>
-  <%= @posting.posting_type %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @posting.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @posting.description %>
-</p>
-
-<p>
-  <b>From date:</b>
-  <%= @posting.from_date %>
-</p>
-
-<p>
-  <b>To date:</b>
-  <%= @posting.to_date %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @posting.user_id %>
+  <%= @posting.user.login.capitalize %> has a <%= @posting.name %>
+  <br/>
+  available from <%= @posting.from_date %> to <%= @posting.to_date %>.
 </p>
 
