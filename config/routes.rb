@@ -1,12 +1,6 @@
 Neighborly::Application.routes.draw do
-  resources :messages
-  resources :communities
+  resources :messages, :communities, :users, :postings
 
-  match '/postings/requests'
-  match '/postings/inventory'
-  resources :postings
-
-  resources :users
   resource :session, :to => 'user_sessions'
   match '/my_account' => 'users#my_account', :as => 'my_account'
   #match '/auth/facebook/callback' => 'sessions#create'
@@ -16,6 +10,6 @@ Neighborly::Application.routes.draw do
   match '/home/about', :as => 'about'
   match '/home/contact_us', :as => 'contact_us'
 
-  root :to => 'home#index'
+  root :to => 'postings#index'
 end
 

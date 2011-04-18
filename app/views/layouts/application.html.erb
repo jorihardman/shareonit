@@ -13,18 +13,19 @@
 <body>
   <div class="container">
     <div id="logo" class="span-5"><h1>schwap.it</h1></div>
-    <div id="topnav" class="span-19 last">
+    <div id="topnav" class="span-17 last">
       <ul class="nav">
 	      <li><a href="#">Products</a></li>
 	      <li><a href="#">Services</a></li>
 	      <li><a href="#">My Stuff</a></li>
       </ul>
     </div>
+    <div id="login" class="span-2 last"><%= login_link %></div>
     <hr/>
     <div id="sidenav" class="span-2 colborder">
       <ul class="nav">
-	      <li><%= link_to 'Requests', postings_requests_path %></li>
-	      <li><%= link_to 'Inventory', postings_inventory_path %></li>
+	      <li><%= link_to 'Requests', postings_path %></li>
+	      <li><%= link_to 'Inventory', postings_path %></li>
       </ul>
     </div>
     <div id="content" class="span-21 last">
