@@ -19,6 +19,6 @@ Neighborly::Application.routes.draw do
   match '/home/about', :as => 'about'
   match '/home/contact_us', :as => 'contact_us'
 
-  root :to => 'postings#index'
+  root :to => 'postings#products_requests'
 end
 

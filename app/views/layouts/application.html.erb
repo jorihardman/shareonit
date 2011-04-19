@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/stylesheets/blueprint/print.css" type="text/css" media="print">
   <!–[if IE]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]–>
   <%= stylesheet_link_tag 'main' %>
-  <%= javascript_include_tag "jquery.min", "jquery-ui.min", "application" %>
+  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'application', 'rails' %>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
@@ -15,8 +15,8 @@
     <div id="logo" class="span-5"><h1>schwap.it</h1></div>
     <div id="topnav" class="span-17 last">
       <ul class="nav">
-	      <li><a href="#">Products</a></li>
-	      <li><a href="#">Services</a></li>
+	      <li><%= link_to 'Products', products_requests_postings_path %></li>
+	      <li><%= link_to 'Services', services_requests_postings_path %></li>
 	      <li><a href="#">My Stuff</a></li>
       </ul>
     </div>
@@ -24,8 +24,7 @@
     <hr/>
     <div id="sidenav" class="span-2 colborder">
       <ul class="nav">
-	      <li><%= link_to 'Requests', postings_path %></li>
-	      <li><%= link_to 'Inventory', postings_path %></li>
+        <%= yield :nav %>
       </ul>
     </div>
     <div id="content" class="span-21 last">
