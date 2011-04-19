@@ -4,7 +4,11 @@
 
 <h1>Listing postings</h1>
 
-<%= link_to 'Create New Posting', new_posting_path %>
+<% if action_name =~ /product/ %>
+  <%= link_to 'Create New Posting', new_posting_path(:product_service => 'product') %>
+<% else %>
+  <%= link_to 'Create New Posting', new_posting_path(:product_service => 'service') %>
+<% end %>
 
 <table>
   <tr>
