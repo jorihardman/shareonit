@@ -1,5 +1,14 @@
 Neighborly::Application.routes.draw do
-  resources :messages, :communities, :users, :postings
+  resources :messages, :communities, :users
+
+  resources :postings do
+    collection do
+      get 'services/inventory' => 'postings#services_inventory'
+      get 'services/requests' => 'postings#services_requests'
+      get 'products/inventory' => 'postings#products_inventory'
+      get 'products/requests' => 'postings#products_requests'
+    end
+  end
 
   resource :session, :to => 'user_sessions'
   match '/my_account' => 'users#my_account', :as => 'my_account'

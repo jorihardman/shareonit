@@ -10,6 +10,42 @@ class PostingsController < ApplicationController
     end
   end
 
+  def services_inventory
+    @postings = Posting.where({:have_need => 'have', :product_service => 'service'})
+
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @posting }
+    end
+  end
+
+  def services_requests
+    @postings = Posting.where({:have_need => 'need', :product_service => 'service'})
+
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @posting }
+    end
+  end
+
+  def products_inventory
+    @postings = Posting.where({:have_need => 'have', :product_service => 'product'})
+
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @posting }
+    end
+  end
+
+  def products_requests
+    @postings = Posting.where({:have_need => 'need', :product_service => 'product'})
+
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @posting }
+    end
+  end
+
   def show
     @posting = Posting.find(params[:id])
 
