@@ -8,6 +8,11 @@ Neighborly::Application.routes.draw do
       get 'products/inventory' => 'postings#products_inventory'
       get 'products/requests' => 'postings#products_requests'
     end
+
+    member do
+      post 'offer' => 'offers#create'
+      get 'offer' => 'offers#new'
+    end
   end
 
   resource :session, :to => 'user_sessions'

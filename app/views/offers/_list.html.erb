@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Offerrer</th>
+    <th>Message</th>
+  </tr>
+
+  <% @offers.each do |offer| %>
+    <tr>
+      <td><%= offer.user.login %></td>
+      <td><%= offer.message %></tr>
+    </tr>
+  <% end %>
+</table>
+

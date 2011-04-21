@@ -49,6 +49,13 @@ class PostingsController < ApplicationController
   def show
     @posting = Posting.find(params[:id])
 
+    @offers = []
+    if @posting.user_id == current_user.id
+      @offers = Offer.where({:posting_id => @posting.id})
+    else
+      @offers = Offer.where({:posting_id => @posting.id, :user_id => current_user.id})
+    end
+
     respond_to do |format|
       format.html
       format.xml  { render :xml => @posting }
