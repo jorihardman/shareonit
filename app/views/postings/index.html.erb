@@ -1,14 +1,26 @@
-<% content_for :nav do %>
-  <%= raw(nav_content) %>
+<% if action_name =~ /product/ %>
+  <% prod_serv = 'product' %>
+<% else %>
+  <% prod_serv = 'service' %>
+<% end %>
+
+<% if action_name =~ /inventory/ %>
+  <% inv_req = 'inventory' %>
+<% else %>
+  <% inv_req = 'request' %>
+<% end %>
+
+<% content_for :sidenav do %>
+  <%= raw(sidenav_content) %>
+<% end %>
+
+<% content_for :topnav do %>
+  <%= raw(topnav_content) %>
 <% end %>
 
 <h1>Listing postings</h1>
 
-<% if action_name =~ /product/ %>
-  <%= link_to 'Create New Posting', new_posting_path(:product_service => 'product') %>
-<% else %>
-  <%= link_to 'Create New Posting', new_posting_path(:product_service => 'service') %>
-<% end %>
+<%= link_to 'Create New Posting', new_posting_path(:product_service => prod_serv) %>
 
 <table>
   <tr>
