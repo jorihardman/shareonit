@@ -78,6 +78,10 @@ div.field, div.actions {
 	font-weight: bold;
 }
 
+.nav li a.current {
+  color: #000000;
+}
+
 .nav li a:hover {
 	color: #ccc;
 	background-color: transparent;

@@ -15,16 +15,14 @@
     <div id="logo" class="span-5"><h1>schwap.it</h1></div>
     <div id="topnav" class="span-17 last">
       <ul class="nav">
-	      <li><%= link_to 'Products', products_requests_postings_path %></li>
-	      <li><%= link_to 'Services', services_requests_postings_path %></li>
-	      <li><a href="#">My Stuff</a></li>
+        <%= yield :topnav %>
       </ul>
     </div>
     <div id="login" class="span-2 last"><%= login_link %></div>
     <hr/>
     <div id="sidenav" class="span-2 colborder">
       <ul class="nav">
-        <%= yield :nav %>
+        <%= yield :sidenav %>
       </ul>
     </div>
     <div id="content" class="span-21 last">
