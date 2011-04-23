@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
 	has_many :communities, :through => :memberships
   has_many :received_reviews, :class_name => "Review", :foreign_key => :reviewee_id
   has_many :given_reviews, :class_name => "Review", :foreign_key => :reviewer_id
-  has_many :sent_messages, :class_name => "Message", :foreign_key => :sender_id
-  has_many :received_messages, :class_name => "Message", :foreign_key => :receiver_id
   has_many :postings
+  has_many :received_offers, :through => :postings, :source => :offers
+  has_many :offers
 
   # workaround for mongomapper bug
   # http://bit.ly/bcQn3z

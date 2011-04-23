@@ -10,6 +10,11 @@ Neighborly::Application.routes.draw do
       get 'my/requests' => 'postings#my_requests'
       get 'my/inventory' => 'postings#my_inventory'
     end
+
+    member do
+      post 'offer' => 'offers#create'
+      get 'offer' => 'offers#new'
+    end
   end
 
   resource :session, :to => 'user_sessions'
