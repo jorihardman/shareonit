@@ -11,7 +11,7 @@ class PostingsController < ApplicationController
   end
 
   def services_inventory
-    @postings = Posting.where({:have_need => 'have', :product_service => 'service'})
+    @postings = Posting.where(:have_need => 'have', :product_service => 'service')
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -20,7 +20,7 @@ class PostingsController < ApplicationController
   end
 
   def services_requests
-    @postings = Posting.where({:have_need => 'need', :product_service => 'service'})
+    @postings = Posting.where(:have_need => 'need', :product_service => 'service')
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -29,7 +29,7 @@ class PostingsController < ApplicationController
   end
 
   def products_inventory
-    @postings = Posting.where({:have_need => 'have', :product_service => 'product'})
+    @postings = Posting.where(:have_need => 'have', :product_service => 'product')
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -38,7 +38,7 @@ class PostingsController < ApplicationController
   end
 
   def products_requests
-    @postings = Posting.where({:have_need => 'need', :product_service => 'product'})
+    @postings = Posting.where(:have_need => 'need', :product_service => 'product')
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -51,9 +51,9 @@ class PostingsController < ApplicationController
 
     @offers = []
     if @posting.user_id == current_user.id
-      @offers = Offer.where({:posting_id => @posting.id})
+      @offers = @posting.offers
     else
-      @offers = Offer.where({:posting_id => @posting.id, :user_id => current_user.id})
+      @offers = @posting.offers.where(:user_id => current_user.id)
     end
 
     respond_to do |format|

@@ -2,8 +2,6 @@ class Offer < ActiveRecord::Base
   belongs_to :posting
   belongs_to :user
 
-  def receiver
-    posting.user
-  end
+  default_scope select('offer.*, user.login').includes(:user,)
 end
 
