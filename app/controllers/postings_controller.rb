@@ -10,12 +10,30 @@ class PostingsController < ApplicationController
     end
   end
 
+  def my_inventory
+    @postings = Posting.where({:have_need => 'have', :user_id => current_user.id})
+    
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @postings }
+    end
+  end
+  
+  def my_requests
+    @postings = Posting.where({:have_need => 'need', :user_id => current_user.id})
+    
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @postings }
+    end
+  end
+  
   def services_inventory
     @postings = Posting.where({:have_need => 'have', :product_service => 'service'})
 
     respond_to do |format|
       format.html { render :action => 'index' }
-      format.xml  { render :xml => @posting }
+      format.xml  { render :xml => @postings }
     end
   end
 
@@ -24,7 +42,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       format.html { render :action => 'index' }
-      format.xml  { render :xml => @posting }
+      format.xml  { render :xml => @postings }
     end
   end
 
@@ -33,7 +51,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       format.html { render :action => 'index' }
-      format.xml  { render :xml => @posting }
+      format.xml  { render :xml => @postings }
     end
   end
 
@@ -42,7 +60,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       format.html { render :action => 'index' }
-      format.xml  { render :xml => @posting }
+      format.xml  { render :xml => @postings }
     end
   end
 

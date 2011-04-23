@@ -7,6 +7,8 @@ Neighborly::Application.routes.draw do
       get 'services/requests' => 'postings#services_requests'
       get 'products/inventory' => 'postings#products_inventory'
       get 'products/requests' => 'postings#products_requests'
+      get 'my/requests' => 'postings#my_requests'
+      get 'my/inventory' => 'postings#my_inventory'
     end
   end
 
