@@ -8,27 +8,8 @@
 
 <h1>Listing postings</h1>
 
-<%= link_to 'Create New Posting', new_posting_path(:product_service => (action_name =~ /product/ ? 'product' : 'service')) %>
+<%= new_posting_link %>
+<div id="posting_form"></div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>From date</th>
-    <th>To date</th>
-    <th>User</th>
-    <th>Status</th>
-  </tr>
-
-<% @postings.each do |posting| %>
-  <tr>
-    <td><%= link_to posting.name, posting %></td>
-    <td><%= posting.description %></td>
-    <td><%= posting.from_date %></td>
-    <td><%= posting.to_date %></td>
-    <td><%= posting.user.login %></td>
-    <td><%= posting.status %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => "list" %>
 

@@ -1,0 +1,7 @@
+$('#posting_form').html('<%= escape_javascript(render :partial => 'form') %>');
+$('input[title!=""]').hint();
+$("#posting_from_date, #posting_to_date").datepicker();
+$("#posting_from_date, #posting_to_date").change(function() {
+  $(this).removeClass('blur');
+});
+

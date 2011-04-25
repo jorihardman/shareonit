@@ -1,0 +1,20 @@
+<table id="posting_list">
+  <tr>
+    <th>Name</th>
+    <th>From date</th>
+    <th>To date</th>
+    <th>User</th>
+    <th>Status</th>
+  </tr>
+
+<% @postings.each do |posting| %>
+  <tr>
+    <td><%= link_to posting.name, posting %></td>
+    <td><%= posting.from_date %></td>
+    <td><%= posting.to_date %></td>
+    <td><%= posting.user.login %></td>
+    <td><%= posting.status %></td>
+  </tr>
+<% end %>
+</table>
+

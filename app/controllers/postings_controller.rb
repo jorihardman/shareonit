@@ -61,7 +61,7 @@ class PostingsController < ApplicationController
     @posting = Posting.new
 
     respond_to do |format|
-      format.html
+      format.js
       format.xml  { render :xml => @posting }
     end
   end
@@ -77,10 +77,12 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.save
-        format.html { redirect_to(@posting, :notice => 'Posting was successfully created.') }
+        @notice = 'Posting successful.'
+        format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
-        format.html { render :action => "new" }
+        @notice = 'Error creating new posting.'
+        format.js
         format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
     end
