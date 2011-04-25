@@ -1,4 +1,4 @@
 $('#notice').html('<%= @notice %>');
-$('#offer_list').html('<%= escape_javascript(render :partial => 'offers/list') %>');
 $('#offer_form').html('');
+$('#offer_list').append('<%= raw(offer_table_row(@offer)) %>');
 

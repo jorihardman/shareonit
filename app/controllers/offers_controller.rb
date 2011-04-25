@@ -12,13 +12,6 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(params[:offer])
 
-    @offers = []
-    if @offer.posting.user_id == current_user.id
-      @offers = Offer.where(:posting_id => @offer.posting_id)
-    else
-      @offers = Offer.where(:posting_id => @offer.posting_id, :user_id => current_user.id)
-    end
-
     respond_to do |format|
       if @offer.save
         @notice = 'Offer successfully made.'
