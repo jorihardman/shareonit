@@ -1,9 +1,11 @@
 <div id="offer_notice"></div>
 
 <p>
-  <%= @posting.user.login.capitalize %> has a <%= @posting.name %>
+  <%= @posting.user.login.capitalize %>
+  <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
+  <%= @posting.name %>
   <br/>
-  available from <%= @posting.from_date %> to <%= @posting.to_date %>.
+  from <%= @posting.from_date %> to <%= @posting.to_date %>.
 </p>
 
 <% if current_user.id != @posting.user_id %>
