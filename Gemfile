@@ -11,4 +11,5 @@ gem 'mail'
 gem 'exception_notification'
 gem 'geoip'
 gem 'meta_search'
+gem 'paperclip'
 

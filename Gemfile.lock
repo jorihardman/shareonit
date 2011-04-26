@@ -57,6 +57,9 @@ GEM
       arel (~> 2.0.2)
     mime-types (1.16)
     mysql2 (0.2.7)
+    paperclip (2.3.11)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -99,5 +102,6 @@ DEPENDENCIES
   mail
   meta_search
   mysql2
+  paperclip
   rails (= 3.0.3)
   will_paginate

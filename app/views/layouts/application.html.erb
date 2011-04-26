@@ -15,14 +15,14 @@
     <div id="logo" class="span-4"><h1>Uswap</h1></div>
     <div id="topnav" class="span-17 last">
       <ul class="nav">
-        <%= yield :topnav %>
+        <%= raw(topnav_content) %>
       </ul>
     </div>
     <div id="login" class="span-2 last"><%= login_link %></div>
     <hr/>
     <div id="sidenav" class="span-2 colborder">
       <ul class="nav">
-        <%= yield :sidenav %>
+        <%= raw(sidenav_content) %>
       </ul>
     </div>
     <div id="content" class="span-21 last">

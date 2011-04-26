@@ -2,7 +2,10 @@ class PostingsController < ApplicationController
   before_filter :require_user
 
   def index
-    redirect_to :action => 'products_requests'
+    respond_to do |format|
+      format.html { redirect_to :action => 'products_requests' }
+      format.js
+    end
   end
 
   def services_inventory
@@ -52,7 +55,7 @@ class PostingsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => false }
       format.xml  { render :xml => @posting }
     end
   end

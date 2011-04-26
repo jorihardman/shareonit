@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
+  <%= javascript_include_tag 'facebox' %>
+  <%= javascript_include_tag postings_path %>
+<% end %>
+
 <table id="posting_list">
   <tr>
     <th>Name</th>
@@ -9,7 +15,7 @@
 
 <% @postings.each do |posting| %>
   <tr>
-    <td><%= link_to posting.name, posting %></td>
+    <td><%= link_to posting.name, posting, :rel => 'facebox' %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
     <td><%= posting.user.login %></td>
