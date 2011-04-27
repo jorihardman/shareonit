@@ -1,7 +1,31 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
+  <%= javascript_include_tag 'facebox' %>
+  <%= javascript_include_tag postings_path %>
+<% end %>
+
 <h1>Listing postings</h1>
 
 <%= new_posting_link %>
 <div id="posting_form"></div>
 
-<%= render :partial => 'postings/list' %>
+<table id="posting_list">
+  <tr>
+    <th>Name</th>
+    <th>From date</th>
+    <th>To date</th>
+    <th>User</th>
+    <th>Status</th>
+  </tr>
+
+<% @postings.each do |posting| %>
+  <tr>
+    <td><%= link_to posting.name, posting, :rel => 'facebox' %></td>
+    <td><%= posting.from_date %></td>
+    <td><%= posting.to_date %></td>
+    <td><%= posting.user.login %></td>
+    <td><%= posting.status %></td>
+  </tr>
+<% end %>
+</table>
 
