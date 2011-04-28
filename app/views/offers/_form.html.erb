@@ -2,8 +2,8 @@
   <%= f.error_messages %>
   <%= f.label :message %><br/>
   <%= f.text_area :message %><br/>
+  <%= check_box_tag('add_to_inventory', 1, true) %> Add to inventory?<br/>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :posting_id, :value => params[:posting_id] %>
   <%= f.submit %>
 <% end %>
-
