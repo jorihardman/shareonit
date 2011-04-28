@@ -6,6 +6,13 @@
 
 <h1>Listing postings</h1>
 
+<div id="search">
+  <% form_for :search, @search, :html => {:method => :get} do |f| %>
+    <%= f.text_field :name_contains %>
+    <%= f.submit 'Search' %>
+  <% end %>
+</div>
+
 <%= new_posting_link %>
 
 <table id="posting_list">

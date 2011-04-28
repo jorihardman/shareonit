@@ -10,25 +10,25 @@ class PostingsController < ApplicationController
 
   def my_inventory
     @postings = Posting.where({:have_need => 'have', :user_id => current_user.id})
-    
+
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
     end
   end
-  
+
   def my_requests
     @postings = Posting.where({:have_need => 'need', :user_id => current_user.id})
-    
+
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
     end
   end
-  
+
   def services_inventory
     store_location
-    @postings = Posting.where(:have_need => 'have', :product_service => 'service')
+    @postings = Posting.search_or_where({:have_need => 'have', :product_service => 'service'}, params[:search])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -38,8 +38,7 @@ class PostingsController < ApplicationController
 
   def services_requests
     store_location
-    @postings = Posting.where(:have_need => 'need', :product_service => 'service')
-
+    @postings = Posting.search_or_where({:have_need => 'need', :product_service => 'service'}, params[:search])
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
@@ -48,8 +47,7 @@ class PostingsController < ApplicationController
 
   def products_inventory
     store_location
-    @postings = Posting.where(:have_need => 'have', :product_service => 'product')
-
+    @postings = Posting.search_or_where({:have_need => 'have', :product_service => 'product'}, params[:search])
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
@@ -58,8 +56,7 @@ class PostingsController < ApplicationController
 
   def products_requests
     store_location
-    @postings = Posting.where(:have_need => 'need', :product_service => 'product')
-
+    @postings = Posting.search_or_where({:have_need => 'need', :product_service => 'product'}, params[:search])
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
