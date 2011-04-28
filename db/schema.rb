@@ -91,4 +91,3 @@ ActiveRecord::Schema.define(:version => 20110421211846) do
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
-
