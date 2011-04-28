@@ -1,6 +1,6 @@
-if ($('#offer_form').is(':empty')) {
-  $('#offer_form').html('<%= escape_javascript(render :partial => 'form') %>');
-} else {
-  $('#offer_form').html('');
-}
+$(document).ready(function() {
+  $('#new_offer').submit(function () {
+    $.facebox.close();
+  });
+});
 

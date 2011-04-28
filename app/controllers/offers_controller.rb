@@ -5,6 +5,7 @@ class OffersController < ApplicationController
     @offer = Offer.new
 
     respond_to do |format|
+      format.html { render :layout => false }
       format.js
     end
   end

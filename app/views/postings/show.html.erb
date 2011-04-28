@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
+  <%= javascript_include_tag 'facebox' %>
+  <%= javascript_include_tag posting_path(@posting) %>
+<% end %>
+
 <div id="offer_notice"></div>
 
 <p>
@@ -9,8 +15,7 @@
 </p>
 
 <% if current_user.id != @posting.user_id %>
-  <%= link_to 'Make Offer', new_posting_offer_path(@posting.id), :remote => true %>
-  <div id="offer_form"></div>
+  <%= link_to 'Make Offer', new_posting_offer_path(@posting), :rel => 'facebox' %>
 <% end %>
 
 <%= render :partial => "offers/list" %>

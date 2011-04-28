@@ -55,7 +55,8 @@ class PostingsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render :layout => false }
+      format.js
+      format.html
       format.xml  { render :xml => @posting }
     end
   end
@@ -64,8 +65,9 @@ class PostingsController < ApplicationController
     @posting = Posting.new
 
     respond_to do |format|
-      format.js
+      format.html { render :layout => false }
       format.xml  { render :xml => @posting }
+      format.js
     end
   end
 
