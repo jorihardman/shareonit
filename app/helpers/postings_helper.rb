@@ -20,5 +20,6 @@ module PostingsHelper
     "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :remote => true, :method => :post}</td>" <<
     '</tr>'
   end
+  
 end
 
