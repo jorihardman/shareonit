@@ -1,7 +1,7 @@
 <div id="offer_notice"></div>
 
 <p>
-  <%= @posting.user.login.capitalize %>
+  <%= @posting.user.full_name %>
   <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
   <%= @posting.name %>
   <br/>

@@ -8,7 +8,7 @@
 
   <% @offers.each do |offer| %>
     <tr>
-      <td><%= offer.user.login %></td>
+      <td><%= offer.user.full_name %></td>
       <td><%= offer.message %></td>
       <td><%= offer.status %></td>
       <% if offer.posting.user_id == current_user.id %>

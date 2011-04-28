@@ -5,3 +5,4 @@ class UserSession < Authlogic::Session::Base
     [id.to_s]
   end
 end
+

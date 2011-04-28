@@ -23,7 +23,7 @@
     <td><%= link_to posting.name, posting, :rel => 'facebox' %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
-    <td><%= posting.user.login %></td>
+    <td><%= posting.user.full_name %></td>
     <td><%= posting.status %></td>
   </tr>
 <% end %>

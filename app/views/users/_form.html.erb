@@ -1,17 +1,27 @@
 <%= form_for user do |f| %>
   <%= f.error_messages %>
-  <%= f.label :login, 'Login' %><br />
-  <%= f.text_field :login %><br />
-  <br />
-  <%= f.label :email %><br />
-  <%= f.text_field :email %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %><br />
-  <br />
-  <%= f.submit "Register" %>
+  <div id="field">
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name %>
+  </div>
+  <div id="field">
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name %>
+  </div>
+  <div id="field">
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </div>
+  <div id="field">
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %>
+  </div>
+  <div id="field">
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div id="action">
+    <%= f.submit "Register" %>
+  </div>
 <% end %>
 

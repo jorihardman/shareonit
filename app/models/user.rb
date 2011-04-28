@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :received_offers, :through => :postings, :source => :offers
   has_many :offers
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # workaround for mongomapper bug
   # http://bit.ly/bcQn3z
   def to_key
