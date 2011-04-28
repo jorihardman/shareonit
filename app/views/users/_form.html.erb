@@ -1,26 +1,26 @@
 <%= form_for user do |f| %>
   <%= f.error_messages %>
-  <div id="field">
+  <div class="field">
     <%= f.label :first_name %><br/>
     <%= f.text_field :first_name %>
   </div>
-  <div id="field">
+  <div class="field">
     <%= f.label :last_name %><br/>
     <%= f.text_field :last_name %>
   </div>
-  <div id="field">
+  <div class="field">
     <%= f.label :email %><br/>
     <%= f.text_field :email %>
   </div>
-  <div id="field">
+  <div class="field">
     <%= f.label :password %><br/>
     <%= f.password_field :password %>
   </div>
-  <div id="field">
+  <div class="field">
     <%= f.label :password_confirmation %><br/>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div id="action">
+  <div class="action">
     <%= f.submit "Register" %>
   </div>
 <% end %>

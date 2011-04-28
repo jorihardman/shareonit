@@ -1,3 +1,5 @@
+$.facebox.close();
 $('#notice').html('<%= @notice %>');
 $('#offer_list').append('<%= raw(offer_table_row(@offer)) %>');
+$('#offer_link').remove();
 
