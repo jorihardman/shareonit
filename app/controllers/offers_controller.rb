@@ -12,6 +12,20 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(params[:offer])
 
+    # If add_to_inventory is checked, then it's in the hash, otherwise it
+    # doesn't exist in the hash, so || 0.
+    addToInventory = params[:add_to_inventory] || 0
+    
+    if addToInventory
+      invPosting = @offer.posting.clone #Posting.new(@offer.posting)
+      invPosting.have_need = 'have'
+      invPosting.user_id = @offer.user_id
+    
+      # See if this posting is already in Postings.
+      copyInvPosting = Posting.where( :user_id => invPosting.user_id, :description => invPosting.description ).first
+      invPosting.save unless copyInvPosting
+    end
+    
     respond_to do |format|
       if @offer.save
         @notice = 'Offer successfully made.'
