@@ -1,49 +1,30 @@
-<% if action_name =~ /product/ %>
-  <% prod_serv = 'product' %>
-<% else %>
-  <% prod_serv = 'service' %>
-<% end %>
-
-<% if action_name =~ /inventory/ %>
-  <% inv_req = 'inventory' %>
-<% else %>
-  <% inv_req = 'request' %>
-<% end %>
-
-<% content_for :sidenav do %>
-  <%= raw(sidenav_content) %>
-<% end %>
-
-<% content_for :topnav do %>
-  <%= raw(topnav_content) %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
+  <%= javascript_include_tag 'facebox' %>
+  <%= javascript_include_tag postings_path %>
 <% end %>
 
 <h1>Listing postings</h1>
 
-<%= link_to 'Create New Posting', new_posting_path(:product_service => prod_serv) %>
+<%= new_posting_link %>
+<div id="posting_form"></div>
 
-<table>
+<table id="posting_list">
   <tr>
     <th>Name</th>
-    <th>Description</th>
     <th>From date</th>
     <th>To date</th>
     <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Status</th>
   </tr>
 
 <% @postings.each do |posting| %>
   <tr>
-    <td><%= posting.name %></td>
-    <td><%= posting.description %></td>
+    <td><%= link_to posting.name, posting, :rel => 'facebox' %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
     <td><%= posting.user.login %></td>
-    <td><%= link_to 'Show', posting %></td>
-    <td><%= link_to 'Edit', edit_posting_path(posting) %></td>
-    <td><%= link_to 'Destroy', posting, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= posting.status %></td>
   </tr>
 <% end %>
 </table>

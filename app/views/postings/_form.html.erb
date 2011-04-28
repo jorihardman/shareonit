@@ -1,12 +1,16 @@
-<% content_for :head do %>
-  <%= javascript_include_tag 'form', 'text_hints' %>
-<% end %>
+<%= javascript_include_tag 'text_hints' %>
 
-<%= form_for(@posting) do |f| %>
+<%= form_for @posting, :remote => true do |f| %>
   <% f.error_messages  %>
   <p>
     I
-    <%= f.select :have_need, [['can provide','have'], 'need'] %>
+    <% if params[:have_need] == 'have' %>
+      can provide
+      <%= f.hidden_field :have_need, :value => 'have' %>
+    <% else %>
+      need
+      <%= f.hidden_field :have_need, :value => 'need' %>
+    <% end %>
     <% if params[:product_service] == 'product' %>
       <%= f.text_field :name, :title => 'e.g. one ring to rule them all...' %>
       <%= f.hidden_field :product_service, :value => 'product' %>

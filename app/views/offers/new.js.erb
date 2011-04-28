@@ -1,2 +1,6 @@
-$('#offer_form').html('<%= escape_javascript(render :partial => 'form') %>');
+if ($('#offer_form').is(':empty')) {
+  $('#offer_form').html('<%= escape_javascript(render :partial => 'form') %>');
+} else {
+  $('#offer_form').html('');
+}
 

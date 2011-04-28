@@ -1,65 +1,24 @@
 module PostingsHelper
-  def sidenav_content
-    
-    if action_name =~ /inventory/
-      inv_class = 'current'
-      req_class = ''
-    elsif action_name =~ /request/
-      inv_class = ''
-      req_class = 'current'
-    else
-      inv_class = ''
-      req_class = ''
-    end
-    
-    # Change where the links take you, depending on if you are on the
-    # services, products, or my tab.
-    if action_name =~ /services/
-      inv_path = services_inventory_postings_path
-      req_path = services_requests_postings_path
-    elsif action_name =~ /products/
-      inv_path = products_inventory_postings_path
-      req_path = products_requests_postings_path
-    elsif action_name =~ /my/
-      inv_path = my_inventory_postings_path
-      req_path = my_requests_postings_path
-    else
-      inv_path = home_path
-      req_path = home_path
-    end
-    
-    return '<li>'+link_to('Offering',
-                          inv_path,
-                          :class => inv_class) +
-           '</li><li>'+link_to('Looking For',
-                               req_path,
-                               :class => req_class)+'</li>'  
+  def new_posting_link
+    product_service = action_name =~ /product/ ? 'product' : 'service'
+    have_need = action_name =~ /inventory/ ? 'have' : 'need'
+    link_to 'Create New Posting',
+      new_posting_path(:product_service => product_service, :have_need => have_need),
+      :remote => true
   end
-  
-  def topnav_content
-    if action_name =~ /services/
-      serv_class = 'current'
-      prod_class = ''
-      my_class = ''
-    elsif action_name =~ /products/
-      serv_class = ''
-      prod_class = 'current'
-      my_class = ''
-    elsif action_name =~ /my/
-      serv_class = ''
-      prod_class = ''
-      my_class = 'current'
-    end
-    
-    return '<li>' + link_to('Products',
-                            products_requests_postings_path,
-                            :class => prod_class) + '</li>' +
-           '<li>' + link_to('Services',
-                            services_requests_postings_path,
-                            :class => serv_class) + '</li>' +
-           '<li>' + link_to('My Stuff',
-                            my_inventory_postings_path,
-                            :class => my_class) + '</li>'
+
+  def posting_table_row(posting)
+    '<tr>' << "<td>#{link_to posting.name, posting}</td>" <<
+    "<td>#{posting.from_date}</td>" << "<td>#{posting.to_date}</td>" <<
+    "<td>#{posting.user.login}</td>" << "<td>#{posting.status}</td>" <<
+    '</tr>'
+  end
+
+  def offer_table_row(offer)
+    '<tr>' << "<td>#{offer.user.login}</td>" <<
+    "<td>#{offer.message}</td>" << "<td>#{offer.status}</td>" <<
+    "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :remote => true, :method => :post}</td>" <<
+    '</tr>'
   end
 end
 

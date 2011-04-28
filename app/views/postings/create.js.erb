@@ -1,0 +1,4 @@
+$('#notice').html('<%= @notice %>');
+$('#posting_form').html('');
+$('#posting_list').append('<%= raw(posting_table_row(@posting)) %>')
+

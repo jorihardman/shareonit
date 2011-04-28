@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421211846) do
+ActiveRecord::Schema.define(:version => 20110423221619) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110421211846) do
     t.datetime "updated_at"
     t.string   "have_need"
     t.string   "product_service"
+    t.string   "status",          :default => "pending"
   end
 
   create_table "reviews", :force => true do |t|
