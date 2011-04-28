@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423221619) do
+ActiveRecord::Schema.define(:version => 20110428175150) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20110423221619) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
     t.string   "email",                              :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false
@@ -85,10 +84,11 @@ ActiveRecord::Schema.define(:version => 20110423221619) do
     t.string   "current_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name",                         :null => false
+    t.string   "last_name",                          :null => false
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
-  add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end

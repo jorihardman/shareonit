@@ -10,7 +10,7 @@ module PostingsHelper
   def posting_table_row(posting)
     '<tr>' << "<td>#{link_to posting.name, posting}</td>" <<
     "<td>#{posting.from_date}</td>" << "<td>#{posting.to_date}</td>" <<
-    "<td>#{posting.user.login}</td>" << "<td>#{posting.status}</td>" <<
+    "<td>#{posting.user.full_name}</td>" << "<td>#{posting.status}</td>" <<
     '</tr>'
   end
 
