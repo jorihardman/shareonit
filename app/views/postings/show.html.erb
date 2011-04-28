@@ -4,7 +4,7 @@
   <%= javascript_include_tag posting_path(@posting) %>
 <% end %>
 
-<div id="offer_notice"></div>
+<%= back_or_default_link 'Return to postings', postings_path %><br/><br/>
 
 <p>
   <%= @posting.user.full_name %>

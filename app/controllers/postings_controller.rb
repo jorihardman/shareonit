@@ -9,6 +9,7 @@ class PostingsController < ApplicationController
   end
 
   def services_inventory
+    store_location
     @postings = Posting.where(:have_need => 'have', :product_service => 'service')
 
     respond_to do |format|
@@ -18,6 +19,7 @@ class PostingsController < ApplicationController
   end
 
   def services_requests
+    store_location
     @postings = Posting.where(:have_need => 'need', :product_service => 'service')
 
     respond_to do |format|
@@ -27,6 +29,7 @@ class PostingsController < ApplicationController
   end
 
   def products_inventory
+    store_location
     @postings = Posting.where(:have_need => 'have', :product_service => 'product')
 
     respond_to do |format|
@@ -36,6 +39,7 @@ class PostingsController < ApplicationController
   end
 
   def products_requests
+    store_location
     @postings = Posting.where(:have_need => 'need', :product_service => 'product')
 
     respond_to do |format|
