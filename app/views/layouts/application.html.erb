@@ -12,15 +12,16 @@
 </head>
 <body>
   <div class="container">
-    <div id="logo" class="span-4"><h1>Uswap</h1></div>
-    <div id="topnav" class="span-16 last">
-      <ul class="nav">
-        <%= raw(topnav_content) %>
-      </ul>
+    <div id="header" class="span-24 last">
+      <div id="logo" class="span-4"><h1>Uswap</h1></div>
+      <div id="topnav" class="span-16">
+        <ul class="nav">
+          <%= raw(topnav_content) %>
+        </ul>
+      </div>
+      <div id="login" class="span-4 last"><%= login_link %></div>
     </div>
-    <div id="login" class="span-4 last"><%= login_link %></div>
-    <hr/>
-    <div id="sidenav" class="span-2 colborder">
+    <div id="sidenav" class="span-3">
       <ul class="nav">
         <%= raw(sidenav_content) %>
       </ul>
