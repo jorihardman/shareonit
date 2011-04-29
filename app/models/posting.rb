@@ -11,12 +11,9 @@ class Posting < ActiveRecord::Base
     invPosting.save
   end
 
-  # Returns postings. If there is a search, return search results.
-  # Otherwise, return postings matching the condition.
-  def self.search_or_where(condition,search_params)
-    @search = Posting.search(search_params)
-    if @search
-      return @search.where(condition)
+  def self.search_or_where(search_params, condition)
+    if search_params
+      return @search.where(condition).search(search_params)
     else
       return Posting.where(condition)
     end

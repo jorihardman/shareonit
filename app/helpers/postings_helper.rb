@@ -1,6 +1,6 @@
 module PostingsHelper
   def new_posting_link
-    product_service = action_name =~ /product/ ? 'product' : 'service'
+    product_service = action_name =~ /service/ ? 'service' : 'product'
     have_need = action_name =~ /inventory/ ? 'have' : 'need'
     link_to 'Create New Posting',
       new_posting_path(:product_service => product_service, :have_need => have_need),
@@ -20,6 +20,6 @@ module PostingsHelper
     "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :remote => true, :method => :post}</td>" <<
     '</tr>'
   end
-  
+
 end
 
