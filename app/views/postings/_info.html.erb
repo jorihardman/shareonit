@@ -3,8 +3,10 @@
     <%= @posting.user.full_name %>
     <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
     <%= @posting.name %>
+    <% unless @posting.from_date.blank? and @posting.to_date.blank? %>
     <br/>
-    from <%= @posting.from_date %> to <%= @posting.to_date %>.
+    from <%= @posting.from_date %> to <%= @posting.to_date %>
+    <% end %>
   </p>
 </div>
 
