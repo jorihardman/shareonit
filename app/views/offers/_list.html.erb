@@ -1,22 +1,24 @@
-<table id="offer_list">
-  <tr>
-    <th>Offerrer</th>
-    <th>Message</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
-
-  <% @offers.each do |offer| %>
+<div id="offers">
+  <table id="offer_list">
     <tr>
-      <td><%= offer.user.full_name %></td>
-      <td><%= offer.message %></td>
-      <td><%= offer.status %></td>
-      <% if offer.posting.user_id == current_user.id %>
-        <td><%= link_to 'Accept Offer', accept_posting_offer_path(offer.posting_id, offer.id), :remote => true, :method => :post %></td>
-      <% else %>
-        <td><%= link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :rel => 'facebox' %></td>
-      <% end %>
+      <th>Offerrer</th>
+      <th>Message</th>
+      <th>Status</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.user.full_name %></td>
+        <td><%= offer.message %></td>
+        <td><%= offer.status %></td>
+        <% if offer.posting.user_id == current_user.id %>
+          <td><%= link_to 'Accept Offer', accept_posting_offer_path(offer.posting_id, offer.id), :remote => true, :method => :post %></td>
+        <% else %>
+          <td><%= link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :rel => 'facebox' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
 

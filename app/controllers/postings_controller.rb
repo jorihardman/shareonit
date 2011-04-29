@@ -92,6 +92,10 @@ class PostingsController < ApplicationController
 
   def edit
     @posting = Posting.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
   end
 
   def create
@@ -117,10 +121,12 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.update_attributes(params[:posting])
-        format.html { redirect_to(@posting, :notice => 'Posting was successfully updated.') }
+        @notice = 'Posting successfully updated.'
+        format.js
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        @notice = 'Posting failed to update.'
+        format.js
         format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
     end

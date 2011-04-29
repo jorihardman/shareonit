@@ -2,7 +2,7 @@ class Posting < ActiveRecord::Base
   belongs_to :user
   has_many :offers
 
-  default_scope select('posting.*, user.full_name').includes(:user)
+  default_scope select('posting.*, user.first_name, user.last_name').includes(:user)
 
   def self.add_to_inventory(offer)
     invPosting = offer.posting.clone

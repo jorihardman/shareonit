@@ -1,0 +1,10 @@
+<div id="posting_info">
+  <p>
+    <%= @posting.user.full_name %>
+    <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
+    <%= @posting.name %>
+    <br/>
+    from <%= @posting.from_date %> to <%= @posting.to_date %>.
+  </p>
+</div>
+
