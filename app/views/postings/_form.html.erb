@@ -19,8 +19,8 @@
       <%= f.hidden_field :product_service, :value => 'service' %>
     <% end %>
     <br/>
-    available from <%= f.text_field :from_date, :title => 'click to select date'%>
-    to <%= f.text_field :to_date, :title => 'click to select date' %>.
+    available from <%= f.text_field :from_date, :title => 'optional'%>
+    to <%= f.text_field :to_date, :title => 'optional' %>.
   </p>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">

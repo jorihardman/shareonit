@@ -100,8 +100,10 @@ class PostingsController < ApplicationController
 
   def create
     @posting = Posting.new(params[:posting])
-    @posting.from_date = Date.strptime(params[:posting][:from_date], "%m/%d/%Y")
-    @posting.to_date = Date.strptime(params[:posting][:to_date], "%m/%d/%Y")
+    unless params[:posting][:to_date].blank? and params[:posting][:from_date].blank?
+      @posting.from_date = Date.strptime(params[:posting][:from_date], "%m/%d/%Y")
+      @posting.to_date = Date.strptime(params[:posting][:to_date], "%m/%d/%Y")
+    end
 
     respond_to do |format|
       if @posting.save
