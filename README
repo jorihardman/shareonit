@@ -1,5 +1,5 @@
 This is the main socialgaming repository.
 
 To do the daily digest, set up a cron job to run at 6pm every day. The command
-to run should be "rails runner Notifier.daily_digest"
+to run should be "rails runner Notifier.daily_digest.deliver"
 
