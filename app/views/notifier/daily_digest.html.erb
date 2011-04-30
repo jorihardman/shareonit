@@ -1,0 +1,14 @@
+Your friends are looking for this stuff. Can you help any of them out?
+
+<table>
+<% @postings.each do |posting| %>
+  <tr>
+    <td><%= posting.user.full_name %></td>
+    <td>needs</td>
+    <td><%= link_to posting.name, new_posting_offer_url(posting) %></td>
+  </tr>
+<% end %>
+</table>
+
+Thanks,
+Uswap Team

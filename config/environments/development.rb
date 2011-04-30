@@ -16,6 +16,15 @@ Neighborly::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smpt_settings = {
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :domain => 'uswap.it',
+    :user_name => 'uswap', # Replace with a valid gmail UN.
+  :password => 'uswap', # Replace with valid gmail password.
+    :authentication => 'plain',
+    :enable_starttls_auto => true }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
