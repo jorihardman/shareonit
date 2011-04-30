@@ -79,14 +79,21 @@ div.field, div.actions {
 	font-weight: bold;
 }
 
+#sidenav .nav li a {
+  padding: 15px 50px 15px 8px;
+}
+
 .nav li a.current {
   color: #000000;
+  background-color: #e3e9ff;
 }
 
 .nav li a:hover {
 	color: #ccc;
 	background-color: transparent;
 }
+
+.nav li a:hover.current { background-color: #e3e9ff; }
 
 input.blur {
   color: gray;
@@ -96,4 +103,12 @@ input.blur {
   float: right;
   padding-top: 5px;
 }
+
+#search { margin-bottom: 10px; }
+
+#content { background-color: #e3e9ff; }
+
+ul.nav { margin: 0px; }
+
+#logo h1 { margin-bottom: 0px; }
 

@@ -13,10 +13,22 @@ module ApplicationHelper
 
   def sidenav_content
     inv_class = (action_name =~ /inventory/) ? 'current' : ''
-    inv_path = (action_name =~ /services/) ? services_inventory_postings_path : products_inventory_postings_path
+    if action_name =~ /services/
+      inv_path = services_inventory_postings_path
+    elsif action_name =~ /products/
+      inv_path = products_inventory_postings_path
+    else
+      inv_path = my_inventory_postings_path
+    end
 
     req_class = (action_name =~ /requests/) ? 'current' : ''
-    req_path = (action_name =~ /services/) ? services_requests_postings_path : products_requests_postings_path
+    if action_name =~ /services/
+      req_path = services_requests_postings_path
+    elsif action_name =~ /products/
+      req_path = products_requests_postings_path
+    else
+      req_path = my_requests_postings_path
+    end
 
     return "<li>#{link_to('Inventory', inv_path, :class => inv_class)}</li>" <<
            "<li>#{link_to('Requests',req_path, :class => req_class)}</li>"
@@ -29,8 +41,12 @@ module ApplicationHelper
     serv_class = (action_name =~ /services/) ? 'current' : ''
     serv_path = (action_name =~ /inventory/) ? services_inventory_postings_path : services_requests_postings_path
 
-    return "<li>#{link_to('Products', prod_path, :class => prod_class)}</li>" <<
-           "<li>#{link_to('Services', serv_path, :class => serv_class)}</li>"
+    my_stuff_class = (action_name =~ /my/) ? 'current' : ''
+    my_stuff_path = (action_name =~ /inventory/) ? my_inventory_postings_path : my_requests_postings_path
+
+    return "<li>#{link_to 'Products', prod_path, :class => prod_class}</li>" <<
+           "<li>#{link_to 'Services', serv_path, :class => serv_class}</li>" <<
+           "<li>#{link_to 'My Stuff', my_stuff_path, :class => my_stuff_class}</li>"
   end
 end
 

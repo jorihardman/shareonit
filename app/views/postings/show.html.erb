@@ -1,21 +1,22 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
   <%= javascript_include_tag 'facebox' %>
-  <%= javascript_include_tag posting_path(@posting) %>
+  <%= javascript_include_tag postings_path %>
 <% end %>
 
 <%= back_or_default_link 'Return to postings', postings_path %><br/><br/>
 
-<p>
-  <%= @posting.user.full_name %>
-  <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
-  <%= @posting.name %>
-  <br/>
-  from <%= @posting.from_date %> to <%= @posting.to_date %>.
-</p>
+<%= render :partial => "postings/info" %>
 
-<% if current_user.id != @posting.user_id %>
-  <%= link_to 'Make Offer', new_posting_offer_path(@posting), :rel => 'facebox' %>
+<% if current_user.id == @posting.user_id %>
+  <%= link_to 'Edit Posting', edit_posting_path(@posting), :rel => 'facebox' %>
+<% end %>
+
+
+<% if current_user.id != @posting.user_id and
+  Offer.where(:posting_id => @posting.id, :user_id => current_user.id).first.nil?
+%>
+  <%= link_to 'Make Offer', new_posting_offer_path(@posting), :rel => 'facebox', :id => 'offer_link' %>
 <% end %>
 
 <%= render :partial => "offers/list" %>

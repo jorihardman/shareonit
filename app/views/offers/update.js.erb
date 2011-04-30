@@ -1,0 +1,8 @@
+$.facebox.close();
+$('#notice').html('<%= @notice %>');
+$('#offers').html('<%= escape_javascript(render :partial => 'offers/list') %>');
+$('a[rel*=facebox]').facebox({
+  loadingImage : '<%= image_path('loading.gif') %>',
+  closeImage   : '<%= image_path('closelabel.png') %>'
+});
+

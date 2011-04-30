@@ -43,7 +43,26 @@ class OffersController < ApplicationController
   def delete
   end
 
+  def edit
+    @offer = Offer.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
+  end
+
   def update
+    @offers = [Offer.find(params[:id])]
+
+    respond_to do |format|
+      if @offers[0].update_attributes(params[:offer])
+        @notice = 'Update successful.'
+        format.js
+      else
+        @notice = 'Update failed.'
+        format.js
+      end
+    end
   end
 end
 
