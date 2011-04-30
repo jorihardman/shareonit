@@ -13,7 +13,6 @@
 <% end %>
 
 <%= new_posting_link %>
-<div id="posting_form"></div>
 
 <table id="posting_list">
   <tr>
@@ -26,7 +25,7 @@
 
 <% @postings.each do |posting| %>
   <tr>
-    <td><%= link_to posting.name, posting, :rel => 'facebox' %></td>
+    <td><%= link_to posting.name, posting %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
     <td><%= posting.user.full_name %></td>

@@ -14,5 +14,12 @@ class Posting < ActiveRecord::Base
       return Posting.where(condition)
     end
   end
+
+  def self.add_to_inventory(offer)
+    invPosting = offer.posting.clone
+    invPosting.have_need = 'have'
+    invPosting.user_id = offer.user_id
+    invPosting.save
+  end
 end
 

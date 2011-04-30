@@ -7,6 +7,10 @@ module ApplicationHelper
     end
   end
 
+  def back_or_default_link(text, default)
+    link_to text, (defined?(session[:return_to]) ? session[:return_to] : default)
+  end
+
   def sidenav_content
     inv_class = (action_name =~ /inventory/) ? 'current' : ''
     inv_path = (action_name =~ /services/) ? services_inventory_postings_path : products_inventory_postings_path

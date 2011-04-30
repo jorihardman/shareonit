@@ -27,9 +27,10 @@ class PostingsController < ApplicationController
   end
   
   def services_inventory
-    #@postings = Posting.where(:have_need => 'have', :product_service => 'service')
+    store_location
     @postings = Posting.search_or_where({:have_need => 'have', :product_service => 'service'},
                                         params[:search])
+    
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
@@ -37,9 +38,10 @@ class PostingsController < ApplicationController
   end
 
   def services_requests
-    #@postings = Posting.where(:have_need => 'need', :product_service => 'service')
+    store_location
     @postings = Posting.search_or_where( {:have_need => 'need', :product_service => 'service'},
                                          params[:search] )
+
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
@@ -47,9 +49,10 @@ class PostingsController < ApplicationController
   end
 
   def products_inventory
-    #@postings = Posting.where(:have_need => 'have', :product_service => 'product')
+    store_location
     @postings = Posting.search_or_where( {:have_need => 'have', :product_service => 'product'},
                                          params[:search] )
+    
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
@@ -57,9 +60,10 @@ class PostingsController < ApplicationController
   end
 
   def products_requests
-    #@postings = Posting.where(:have_need => 'need', :product_service => 'product')
+    store_location
     @postings = Posting.search_or_where( {:have_need => 'need', :product_service => 'product'},
                                          params[:search] )
+
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @postings }
@@ -77,7 +81,8 @@ class PostingsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render :layout => false }
+      format.js
+      format.html
       format.xml  { render :xml => @posting }
     end
   end
@@ -86,8 +91,9 @@ class PostingsController < ApplicationController
     @posting = Posting.new
 
     respond_to do |format|
-      format.js
+      format.html { render :layout => false }
       format.xml  { render :xml => @posting }
+      format.js
     end
   end
 
