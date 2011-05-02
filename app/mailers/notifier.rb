@@ -8,7 +8,7 @@ class Notifier < ActionMailer::Base
     end
   end
   
-  # To run this, create a cron job to run "rails runner Notifier.daily_digest".
+  # To run this, create a cron job to run "rails runner Notifier.daily_digest.deliver".
   def daily_digest
     current_time = Time.now
     one_day_future = current_time + 24*3600
