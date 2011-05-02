@@ -106,7 +106,9 @@ input.blur {
 
 #search { margin-bottom: 10px; }
 
-#content { background-color: #e3e9ff; }
+#content {
+  background-color: #e3e9ff;
+}
 
 ul.nav { margin: 0px; }
 
