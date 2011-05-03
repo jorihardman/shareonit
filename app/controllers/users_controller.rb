@@ -36,10 +36,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(root_path, :notice => 'User was successfully created.') }
+        flash[:notice] = 'Account created!'
+        format.js
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
-        format.html { render :action => "new" }
+        format.js
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end

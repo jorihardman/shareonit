@@ -4,6 +4,8 @@ class Posting < ActiveRecord::Base
 
   default_scope select('posting.*, user.first_name, user.last_name').includes(:user)
 
+  validates :name, :presence => true
+
   def self.add_to_inventory(offer)
     invPosting = offer.posting.clone
     invPosting.have_need = 'have'
