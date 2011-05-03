@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'text_hints', new_posting_path %>
 
 <%= form_for @posting, :remote => true do |f| %>
-  <% f.error_messages  %>
+  <%= f.error_messages  %>
   <p>
     I
     <% if params[:have_need] == 'have' %>

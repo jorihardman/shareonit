@@ -19,5 +19,5 @@
   <%= link_to 'Make Offer', new_posting_offer_path(@posting), :rel => 'facebox', :id => 'offer_link' %>
 <% end %>
 
-<%= render :partial => "offers/list" %>
+<%= render :partial => "offers/list", :object => @offers, :as => :offers %>
 

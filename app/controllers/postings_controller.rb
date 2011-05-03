@@ -114,7 +114,6 @@ class PostingsController < ApplicationController
         format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
-        @notice = 'Error creating new posting.'
         format.js
         format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
@@ -130,7 +129,6 @@ class PostingsController < ApplicationController
         format.js
         format.xml  { head :ok }
       else
-        @notice = 'Posting failed to update.'
         format.js
         format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
       end

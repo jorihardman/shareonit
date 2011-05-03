@@ -1,4 +1,8 @@
-$.facebox.close();
-$('#notice').html('<%= @notice %>');
-$('#posting_info').html('<%= escape_javascript(render :partial => 'postings/info') %>');
+<% if @posting.errors.any? %>
+  $('#edit_posting_form').html('<%= escape_javascript(render :partial => 'postings/form') %>');
+<% else %>
+  $.facebox.close();
+  $('#notice').html('<%= @notice %>');
+  $('#posting_info').html('<%= escape_javascript(render :partial => 'postings/info') %>');
+<% end %>
 

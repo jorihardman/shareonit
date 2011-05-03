@@ -17,7 +17,7 @@ module PostingsHelper
   def offer_table_row(offer)
     '<tr>' << "<td>#{offer.user.full_name}</td>" <<
     "<td>#{offer.message}</td>" << "<td>#{offer.status}</td>" <<
-    "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :remote => true, :method => :post}</td>" <<
+    "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :rel => 'facebox'}</td>" <<
     '</tr>'
   end
 

@@ -1,5 +1,5 @@
 <%= form_for @offer,
-  :url => action_name == 'new' ? posting_offers_path : posting_offer_path(params[:posting_id], params[:id]),
+  :url => action_name =~ /new|create/ ? posting_offers_path : posting_offer_path(params[:posting_id], params[:id]),
   :remote => true do |f|
 %>
   <%= f.error_messages %>

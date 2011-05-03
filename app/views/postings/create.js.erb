@@ -1,4 +1,8 @@
-$.facebox.close();
-$('#notice').html('<%= @notice %>');
-$('#posting_list').append('<%= raw(posting_table_row(@posting)) %>')
+<% if @posting.errors.any? %>
+  $('#new_posting_form').html('<%= escape_javascript(render :partial => 'postings/form') %>');
+<% else %>
+  $.facebox.close();
+  $('#notice').html('<%= @notice %>');
+  $('#posting_list').append('<%= raw(posting_table_row(@posting)) %>');
+<% end %>
 

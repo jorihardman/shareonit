@@ -12,15 +12,14 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(params[:offer])
-    Posting.add_to_inventory(@offer) if params[:add_to_inventory]
 
     respond_to do |format|
       if @offer.save
+        Posting.add_to_inventory(@offer) if params[:add_to_inventory]
         @notice = 'Offer successfully made.'
         format.js
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }
       else
-        @notice = 'Error posting offer.'
         format.js
         format.xml  { render :xml => @offer.errors, :status => :unprocessable_entity }
       end
@@ -40,9 +39,6 @@ class OffersController < ApplicationController
     end
   end
 
-  def delete
-  end
-
   def edit
     @offer = Offer.find(params[:id])
 
@@ -52,17 +48,19 @@ class OffersController < ApplicationController
   end
 
   def update
-    @offers = [Offer.find(params[:id])]
+    @offer = Offer.find(params[:id])
 
     respond_to do |format|
-      if @offers[0].update_attributes(params[:offer])
+      if @offer.update_attributes(params[:offer])
         @notice = 'Update successful.'
         format.js
       else
-        @notice = 'Update failed.'
         format.js
       end
     end
+  end
+
+  def destroy
   end
 end
 
