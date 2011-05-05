@@ -22,9 +22,10 @@ Neighborly::Application.configure do
     :port => 587,
     :domain => 'uswap.it',
     :user_name => 'uswap', # Replace with a valid gmail UN.
-  :password => 'uswap', # Replace with valid gmail password.
+    :password => 'uswap', # Replace with valid gmail password.
     :authentication => 'plain',
-    :enable_starttls_auto => true }
+    :enable_starttls_auto => true 
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

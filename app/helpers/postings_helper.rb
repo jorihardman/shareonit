@@ -11,7 +11,8 @@ module PostingsHelper
     '<tr>' << "<td>#{posting.description}</td>" <<
     "<td>#{posting.from_date}</td>" << "<td>#{posting.to_date}</td>" <<
     "<td>#{posting.user.full_name}</td>" << "<td>#{posting.status}</td>" <<
-    "<td>#{link_to 'Borrow', posting}</td>" << '</tr>'
+    "<td>#{link_to action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox'}</td>" << 
+    '</tr>'
   end
 
 end

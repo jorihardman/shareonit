@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'text_hints', new_posting_path %>
+<%= javascript_include_tag new_posting_path %>
 
 <%= form_for @posting, :remote => true do |f| %>
   <%= f.error_messages  %>
@@ -12,15 +12,15 @@
       <%= f.hidden_field :have_need, :value => 'need' %>
     <% end %>
     <% if params[:product_service] == 'product' %>
-      <%= f.text_field :description, :title => 'e.g. one ring to rule them all...' %>
+      <%= f.text_field :description, :placeholder => 'e.g. one ring to rule them all...' %>
       <%= f.hidden_field :product_service, :value => 'product' %>
     <% else %>
-      <%= f.text_field :description, :title => 'e.g. nunchuck skillz' %>
+      <%= f.text_field :description, :placeholder => 'e.g. nunchuck skillz' %>
       <%= f.hidden_field :product_service, :value => 'service' %>
     <% end %>
     <br/>
-    available from <%= f.text_field :from_date, :title => 'optional'%>
-    to <%= f.text_field :to_date, :title => 'optional' %>.
+    available from <%= f.text_field :from_date, :placeholder => 'optional date'%>
+    to <%= f.text_field :to_date, :placeholder => 'optional date' %>.
   </p>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">

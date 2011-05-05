@@ -2,11 +2,10 @@ Neighborly::Application.routes.draw do
   resources :messages, :communities, :users
 
   resources :postings do
-    resources :offers do
-      member do
-        post 'accept'
-      end
+    member do
+      post 'email'
     end
+    
     collection do
       get 'services/inventory' => 'postings#services_inventory'
       get 'services/requests' => 'postings#services_requests'

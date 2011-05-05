@@ -7,8 +7,8 @@
 <h1>Postings</h1>
 
 <div id="search">
-  <% form_tag request.path, :method => :get do |f| %>
-    <%= text_field_tag :search, params[:search] %><%= submit_tag 'Search' %>
+  <% form_tag request.path, :method => :get do %>
+    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %><%= submit_tag 'Search' %>
   <% end %>
 </div>
 
@@ -31,7 +31,11 @@
     <td><%= posting.to_date %></td>
     <td><%= posting.user.full_name %></td>
     <td><%= posting.status %></td>
-    <td><%= link_to 'Borrow', posting, :rel => 'facebox' %></td>
+    <% if current_user.id == posting.user_id %>
+      <td><%= link_to 'Edit', edit_posting_path(posting), :rel => 'facebox' %></td>
+    <% else %>
+      <td><%= link_to action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox' %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

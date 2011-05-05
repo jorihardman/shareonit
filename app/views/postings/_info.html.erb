@@ -4,8 +4,8 @@
     <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
     <%= @posting.description %>
     <% unless @posting.from_date.blank? and @posting.to_date.blank? %>
-    <br/>
-    from <%= @posting.from_date %> to <%= @posting.to_date %>
+      <br/>
+      from <%= @posting.from_date %> to <%= @posting.to_date %>
     <% end %>
   </p>
 </div>

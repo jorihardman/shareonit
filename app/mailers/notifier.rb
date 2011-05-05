@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
 
   def welcome(user)
     @user = user
-    mail( :subject => 'Welcome to Uswap.it', :to => user.email ) do |format|
+    mail(:subject => 'Welcome to Uswap.it', :to => user.email) do |format|
       format.html
     end
   end
@@ -17,7 +17,19 @@ class Notifier < ActionMailer::Base
                               1.day.from_now.strftime('%Y-%m-%d %H:%M:%S')
                               )
 
-    mail( :subject => 'Your Uswap.it Friends Need You', :bcc => User.all.map(&:email) ) do |format|
+    mail(:subject => 'Your Uswap.it Friends Need You', :bcc => User.all.map(&:email)) do |format|
+      format.html
+    end
+  end
+  
+  def offer(posting, message)
+    @from_user = current_user
+    @to_user = posting.user
+    @posting = posting
+    @message = message
+    subject = "#{@user.full_name} #{posting.have_need == 'have' ? 'needs', 'has'} #{posting.description}"
+    
+    mail(:to => @to_user.email, :subject => subject, :reply_to => @from_user.email) do |format|
       format.html
     end
   end

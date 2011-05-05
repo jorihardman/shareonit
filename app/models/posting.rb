@@ -2,7 +2,7 @@ class Posting < ActiveRecord::Base
   belongs_to :user
   has_many :offers
 
-  default_scope select('postings.*, users.first_name, users.last_name').joins(:user)
+  default_scope select('postings.*, users.first_name, users.last_name').includes(:user)
 
   validates :description, :presence => true
 

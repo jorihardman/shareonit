@@ -71,7 +71,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html
+      format.html { render :layout => false }
       format.xml  { render :xml => @posting }
     end
   end
@@ -135,6 +135,15 @@ class PostingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(postings_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def email
+    Notifier.offer(Posting.find(params[:id]), params[:message])
+    Posting.add_to_inventory(@offer) if params[:add_to_inventory]
+  
+    respond_to do |format|
+      format.js
     end
   end
 end
