@@ -1,4 +1,14 @@
-<%= render :partial => "postings/info" %>
+<div id="posting_info">
+  <p>
+    <%= @posting.user.full_name %>
+    <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
+    <%= @posting.description %>
+    <% unless @posting.from_date.blank? and @posting.to_date.blank? %>
+      <br/>
+      from <%= @posting.from_date %> to <%= @posting.to_date %>
+    <% end %>
+  </p>
+</div>
 
 <% if current_user.id == @posting.user_id %>
   <%= link_to 'Edit Posting', edit_posting_path(@posting), :rel => 'facebox' %>

@@ -143,6 +143,7 @@ class PostingsController < ApplicationController
     Posting.add_to_inventory(@offer) if params[:add_to_inventory]
   
     respond_to do |format|
+      @notice = 'Message sent to user.'
       format.js
     end
   end

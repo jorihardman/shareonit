@@ -3,6 +3,10 @@
 <% else %>
   $.facebox.close();
   $('#notice').html('<%= @notice %>');
-  $('#posting_info').html('<%= escape_javascript(render :partial => 'postings/info') %>');
+  $('#posting_<%= @posting.id %>').html('<%= escape_javascript(raw(posting_table_row(@posting))) %>');
+  $('a[rel*=facebox]').facebox({
+    loadingImage : '<%= image_path('loading.gif') %>',
+    closeImage   : '<%= image_path('closelabel.png') %>'
+  });
 <% end %>
 

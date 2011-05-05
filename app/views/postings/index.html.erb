@@ -20,17 +20,15 @@
     <th>From date</th>
     <th>To date</th>
     <th>User</th>
-    <th>Status</th>
     <th></th>
   </tr>
 
 <% @postings.each do |posting| %>
-  <tr>
+  <tr id="posting_<%= posting.id %>">
     <td><%= posting.description %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
     <td><%= posting.user.full_name %></td>
-    <td><%= posting.status %></td>
     <% if current_user.id == posting.user_id %>
       <td><%= link_to 'Edit', edit_posting_path(posting), :rel => 'facebox' %></td>
     <% else %>
