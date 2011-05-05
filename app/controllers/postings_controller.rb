@@ -69,13 +69,6 @@ class PostingsController < ApplicationController
   def show
     @posting = Posting.find(params[:id])
 
-    @offers = []
-    if @posting.user_id == current_user.id
-      @offers = @posting.offers
-    else
-      @offers = @posting.offers.where(:user_id => current_user.id)
-    end
-
     respond_to do |format|
       format.js
       format.html

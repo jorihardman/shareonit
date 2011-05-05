@@ -7,9 +7,8 @@
 <h1>Postings</h1>
 
 <div id="search">
-  <% form_for :search, @search, :html => {:method => :get} do |f| %>
-    <%= f.text_field :name_contains %>
-    <%= f.submit 'Search' %>
+  <% form_tag request.path, :method => :get do |f| %>
+    <%= text_field_tag :search, params[:search] %><%= submit_tag 'Search' %>
   <% end %>
 </div>
 
@@ -17,20 +16,22 @@
 
 <table id="posting_list">
   <tr>
-    <th>Name</th>
+    <th>Description</th>
     <th>From date</th>
     <th>To date</th>
     <th>User</th>
     <th>Status</th>
+    <th></th>
   </tr>
 
 <% @postings.each do |posting| %>
   <tr>
-    <td><%= link_to posting.name, posting %></td>
+    <td><%= posting.description %></td>
     <td><%= posting.from_date %></td>
     <td><%= posting.to_date %></td>
     <td><%= posting.user.full_name %></td>
     <td><%= posting.status %></td>
+    <td><%= link_to 'Borrow', posting, :rel => 'facebox' %></td>
   </tr>
 <% end %>
 </table>

@@ -2,9 +2,9 @@ class Posting < ActiveRecord::Base
   belongs_to :user
   has_many :offers
 
-  default_scope select('posting.*, user.first_name, user.last_name').includes(:user)
+  default_scope select('postings.*, users.first_name, users.last_name').joins(:user)
 
-  validates :name, :presence => true
+  validates :description, :presence => true
 
   def self.add_to_inventory(offer)
     invPosting = offer.posting.clone
@@ -13,9 +13,9 @@ class Posting < ActiveRecord::Base
     invPosting.save
   end
 
-  def self.search_or_where(search_params, condition)
-    if search_params
-      return @search.where(condition).search(search_params)
+  def self.search_or_where(search, condition)
+    if search
+      return Posting.where(condition).where('CONCAT_WS(" ", first_name, last_name) LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%")
     else
       return Posting.where(condition)
     end

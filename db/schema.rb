@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503161637) do
+ActiveRecord::Schema.define(:version => 20110505192354) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(:version => 20110503161637) do
     t.datetime "updated_at"
   end
 
-  create_table "offers", :force => true do |t|
-    t.integer  "posting_id"
-    t.integer  "user_id"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "status",     :default => "pending"
-  end
-
   create_table "postings", :force => true do |t|
     t.date     "from_date"
     t.date     "to_date"
@@ -44,18 +35,8 @@ ActiveRecord::Schema.define(:version => 20110503161637) do
     t.datetime "updated_at"
     t.string   "have_need"
     t.string   "product_service"
-    t.string   "status", :default => "pending"
-    t.string   "name"
-  end
-
-  create_table "reviews", :force => true do |t|
-    t.integer  "reviewer_id"
-    t.integer  "reviewee_id"
-    t.integer  "posting_id"
-    t.text     "content"
-    t.integer  "stars"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "status",          :default => "pending"
+    t.string   "description"
   end
 
   create_table "sessions", :force => true do |t|
@@ -91,4 +72,3 @@ ActiveRecord::Schema.define(:version => 20110503161637) do
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
-

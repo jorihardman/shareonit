@@ -8,17 +8,10 @@ module PostingsHelper
   end
 
   def posting_table_row(posting)
-    '<tr>' << "<td>#{link_to posting.name, posting}</td>" <<
+    '<tr>' << "<td>#{posting.description}</td>" <<
     "<td>#{posting.from_date}</td>" << "<td>#{posting.to_date}</td>" <<
     "<td>#{posting.user.full_name}</td>" << "<td>#{posting.status}</td>" <<
-    '</tr>'
-  end
-
-  def offer_table_row(offer)
-    '<tr>' << "<td>#{offer.user.full_name}</td>" <<
-    "<td>#{offer.message}</td>" << "<td>#{offer.status}</td>" <<
-    "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :rel => 'facebox'}</td>" <<
-    '</tr>'
+    "<td>#{link_to 'Borrow', posting}</td>" << '</tr>'
   end
 
 end
