@@ -139,8 +139,9 @@ class PostingsController < ApplicationController
   end
   
   def email
-    Notifier.offer(Posting.find(params[:id]), params[:message])
-    Posting.add_to_inventory(@offer) if params[:add_to_inventory]
+    posting = Posting.find(params[:id])
+    Notifier.offer(current_user, posting, params[:message])
+    posting.add_to_inventory(current_user) if params[:add_to_inventory]
   
     respond_to do |format|
       @notice = 'Message sent to user.'

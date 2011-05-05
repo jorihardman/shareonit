@@ -6,10 +6,10 @@ class Posting < ActiveRecord::Base
 
   validates :description, :presence => true
 
-  def self.add_to_inventory(offer)
-    invPosting = offer.posting.clone
+  def add_to_inventory(user)
+    invPosting = self.clone
     invPosting.have_need = 'have'
-    invPosting.user_id = offer.user_id
+    invPosting.user_id = user.id
     invPosting.save
   end
 

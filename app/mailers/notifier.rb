@@ -22,12 +22,12 @@ class Notifier < ActionMailer::Base
     end
   end
   
-  def offer(posting, message)
-    @from_user = current_user
+  def offer(user, posting, message)
+    @from_user = user
     @to_user = posting.user
     @posting = posting
     @message = message
-    subject = "#{@user.full_name} #{posting.have_need == 'have' ? 'needs', 'has'} #{posting.description}"
+    subject = "#{@from_user.full_name} #{posting.have_need == 'have' ? 'needs' : 'has'} #{posting.description}"
     
     mail(:to => @to_user.email, :subject => subject, :reply_to => @from_user.email) do |format|
       format.html
