@@ -25,15 +25,7 @@
 
 <% @postings.each do |posting| %>
   <tr id="posting_<%= posting.id %>">
-    <td><%= posting.description %></td>
-    <td><%= posting.from_date %></td>
-    <td><%= posting.to_date %></td>
-    <td><%= posting.user.full_name %></td>
-    <% if current_user.id == posting.user_id %>
-      <td><%= link_to 'Edit', edit_posting_path(posting), :rel => 'facebox', :class => 'button' %></td>
-    <% else %>
-      <td><%= link_to action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox', :class => 'button' %></td>
-    <% end %>
+    <%= raw(posting_table_row(posting)) %>
   </tr>
 <% end %>
 </table>

@@ -103,7 +103,6 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.save
-        @notice = 'Posting successful.'
         format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
@@ -118,7 +117,6 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.update_attributes(params[:posting])
-        @notice = 'Posting successfully updated.'
         format.js
         format.xml  { head :ok }
       else
@@ -133,7 +131,7 @@ class PostingsController < ApplicationController
     @posting.destroy
 
     respond_to do |format|
-      format.html { redirect_to(postings_url) }
+      format.js
       format.xml  { head :ok }
     end
   end
@@ -144,7 +142,6 @@ class PostingsController < ApplicationController
     posting.add_to_inventory(current_user) if params[:add_to_inventory]
   
     respond_to do |format|
-      @notice = 'Message sent to user.'
       format.js
     end
   end

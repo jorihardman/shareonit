@@ -2,8 +2,9 @@
   $('#new_posting_form').html('<%= escape_javascript(render :partial => 'postings/form') %>');
 <% else %>
   $.facebox.close();
-  $('#notice').html('<%= @notice %>');
+  $('#notice').html('Posting successful.');
   $('#posting_list').append('<tr id="posting_<%= @posting.id %>"><%= escape_javascript(raw(posting_table_row(@posting))) %></tr>');
+  $('.buttonset').buttonset();
   $('a[rel*=facebox]').facebox({
     loadingImage : '<%= image_path('loading.gif') %>',
     closeImage   : '<%= image_path('closelabel.png') %>'

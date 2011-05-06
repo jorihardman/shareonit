@@ -142,6 +142,10 @@ td {
 	background-color: white;
 }
 
+.buttonset { 
+  padding: 5px 0px 5px 5px; 
+}
+
 table tbody tr:nth-child(even) td,
 table tbody tr.even td {
   background: #f0f0f0;
