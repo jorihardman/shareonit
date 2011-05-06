@@ -1,7 +1,6 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
-  <%= javascript_include_tag 'facebox' %>
-  <%= javascript_include_tag new_session_path %>
+  <%= javascript_include_tag 'facebox', posting_path %>
 <% end %>
 
 
@@ -19,8 +18,8 @@
     <%= f.check_box :remember_me %><%= f.label :remember_me %>
   </div>
   <div class="action">
-    <%= f.submit "Login" %>
+    <%= f.submit "Login", :class => 'button' %>
   </div>
-  <p>Not registered? <%= link_to "Register", new_user_path, :rel => 'facebox' %></p>
+  <p>Not registered? <%= link_to "Register", new_user_path, :rel => 'facebox', :class => 'button' %></p>
 <% end %>
 

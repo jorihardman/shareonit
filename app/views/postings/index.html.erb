@@ -8,7 +8,7 @@
 
 <div id="search">
   <% form_tag request.path, :method => :get do %>
-    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %><%= submit_tag 'Search' %>
+    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %><%= submit_tag 'Search', :class => 'button' %>
   <% end %>
 </div>
 
@@ -30,9 +30,9 @@
     <td><%= posting.to_date %></td>
     <td><%= posting.user.full_name %></td>
     <% if current_user.id == posting.user_id %>
-      <td><%= link_to 'Edit', edit_posting_path(posting), :rel => 'facebox' %></td>
+      <td><%= link_to 'Edit', edit_posting_path(posting), :rel => 'facebox', :class => 'button' %></td>
     <% else %>
-      <td><%= link_to action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox' %></td>
+      <td><%= link_to action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox', :class => 'button' %></td>
     <% end %>
   </tr>
 <% end %>

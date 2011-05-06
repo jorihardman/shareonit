@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'application' %>
+
 <div id="posting_info">
   <p>
     <%= @posting.user.full_name %>
@@ -18,7 +20,7 @@
     <% if @posting.have_need == 'need' %>
       <%= check_box_tag 'add_to_inventory' %>Add this item to your inventory?<br/>
     <% end %>
-    <%= submit_tag @posting.have_need == 'have' ? 'Send Request' : 'Send Offer' %>
+    <%= submit_tag @posting.have_need == 'have' ? 'Send Request' : 'Send Offer', :class => 'button' %>
   <% end %>
 <% end %>
 

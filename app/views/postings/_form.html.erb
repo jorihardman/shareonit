@@ -1,4 +1,4 @@
-<%= javascript_include_tag new_posting_path %>
+<%= javascript_include_tag 'application' %>
 
 <%= form_for @posting, :remote => true do |f| %>
   <%= f.error_messages  %>
@@ -19,12 +19,12 @@
       <%= f.hidden_field :product_service, :value => 'service' %>
     <% end %>
     <br/>
-    available from <%= f.text_field :from_date, :placeholder => 'optional date'%>
-    to <%= f.text_field :to_date, :placeholder => 'optional date' %>.
+    available from <%= f.text_field :from_date, :placeholder => 'optional date', :class => 'date' %>
+    to <%= f.text_field :to_date, :placeholder => 'optional date', :class => 'date' %>.
   </p>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Post', :class => 'button' %>
   </div>
 <% end %>
 
