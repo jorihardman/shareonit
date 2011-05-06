@@ -9,8 +9,8 @@ module PostingsHelper
 
   def posting_table_row(posting)
     output = ''
-    output << '<td>' << posting.description << '</td><td>' <<
-    "#{posting.from_date}" << '</td><td>' << "#{posting.to_date}" << '</td><td>' <<
+    output << '<td>' << posting.description << '</td>' <<
+    "<td>#{posting.from_date}</td><td>#{posting.to_date}</td><td>" <<
     posting.user.full_name << '</td><td class="buttonset">'
     if current_user.id != posting.user_id
       output << link_to(action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox')

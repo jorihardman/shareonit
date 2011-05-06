@@ -4,13 +4,11 @@
   <%= javascript_include_tag postings_path %>
 <% end %>
 
-<h1>Postings</h1>
-
 <%= new_posting_link %>
 
 <div id="search">
   <% form_tag request.path, :method => :get do %>
-    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %><%= submit_tag 'Search', :class => 'button' %>
+    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
   <% end %>
 </div>
 
