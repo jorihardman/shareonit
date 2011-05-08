@@ -1,4 +1,6 @@
 Neighborly::Application.routes.draw do
+  get "feedback/index"
+
   resources :messages, :communities, :users
 
   resources :postings do
