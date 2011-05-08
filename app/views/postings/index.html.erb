@@ -4,34 +4,30 @@
   <%= javascript_include_tag postings_path %>
 <% end %>
 
-<h1>Postings</h1>
+<%= new_posting_link %>
 
 <div id="search">
-  <% form_for :search, @search, :html => {:method => :get} do |f| %>
-    <%= f.text_field :name_contains %>
-    <%= f.submit 'Search' %>
+  <% form_tag request.path, :method => :get do %>
+    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
   <% end %>
 </div>
 
-<%= new_posting_link %>
+<%= will_paginate @postings %>
 
 <table id="posting_list">
   <tr>
-    <th>Name</th>
+    <th>Description</th>
     <th>From date</th>
     <th>To date</th>
     <th>User</th>
-    <th>Status</th>
+    <th></th>
   </tr>
 
 <% @postings.each do |posting| %>
-  <tr>
-    <td><%= link_to posting.name, posting %></td>
-    <td><%= posting.from_date %></td>
-    <td><%= posting.to_date %></td>
-    <td><%= posting.user.full_name %></td>
-    <td><%= posting.status %></td>
+  <tr id="posting_<%= posting.id %>">
+    <%= raw(posting_table_row(posting)) %>
   </tr>
 <% end %>
 </table>
 
+<%= will_paginate @postings %>

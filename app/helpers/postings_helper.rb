@@ -4,22 +4,21 @@ module PostingsHelper
     have_need = action_name =~ /inventory/ ? 'have' : 'need'
     link_to 'Create New Posting',
       new_posting_path(:product_service => product_service, :have_need => have_need),
-      :rel => 'facebox'
+      :rel => 'facebox', :class => 'button'
   end
 
   def posting_table_row(posting)
-    '<tr>' << "<td>#{link_to posting.name, posting}</td>" <<
-    "<td>#{posting.from_date}</td>" << "<td>#{posting.to_date}</td>" <<
-    "<td>#{posting.user.full_name}</td>" << "<td>#{posting.status}</td>" <<
-    '</tr>'
+    output = ''
+    output << '<td>' << posting.description << '</td>' <<
+    "<td>#{posting.from_date}</td><td>#{posting.to_date}</td><td>" <<
+    posting.user.full_name << '</td><td class="buttonset">'
+    if current_user.id != posting.user_id
+      output << link_to(action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox')
+    else
+      output << link_to('Edit', edit_posting_path(posting), :rel => 'facebox') <<
+      link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'are you sure?')
+    end
+    output << '</td>'
   end
-
-  def offer_table_row(offer)
-    '<tr>' << "<td>#{offer.user.full_name}</td>" <<
-    "<td>#{offer.message}</td>" << "<td>#{offer.status}</td>" <<
-    "<td>#{link_to 'Edit Offer', edit_posting_offer_path(offer.posting_id, offer.id), :rel => 'facebox'}</td>" <<
-    '</tr>'
-  end
-
 end
 

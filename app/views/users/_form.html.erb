@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'application' %>
+
 <%= form_for @user, :remote => true do |f| %>
   <%= f.error_messages %>
   <div class="field">
@@ -21,7 +23,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="action">
-    <%= f.submit "Register" %>
+    <%= f.submit "Register", :class => 'button' %>
   </div>
 <% end %>
 

@@ -2,22 +2,26 @@ class Posting < ActiveRecord::Base
   belongs_to :user
   has_many :offers
 
-  default_scope select('posting.*, user.first_name, user.last_name').includes(:user)
+  default_scope select('postings.*, users.first_name, users.last_name').includes(:user)
 
-  validates :name, :presence => true
+  validates :description, :presence => true
 
-  def self.add_to_inventory(offer)
-    invPosting = offer.posting.clone
+  def add_to_inventory(user)
+    invPosting = self.clone
     invPosting.have_need = 'have'
-    invPosting.user_id = offer.user_id
+    invPosting.user_id = user.id
     invPosting.save
   end
 
-  def self.search_or_where(search_params, condition)
-    if search_params
-      return @search.where(condition).search(search_params)
+  def self.search_or_where(search, condition, page)
+    if search
+      return Posting.where(condition).where(
+        'CONCAT_WS(" ", first_name, last_name) LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"
+      ).order('postings.created_at DESC').paginate(
+        :page => page, :per_page => 15
+      )
     else
-      return Posting.where(condition)
+      return Posting.where(condition).order('postings.created_at DESC').paginate(:page => page, :per_page => 15)
     end
   end
 end

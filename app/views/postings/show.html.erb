@@ -1,23 +1,26 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
-  <%= javascript_include_tag 'facebox' %>
-  <%= javascript_include_tag postings_path %>
-<% end %>
+<%= javascript_include_tag 'application' %>
 
-<%= back_or_default_link 'Return to postings', postings_path %><br/><br/>
-
-<%= render :partial => "postings/info" %>
+<div id="posting_info">
+  <p>
+    <%= @posting.user.full_name %>
+    <%= @posting.have_need == 'have' ? 'has' : 'needs' %>
+    <%= @posting.description %>
+    <% unless @posting.from_date.blank? and @posting.to_date.blank? %>
+      <br/>
+      from <%= @posting.from_date %> to <%= @posting.to_date %>
+    <% end %>
+  </p>
+</div>
 
 <% if current_user.id == @posting.user_id %>
   <%= link_to 'Edit Posting', edit_posting_path(@posting), :rel => 'facebox' %>
+<% else %>
+  <%= form_tag email_posting_path, :remote => true do %>
+    <%= text_area_tag 'message', nil, :placeholder => 'Enter optional message to user...' %>
+    <% if @posting.have_need == 'need' %>
+      <%= check_box_tag 'add_to_inventory' %>Add this item to your inventory?<br/>
+    <% end %>
+    <%= submit_tag @posting.have_need == 'have' ? 'Send Request' : 'Send Offer', :class => 'button' %>
+  <% end %>
 <% end %>
-
-
-<% if current_user.id != @posting.user_id and
-  Offer.where(:posting_id => @posting.id, :user_id => current_user.id).first.nil?
-%>
-  <%= link_to 'Make Offer', new_posting_offer_path(@posting), :rel => 'facebox', :id => 'offer_link' %>
-<% end %>
-
-<%= render :partial => "offers/list", :object => @offers, :as => :offers %>
 

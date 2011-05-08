@@ -30,8 +30,8 @@ module ApplicationHelper
       req_path = my_requests_postings_path
     end
 
-    return "<li>#{link_to('Inventory', inv_path, :class => inv_class)}</li>" <<
-           "<li>#{link_to('Requests',req_path, :class => req_class)}</li>"
+    return "<li>#{link_to('We Have', inv_path, :class => inv_class)}</li>" <<
+           "<li>#{link_to('We Need',req_path, :class => req_class)}</li>"
   end
 
   def topnav_content

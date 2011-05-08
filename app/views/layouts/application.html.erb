@@ -5,30 +5,36 @@
   <%= stylesheet_link_tag 'blueprint/screen.css', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'blueprint/print.css', :media => 'print' %>
   <!–[if IE]><%= stylesheet_link_tag 'blueprint/ie.css', :media => 'screen, projection' %><![endif]–>
+  <%= stylesheet_link_tag 'custom-theme/jquery-ui.custom.css' %>
   <%= stylesheet_link_tag 'main' %>
-  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'application', 'rails' %>
+  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'rails', 'application' %>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
 <body>
   <div class="container">
     <div id="header" class="span-24 last">
-      <div id="logo" class="span-4"><h1>Uswap</h1></div>
-      <div id="topnav" class="span-16">
-        <ul class="nav">
-          <%= raw(topnav_content) %>
-        </ul>
-      </div>
-      <div id="login" class="span-4 last"><%= login_link %></div>
+      <div id="logo" class="span-4">Uswap</div>
+      <div id="login" class="prepend-16 span-4 last"><%= login_link %></div>
     </div>
-    <div id="sidenav" class="span-3">
+    <div id="topnav" class="prepend-3 span-21 last">
       <ul class="nav">
-        <%= raw(sidenav_content) %>
+        <%= raw(topnav_content) %>
       </ul>
     </div>
-    <div id="content" class="span-21 last">
-      <p id="notice"><%= notice %></p>
-      <%= yield %>
+    <div id="page" class="span-24 last">
+      <div id="sidenav" class="span-3">
+        <ul class="nav">
+          <%= raw(sidenav_content) %>
+        </ul>
+      </div>
+      <div id="content" class="prepend-1 append-1 span-19 last">
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
+    </div>
+    <div id="footer" class="prepend-3 span-21 last">
+      <p>Copyright 2011 Green Gorillas</p>
     </div>
   </div>
 </body>

@@ -9,7 +9,7 @@ class PostingsController < ApplicationController
   end
 
   def my_inventory
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -18,7 +18,7 @@ class PostingsController < ApplicationController
   end
 
   def my_requests
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -28,7 +28,7 @@ class PostingsController < ApplicationController
 
   def services_inventory
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'service'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'service'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -38,7 +38,7 @@ class PostingsController < ApplicationController
 
   def services_requests
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'service'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'service'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -48,7 +48,7 @@ class PostingsController < ApplicationController
 
   def products_inventory
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'product'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'product'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -58,7 +58,7 @@ class PostingsController < ApplicationController
 
   def products_requests
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'product'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'product'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -69,16 +69,9 @@ class PostingsController < ApplicationController
   def show
     @posting = Posting.find(params[:id])
 
-    @offers = []
-    if @posting.user_id == current_user.id
-      @offers = @posting.offers
-    else
-      @offers = @posting.offers.where(:user_id => current_user.id)
-    end
-
     respond_to do |format|
       format.js
-      format.html
+      format.html { render :layout => false }
       format.xml  { render :xml => @posting }
     end
   end
@@ -110,7 +103,6 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.save
-        @notice = 'Posting successful.'
         format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
@@ -125,7 +117,6 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.update_attributes(params[:posting])
-        @notice = 'Posting successfully updated.'
         format.js
         format.xml  { head :ok }
       else
@@ -140,8 +131,18 @@ class PostingsController < ApplicationController
     @posting.destroy
 
     respond_to do |format|
-      format.html { redirect_to(postings_url) }
+      format.js
       format.xml  { head :ok }
+    end
+  end
+  
+  def email
+    posting = Posting.find(params[:id])
+    Notifier.offer(current_user, posting, params[:message])
+    posting.add_to_inventory(current_user) if params[:add_to_inventory]
+  
+    respond_to do |format|
+      format.js
     end
   end
 end
