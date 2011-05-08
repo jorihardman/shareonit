@@ -3,7 +3,7 @@
 <% else %>
   $.facebox.close();
   $('#notice').html('Posting successful.');
-  $('#posting_list').append('<tr id="posting_<%= @posting.id %>"><%= escape_javascript(raw(posting_table_row(@posting))) %></tr>');
+  $('#posting_list > tbody > tr:first').after('<tr id="posting_<%= @posting.id %>"><%= escape_javascript(raw(posting_table_row(@posting))) %></tr>');
   $('.buttonset').buttonset();
   $('a[rel*=facebox]').facebox({
     loadingImage : '<%= image_path('loading.gif') %>',

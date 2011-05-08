@@ -9,7 +9,7 @@ class PostingsController < ApplicationController
   end
 
   def my_inventory
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -18,7 +18,7 @@ class PostingsController < ApplicationController
   end
 
   def my_requests
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -28,7 +28,7 @@ class PostingsController < ApplicationController
 
   def services_inventory
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'service'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'service'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -38,7 +38,7 @@ class PostingsController < ApplicationController
 
   def services_requests
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'service'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'service'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -48,7 +48,7 @@ class PostingsController < ApplicationController
 
   def products_inventory
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'product'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'have', :product_service => 'product'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -58,7 +58,7 @@ class PostingsController < ApplicationController
 
   def products_requests
     store_location
-    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'product'})
+    @postings = Posting.search_or_where(params[:search], {:have_need => 'need', :product_service => 'product'}, params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }

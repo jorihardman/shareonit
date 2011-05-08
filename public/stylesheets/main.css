@@ -74,6 +74,7 @@ div.field, div.actions {
 
 #content {
   padding-top: 20px;
+  padding-bottom: 20px;
   background-color: white;
   min-height: 500px;
 }
@@ -126,6 +127,7 @@ input.blur {
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-bottom: 0px;
 }
 
 th {

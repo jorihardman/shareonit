@@ -13,11 +13,15 @@ class Posting < ActiveRecord::Base
     invPosting.save
   end
 
-  def self.search_or_where(search, condition)
+  def self.search_or_where(search, condition, page)
     if search
-      return Posting.where(condition).where('CONCAT_WS(" ", first_name, last_name) LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%")
+      return Posting.where(condition).where(
+        'CONCAT_WS(" ", first_name, last_name) LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"
+      ).order('postings.created_at DESC').paginate(
+        :page => page, :per_page => 15
+      )
     else
-      return Posting.where(condition)
+      return Posting.where(condition).order('postings.created_at DESC').paginate(:page => page, :per_page => 15)
     end
   end
 end
