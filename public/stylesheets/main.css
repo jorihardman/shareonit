@@ -111,7 +111,7 @@ ul.nav { margin: 0px; }
 
 .nav li a:hover { 
   color: black;
-  background-color: white;
+  background-color: transparent;
 }
 
 .nav li a:hover.current { background-color: white; }
