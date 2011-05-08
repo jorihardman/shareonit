@@ -33,5 +33,14 @@ class Notifier < ActionMailer::Base
       format.html
     end
   end
+  
+  def feedback(user, feedback_message)
+    @user = user
+    @message = feedback_message
+    
+    mail(:to => 'jyro215@gmail.com', :subject => "Uswap Feedback") do |format|
+      format.html
+    end
+  end
 end
 
