@@ -1,5 +1,6 @@
 class PostingsController < ApplicationController
   before_filter :require_user
+  before_filter :require_owner, :only => ['edit', 'update', 'destroy']
 
   def index
     respond_to do |format|
@@ -143,6 +144,15 @@ class PostingsController < ApplicationController
   
     respond_to do |format|
       format.js
+    end
+  end
+  
+  private
+  
+  def require_owner
+    if Posting.find(params[:id]).user_id != current_user.id
+      redirect_to root_path, :notice => 'Sorry, but you don\'t own that posting.'
+      return false
     end
   end
 end

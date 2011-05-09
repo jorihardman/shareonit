@@ -8,7 +8,6 @@ gem 'dynamic_form'
 gem 'will_paginate'
 gem 'authlogic'
 gem 'mail'
-gem 'exception_notification'
 gem 'geoip'
 gem 'paperclip'
 

@@ -1,7 +1,6 @@
 Neighborly::Application.routes.draw do
-  #get "feedback/index"
-  match 'feedback/submit_feedback' => 'feedback#submit_feedback', :via => :post, :as => :submit_feedback
-	match 'feedback' => 'feedback#index'
+  post 'feedback/submit_feedback', :as => :submit_feedback
+	get 'feedback' => 'feedback#index'
 
   resources :messages, :communities, :users
 

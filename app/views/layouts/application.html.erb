@@ -6,8 +6,9 @@
   <%= stylesheet_link_tag 'blueprint/print.css', :media => 'print' %>
   <!–[if IE]><%= stylesheet_link_tag 'blueprint/ie.css', :media => 'screen, projection' %><![endif]–>
   <%= stylesheet_link_tag 'custom-theme/jquery-ui.custom.css' %>
+  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
   <%= stylesheet_link_tag 'main' %>
-  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'rails', 'application' %>
+  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'facebox', 'rails', 'application' %>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
@@ -15,7 +16,10 @@
   <div class="container">
     <div id="header" class="span-24 last">
       <div id="logo" class="span-4"><%= link_to('Uswap', home_path) %></div>
-      <div id="login" class="prepend-16 span-4 last"><%= login_link %><br/><%= link_to('Feedback',feedback_path) %></div>
+      <div id="login" class="prepend-16 span-4 last">
+        <%= login_link %><br/>
+        <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %>
+      </div>
     </div>
     <div id="topnav" class="prepend-3 span-21 last">
       <ul class="nav">
@@ -34,7 +38,10 @@
       </div>
     </div>
     <div id="footer" class="prepend-3 span-21 last">
-      <p>Copyright 2011 Green Gorillas</p>
+      <p>
+        <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %><br/>
+        Copyright 2011 Green Gorillas
+      </p>
     </div>
   </div>
 </body>

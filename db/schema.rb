@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20110505192354) do
   end
 
   create_table "postings", :force => true do |t|
-    t.string   "description"
     t.date     "from_date"
     t.date     "to_date"
     t.integer  "user_id"
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110505192354) do
     t.string   "have_need"
     t.string   "product_service"
     t.string   "status",          :default => "pending"
+    t.string   "description"
   end
 
   create_table "sessions", :force => true do |t|

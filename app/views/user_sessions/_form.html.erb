@@ -1,9 +1,3 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
-  <%= javascript_include_tag 'facebox', new_session_path %>
-<% end %>
-
-
 <%= form_for @user_session, :url => session_url do |f| %>
   <%= f.error_messages %>
   <div class="field">

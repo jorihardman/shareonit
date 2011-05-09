@@ -1,5 +1,5 @@
-<% form_tag(submit_feedback_path) do %>
+<% form_tag submit_feedback_path, :remote => true do %>
   <%= label_tag 'feedback' %><br/>
   <%= text_area_tag 'feedback_text' %><br/>
-  <%= submit_tag 'Send' %>
+  <%= submit_tag 'Send', :class => 'button' %>
 <% end %>
