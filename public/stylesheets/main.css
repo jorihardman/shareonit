@@ -60,7 +60,7 @@ div.field, div.actions {
 
 /* end rails defaults */
 
-#header { height: 40px; }
+#header { height: 50px; }
 
 #logo { 
   padding-top: 10px;
@@ -104,6 +104,11 @@ ul.nav { margin: 0px; }
 	font-weight: bold;
 }
 
+#sidenav .nav li a {
+  text-align: left;
+  padding-left: 7px;
+}
+
 .nav li a.current {
   color: black;
   background-color: white;
@@ -115,10 +120,6 @@ ul.nav { margin: 0px; }
 }
 
 .nav li a:hover.current { background-color: white; }
-
-#sidenav .nav li a {
-  margin-left: 20px;
-}
 
 input.blur {
   color: gray;

@@ -15,24 +15,24 @@
 <body>
   <div class="container">
     <div id="header" class="span-24 last">
-      <div id="logo" class="span-4"><%= link_to('Uswap', home_path) %></div>
+      <div id="logo" class="span-4"><%= link_to('Uswap', root_path) %></div>
       <div id="login" class="prepend-16 span-4 last">
         <%= login_link %><br/>
         <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %>
       </div>
     </div>
-    <div id="topnav" class="prepend-3 span-21 last">
+    <div id="topnav" class="prepend-2 span-22 last">
       <ul class="nav">
         <%= raw(topnav_content) %>
       </ul>
     </div>
     <div id="page" class="span-24 last">
-      <div id="sidenav" class="span-3">
+      <div id="sidenav" class="span-2">
         <ul class="nav">
           <%= raw(sidenav_content) %>
         </ul>
       </div>
-      <div id="content" class="prepend-1 append-1 span-19 last">
+      <div id="content" class="prepend-1 append-1 span-20 last">
         <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
