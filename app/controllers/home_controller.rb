@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
-  def index
-    redirect_to(my_account_path) if current_user
-    @user_session = UserSession.new
-    @user = User.new
+  def application
+    respond_to do |format|
+      format.js
+    end
   end
 
   def about

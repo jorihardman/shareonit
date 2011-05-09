@@ -8,7 +8,7 @@
   <%= stylesheet_link_tag 'custom-theme/jquery-ui.custom.css' %>
   <%= stylesheet_link_tag 'facebox', :media => 'screen' %>
   <%= stylesheet_link_tag 'main' %>
-  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'facebox', 'rails', 'application' %>
+  <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'facebox', 'rails', application_js_path %>
   <%= yield :head %>
   <%= csrf_meta_tag %>
 </head>
