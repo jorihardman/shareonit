@@ -14,11 +14,11 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
+a { color: black; }
 
 a:visited { color: #666; }
 
-a:hover { color: #fff; background-color:#000; }
+a:hover { color: #44cd51; }
 
 div.field, div.actions { margin-bottom: 10px; }
 
@@ -60,11 +60,14 @@ div.field, div.actions { margin-bottom: 10px; }
 
 /* end rails defaults */
 
-#header { height: 50px; }
+#header { 
+  height: 50px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-#logo { 
-  padding-top: 10px;
-  font-size: xx-large; 
+#logo a:hover {
+  background-color: transparent;
 }
 
 #login {
@@ -96,7 +99,7 @@ ul.nav {
 #sidenav .nav li { margin-bottom: 10px; }
 
 .nav li a {
-  color: #d60062;
+  color: #44cd51;
 	display: block;
 	padding: 15px 0px 15px 0px;
 	width: 80px;
@@ -110,17 +113,15 @@ ul.nav {
   padding-left: 7px;
 }
 
-.nav li a.current {
-  color: black;
-  background-color: white;
-}
-
 .nav li a:hover { 
   color: black;
   background-color: transparent;
 }
 
-.nav li a:hover.current { background-color: white; }
+.nav li a.current, a:hover.current {
+  color: black;
+  background-color: white;
+}
 
 table {
   border-collapse: collapse;
@@ -132,7 +133,7 @@ th {
   border: 1px solid silver;
   padding: 0.5em;
   color: white;
-  background-color: #485156;
+  background-color: #44cd51;
 }
 
 tr { border: 1px solid silver; }
@@ -143,10 +144,10 @@ td {
 	background-color: white;
 }
 
-table tbody tr:nth-child(even) td,
-table tbody tr.even td {
-  background: #f0f0f0;
-}
+/*table tbody tr:nth-child(even) td,*/
+/*table tbody tr.even td {*/
+/*  background: #f0f0f0;*/
+/*}*/
 
 .button { margin-bottom: 10px; }
 
