@@ -5,8 +5,5 @@ $(document).ready(function() {
   $('.date').datepicker();
   
   //facebox setup
-  $('a[rel*=facebox]').facebox({
-    loadingImage : '../images/loading.gif',
-    closeImage   : '../images/closelabel.png'
-  });
+  $('a[rel*=facebox]').facebox();
 });
