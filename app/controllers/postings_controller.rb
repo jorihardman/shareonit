@@ -139,7 +139,7 @@ class PostingsController < ApplicationController
   
   def email
     posting = Posting.find(params[:id])
-    Notifier.offer(current_user, posting, params[:message])
+    Notifier.offer(current_user, posting, params[:message]).deliver
     posting.add_to_inventory(current_user) if params[:add_to_inventory]
   
     respond_to do |format|
