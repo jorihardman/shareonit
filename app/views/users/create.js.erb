@@ -1,3 +1,4 @@
+$('#loading').hide();
 <% if @user.errors.any? %>
   $('#new_user_form').html('<%= escape_javascript(render :partial => 'users/form') %>');
 <% else %>

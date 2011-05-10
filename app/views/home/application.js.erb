@@ -9,4 +9,8 @@ $(document).ready(function() {
     loadingImage : '<%= image_path "loading.gif" %>',
     closeImage   : '<%= image_path "closelabel.png" %>'
   });
+  
+  $('form').submit(function () {
+    $('#loading').show();
+  });
 });

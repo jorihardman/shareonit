@@ -190,3 +190,5 @@ h1 {
   color: #44cd51;
   font-size: 18pt; 
 }
+
+#loading { display: none; }
