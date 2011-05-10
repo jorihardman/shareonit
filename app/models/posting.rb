@@ -16,7 +16,7 @@ class Posting < ActiveRecord::Base
   def self.search_or_where(search, condition, page)
     if search
       return Posting.where(condition).where(
-        'CONCAT_WS(" ", first_name, last_name) LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%"
+        '(users.first_name || " " || users.last_name) ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%"
       ).order('postings.created_at DESC').paginate(
         :page => page, :per_page => 15
       )
