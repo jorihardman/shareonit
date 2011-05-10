@@ -1,9 +1,9 @@
 class Notifier < ActionMailer::Base
-  default :from => "uswap@uswap.it"
+  default :from => "nusharesonit@gmail.com"
 
   def welcome(user)
     @user = user
-    mail(:subject => 'Welcome to Uswap.it', :to => user.email) do |format|
+    mail(:subject => 'Welcome to Shareon.it', :to => user.email) do |format|
       format.html
     end
   end
@@ -17,7 +17,7 @@ class Notifier < ActionMailer::Base
                               1.day.from_now.strftime('%Y-%m-%d %H:%M:%S')
                               )
 
-    mail(:subject => 'Your Uswap.it Friends Need You', :bcc => User.all.map(&:email)) do |format|
+    mail(:subject => 'Your Shareon.it Friends Need You', :bcc => User.all.map(&:email)) do |format|
       format.html
     end
   end
@@ -38,7 +38,7 @@ class Notifier < ActionMailer::Base
     @user = user
     @message = feedback_message
     
-    mail(:to => 'jyro215@gmail.com', :subject => "Uswap Feedback") do |format|
+    mail(:to => 'jyro215@gmail.com', :subject => "Shareon.it Feedback") do |format|
       format.html
     end
   end
