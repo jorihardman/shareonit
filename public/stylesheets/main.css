@@ -117,32 +117,6 @@ ul.nav {
   background-color: white;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 0px;
-}
-
-th {
-  border: 1px solid silver;
-  padding: 0.5em;
-  color: white;
-  background-color: #44cd51;
-}
-
-tr { border: 1px solid silver; }
-
-td {
-	padding: 0.5em;
-	border: 1px solid silver;
-	background-color: white;
-}
-
-/*table tbody tr:nth-child(even) td,*/
-/*table tbody tr.even td {*/
-/*  background: #f0f0f0;*/
-/*}*/
-
 .button { margin-bottom: 10px; }
 
 .buttonset { 
