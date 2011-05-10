@@ -16,19 +16,21 @@
   <div class="container">
     <div id="header" class="prepend-2 span-22 last"><%= link_to image_tag('logo.gif'), root_path %></div>
     <div id="topnav" class="prepend-2 span-22 last">
-      <ul class="nav span-18">
+      <ul class="nav span-10">
         <%= raw(topnav_content) %>
       </ul>
-      <div id="login" class="span-4 last"><%= login_link %></div>
+      <div id="login" class="span-12 last"><%= login_link %></div>
     </div>
     <div id="sidenav" class="span-2">
       <ul class="nav">
         <%= raw(sidenav_content) %>
       </ul>
     </div>
-    <div id="content" class="prepend-1 append-1 span-20 last">
-      <p id="notice"><%= notice %></p>
-      <%= yield %>
+    <div id="page" class="span-22 last">
+      <div id="content">
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
     </div>
     <div id="footer" class="prepend-2 span-22 last">
       <p>

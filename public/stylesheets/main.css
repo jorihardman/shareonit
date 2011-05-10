@@ -1,6 +1,9 @@
 /* begin rails defaults */
 
-body { background-color: #e3e9ff; }
+body {
+	background-image: url(../images/bckg.jpg);
+	background-repeat: repeat-x;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -54,6 +57,76 @@ div.field, div.actions { margin-bottom: 10px; }
 
 /* end rails defaults */
 
+.container #content {
+  background: white;
+  padding: 20px;
+	-moz-border-radius: 0 10px 10px 10px;
+	border-radius: 0 10px 10px 10px;
+	margin-left:-1px;
+	position:relative; /*Necessary for z-index to layer to divs correctly*/
+	z-index:1;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #838383;
+}
+
+.container #topnav .nav li .current {
+	z-index:inherit;
+	background-color:#FFF; /*Background Color of Tabs is White*/
+	-moz-border-top-left-radius: 10px; /*Rounded Tabs for Firefox*/
+	-moz-border-top-right-radius: 10px;/*Rounded Tabs for Firefox*/
+	border-top-left-radius: 10px; /*Rounded Tabs for IE, Chrome, Safari...*/
+	border-top-right-radius: 10px;/*Rounded Tabs for IE, Chrome, Safari...*/
+	border-top-width: 2px;
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #838383;
+	border-right-color: #838383;
+	border-left-color: #838383;
+	font-weight:bold;
+	color: #44cd51;
+}
+
+.container #sidenav .nav li .current {
+	z-index:inherit; /* See above */
+	background-color:#FFF;
+	-moz-border-top-left-radius: 10x;
+	-moz-border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 2px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #838383;
+	border-bottom-color: #838383;
+	border-left-color: #838383;
+	font-weight:bold;
+  color: #44cd51;
+
+}
+
+.container #topnav {
+	z-index:11;
+	position:relative;
+	margin-bottom:-2px;
+	margin-left: -1px;
+}
+
+.container #sidenav {
+	z-index:11;
+	position:relative;
+}
+
+#topnav li { margin-right: 10px; }
+
+#sidenav li { margin-bottom: 10px; }
+
 #header { 
   height: 50px; 
   margin-top: 10px;
@@ -69,41 +142,25 @@ div.field, div.actions { margin-bottom: 10px; }
   margin-top: 15px;
 }
 
-#content {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: white;
-  min-height: 500px;
-}
-
 #search { margin-bottom: 10px; }
 
 ul.nav {
 	float: left;
-	padding: 0;
+	padding: 0px;
 	list-style: none;
 	margin: 0px;
 }
 
 .nav li { float: left; }
 
-#topnav .nav li { margin-right: 20px; }
-
-#sidenav .nav li { margin-bottom: 10px; }
-
 .nav li a {
-  color: #44cd51;
+	color:#485156;
 	display: block;
 	padding: 15px 0px 15px 0px;
-	width: 80px;
+	width: 79px;
 	text-align: center;
 	text-decoration: none;
 	font-weight: bold;
-}
-
-#sidenav .nav li a {
-  text-align: left;
-  padding-left: 7px;
 }
 
 .nav li a:hover { 
