@@ -40,9 +40,9 @@ Neighborly::Application.configure do
   config.action_mailer.smtp_settings = {
     :address => 'smtp.gmail.com',
     :port => 587,
-    :domain => 'uswap.it',
-    :user_name => 'uswap', # Replace with a valid gmail UN.
-    :password => 'uswap', # Replace with valid gmail password.
+    :domain => 'shareon.it',
+    :user_name => 'nusharesonit', # Replace with a valid gmail UN.
+    :password => 'nuventionweb', # Replace with valid gmail password.
     :authentication => 'plain',
     :enable_starttls_auto => true 
   }

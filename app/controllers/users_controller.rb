@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        Notifier.welcome(current_user).deliver
         flash[:notice] = 'Account created!'
         format.js
         format.xml  { render :xml => @user, :status => :created, :location => @user }
