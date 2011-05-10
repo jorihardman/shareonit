@@ -145,7 +145,10 @@ td {
 
 .button { margin-bottom: 10px; }
 
-.buttonset { padding: 5px 0px 5px 5px; }
+.buttonset { 
+  padding: 5px 5px 5px 5px; 
+  text-align: center;
+}
 
 #footer p {
   margin-top: 10px; 
