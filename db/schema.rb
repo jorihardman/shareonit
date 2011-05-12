@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505192354) do
+ActiveRecord::Schema.define(:version => 20110512192355) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -34,8 +34,7 @@ ActiveRecord::Schema.define(:version => 20110505192354) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "have_need"
-    t.string   "product_service"
-    t.string   "status",          :default => "pending"
+    t.string   "status",      :default => "pending"
     t.string   "description"
   end
 

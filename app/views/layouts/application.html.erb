@@ -14,25 +14,23 @@
 </head>
 <body>
   <div class="container">
-    <div id="header" class="prepend-2 span-22 last"><%= link_to image_tag('logo.gif'), root_path %></div>
-    <div id="topnav" class="prepend-2 span-22 last">
+    <div id="header" class="append-2 span-22 last"><%= link_to image_tag('logo.gif'), root_path %></div>
+    <div id="topnav" class="append-2 span-22 last">
       <ul class="nav span-10">
         <%= raw(topnav_content) %>
       </ul>
       <div id="login" class="span-12 last"><%= login_link %></div>
     </div>
-    <div id="sidenav" class="span-2">
-      <ul class="nav">
-        <%= raw(sidenav_content) %>
-      </ul>
-    </div>
-    <div id="page" class="span-22 last">
+    <div id="page" class="span-22">
       <div id="content">
         <p id="notice"><%= notice %></p>
         <%= yield %>
       </div>
     </div>
-    <div id="footer" class="prepend-2 span-22 last">
+    <div id="communities" class="span-2 last">
+      <%= raw(communities_content) %>
+    </div>
+    <div id="footer" class="append-2 span-22 last">
       <p>
         <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %><br/>
         Copyright 2011 Green Gorillas

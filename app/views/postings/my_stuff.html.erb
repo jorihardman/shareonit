@@ -1,0 +1,5 @@
+<h1>I Need</h1>
+<%= render :partial => 'postings/list', :object => @requests, :as => :postings %>
+
+<h1>I Have</h1>
+<%= render :partial => 'postings/list', :object => @inventory, :as => :postings %>

@@ -6,22 +6,4 @@
   <% end %>
 </div>
 
-<%= will_paginate @postings %>
-
-<table id="posting_list" class="ui-widget ui-widget-content">
-  <tr class="ui-widget-header">
-    <th>Description</th>
-    <th>From date</th>
-    <th>To date</th>
-    <th>User</th>
-    <th></th>
-  </tr>
-
-<% @postings.each do |posting| %>
-  <tr id="posting_<%= posting.id %>">
-    <%= raw(posting_table_row(posting)) %>
-  </tr>
-<% end %>
-</table>
-
-<%= will_paginate @postings %>
+<%= render :partial => 'postings/list', :object => @postings, :as => :postings %>
