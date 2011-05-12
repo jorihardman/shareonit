@@ -1,10 +1,9 @@
 module PostingsHelper
   def new_posting_link
-    product_service = action_name =~ /service/ ? 'service' : 'product'
-    have_need = action_name =~ /inventory/ ? 'have' : 'need'
-    link_to 'Create New Posting',
-      new_posting_path(:product_service => product_service, :have_need => have_need),
-      :rel => 'facebox', :class => 'button'
+    have_need = action_name == 'inventory' ? 'have' : 'need'
+    text = action_name == 'inventory' ? 'Add to Inventory' : 'Create New Request'
+    link_to text, new_posting_path, 
+      :have_need => have_need, :rel => 'facebox', :class => 'button'
   end
 
   def posting_table_row(posting)

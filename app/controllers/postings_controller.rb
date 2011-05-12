@@ -14,8 +14,8 @@ class PostingsController < ApplicationController
     @inventory = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id}, params[:page])
 
     respond_to do |format|
-      format.html { render :action => 'index' }
-      format.xml  { render :xml => @postings }
+      format.html
+      format.xml  { render :xml => @requests + @inventory }
     end
   end
 

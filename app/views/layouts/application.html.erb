@@ -13,24 +13,25 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div class="container">
-    <div id="header" class="append-2 span-22 last"><%= link_to image_tag('logo.gif'), root_path %></div>
-    <div id="topnav" class="append-2 span-22 last">
-      <ul class="nav span-10">
-        <%= raw(topnav_content) %>
+  <div id="header">
+    <div id="logo"><%= link_to image_tag('logo.gif'), root_path %></div>
+  </div>
+  <div id="nav">
+    <div id="nav_content">
+      <ul id="nav_list">
+        <%= raw(navigation_content) %>
       </ul>
-      <div id="login" class="span-12 last"><%= login_link %></div>
+      <div id="login"><%= login_link %></div>
     </div>
-    <div id="page" class="span-22">
+  </div>
+  <div class="container">
+    <div id="page" class="span-24 last">
       <div id="content">
         <p id="notice"><%= notice %></p>
-        <%= yield %>
+        <%= yield %>  
       </div>
     </div>
-    <div id="communities" class="span-2 last">
-      <%= raw(communities_content) %>
-    </div>
-    <div id="footer" class="append-2 span-22 last">
+    <div id="footer" class="span-24 last">
       <p>
         <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %><br/>
         Copyright 2011 Green Gorillas

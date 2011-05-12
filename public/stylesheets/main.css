@@ -1,9 +1,6 @@
 /* begin rails defaults */
 
-body {
-	background-image: url(../images/bckg.jpg);
-	background-repeat: repeat-x;
-}
+body { background-color: #99cd68 }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -19,9 +16,17 @@ pre {
 
 div.field, div.actions { margin-bottom: 10px; }
 
-#notice, #offer_notice {
-  color: #44cd51;
+#notice {
+  color: #99cd68;
   margin-bottom: 5px;
+}
+
+#notice a {
+  color: #99cd68;
+}
+
+#notice a:hover {
+  color: #6699ce;
 }
 
 .field_with_errors {
@@ -57,120 +62,109 @@ div.field, div.actions { margin-bottom: 10px; }
 
 /* end rails defaults */
 
-.container #content {
-  background: white;
-  padding: 20px;
-	-moz-border-radius: 0 10px 10px 10px;
-	border-radius: 0 10px 10px 10px;
-	margin-left:-1px;
-	position:relative; /*Necessary for z-index to layer to divs correctly*/
-	z-index:1;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #838383;
-}
-
-.container #topnav .nav li .current {
-	z-index:inherit;
-	background-color:#FFF; /*Background Color of Tabs is White*/
-	-moz-border-top-left-radius: 10px; /*Rounded Tabs for Firefox*/
-	-moz-border-top-right-radius: 10px;/*Rounded Tabs for Firefox*/
-	border-top-left-radius: 10px; /*Rounded Tabs for IE, Chrome, Safari...*/
-	border-top-right-radius: 10px;/*Rounded Tabs for IE, Chrome, Safari...*/
-	border-top-width: 2px;
-	border-right-width: 2px;
-	border-left-width: 2px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-left-style: solid;
-	border-top-color: #838383;
-	border-right-color: #838383;
-	border-left-color: #838383;
-	font-weight:bold;
-	color: #44cd51;
-}
-
-.container #sidenav .nav li .current {
-	z-index:inherit; /* See above */
-	background-color:#FFF;
-	-moz-border-top-left-radius: 10x;
-	-moz-border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-	border-top-width: 2px;
-	border-bottom-width: 2px;
-	border-left-width: 2px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	border-top-color: #838383;
-	border-bottom-color: #838383;
-	border-left-color: #838383;
-	font-weight:bold;
-  color: #44cd51;
-
-}
-
-.container #topnav {
-	z-index:11;
-	position:relative;
-	margin-bottom:-2px;
-	margin-left: -1px;
-}
-
-.container #sidenav {
-	z-index:11;
-	position:relative;
-}
-
-#topnav li { margin-right: 10px; }
-
-#sidenav li { margin-bottom: 10px; }
-
 #header { 
-  height: 50px; 
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  height: 150px;
+  background-color: #6699ce;
+}
+
+#logo {
+  width: 950px;
+  margin: 0 auto 0 auto;
+  text-align: left;
+}
+
+#logo img {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #404040;
+	-moz-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #404040;
 }
 
 #logo a:hover {
   background-color: transparent;
 }
 
-#login {
-  text-align: right;
-  margin-top: 15px;
-}
-
 #search { margin-bottom: 10px; }
 
-ul.nav {
-	float: left;
-	padding: 0px;
-	list-style: none;
-	margin: 0px;
+#nav {
+  width: 100%;
+  height: 50px;
+  background-color: #404040;
+  margin: 0 0 10px 0;
 }
 
-.nav li { float: left; }
+#nav_content {
+  width: 950px;
+  height: 50px;
+  margin: 0 auto 0 auto;
+}
 
-.nav li a {
-	color:#485156;
+#nav_list {
+  padding: 0;
+  margin-top: 10px;
+	float: left;
+	list-style: none;
+}
+
+#nav_list li { 
+  float: left;
+  width: 80px;
+  margin-right: 20px;
+}
+
+#nav_list li a {
+	color: white;
 	display: block;
-	padding: 15px 0px 15px 0px;
-	width: 79px;
+	width: 80px;
+	padding: 5px;
 	text-align: center;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-.nav li a:hover { 
-  color: black;
+#nav_list li a:hover { 
+  color: #6699ce;
   background-color: transparent;
 }
 
-.nav li a.current, a:hover.current {
-  color: black;
-  background-color: white;
+#nav_list li a.current, a:hover.current {
+  color: #404040;
+  background-color: #99cd68;
+	-moz-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #404040;
+}
+
+#login {
+  padding: 15px 0 0 0;
+  margin: 0;
+  float: right;
+  text-align: right; 
+}
+
+#login a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#login a:hover { color: #6699ce; }
+
+.container #content {
+  background: white;
+  padding: 20px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #404040;
 }
 
 .button { margin-bottom: 10px; }

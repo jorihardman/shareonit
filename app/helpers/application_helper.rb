@@ -15,7 +15,7 @@ module ApplicationHelper
     "Community Stuff"
   end
 
-  def topnav_content
+  def navigation_content
     requests_class = action_name == 'requests' ? 'current' : ''
     inventory_class = action_name == 'inventory' ? 'current' : ''
     my_stuff_class = action_name == 'my_stuff' ? 'current' : ''
