@@ -1,4 +1,4 @@
-<%= form_for @user_session, :url => session_url do |f| %>
+<%= form_for @user_session, :url => login_path do |f| %>
   <%= f.error_messages %>
   <div class="field">
     <%= f.label :email %><br/>

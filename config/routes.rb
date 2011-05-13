@@ -17,13 +17,13 @@ Neighborly::Application.routes.draw do
     end
   end
 
-  resource :session, :to => 'user_sessions'
-  match '/my_account' => 'users#my_account', :as => 'my_account'
+  get 'login' => 'user_sessions#new'
+  post 'login' => 'user_sessions#create'
+  delete 'logout' => 'user_sessions#destroy'
 
-  match '/home/index', :as => 'home'
-  match '/home/about', :as => 'about'
-  match '/home/contact_us', :as => 'contact_us'
-
-  root :to => 'postings#requests'
+  match 'about' => 'home#about', :as => 'about'
+  match 'contact' => 'home#contact', :as => 'contact'
+  
+  root :to => 'user_sessions#new'
 end
 

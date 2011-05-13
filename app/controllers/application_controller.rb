@@ -18,16 +18,14 @@ class ApplicationController < ActionController::Base
     unless current_user
       flash[:notice] = 'You must be logged in to access this page'
       store_location
-      redirect_to new_session_path
+      redirect_to login_path
       return false
     end
   end
 
   def require_no_user
     if current_user
-      flash[:notice] = 'You must be logged out to access this page'
-      store_location
-      redirect_to root_path
+      redirect_to requests_postings_path
       return false
     end
   end

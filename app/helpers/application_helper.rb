@@ -1,18 +1,10 @@
 module ApplicationHelper
   def login_link
     if current_user
-      return link_to 'Logout ' << current_user.full_name, session_path, :method => :delete
+      return link_to 'Logout ' << current_user.full_name, logout_path, :method => :delete
     else
-      return link_to 'Login', new_session_path
+      return link_to 'Login', login_path
     end
-  end
-
-  def back_or_default_link(text, default)
-    link_to text, (defined?(session[:return_to]) ? session[:return_to] : default)
-  end
-
-  def communities_content
-    "Community Stuff"
   end
 
   def navigation_content
