@@ -1,4 +1,8 @@
-<%= new_posting_link %>
+<% if action_name == 'requests' %>
+  <%= link_to 'Create New Request', new_posting_path(:have_need => 'need'), :rel => 'facebox', :class => 'button' %>
+<% else %>
+  <%= link_to 'Add to Inventory', new_posting_path(:have_need => 'have'), :rel => 'facebox', :class => 'button' %>
+<% end %>
 
 <div id="search">
   <% form_tag request.path, :method => :get do %>

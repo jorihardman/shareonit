@@ -1,11 +1,4 @@
 module PostingsHelper
-  def new_posting_link
-    have_need = action_name == 'inventory' ? 'have' : 'need'
-    text = action_name == 'inventory' ? 'Add to Inventory' : 'Create New Request'
-    link_to text, new_posting_path, 
-      :have_need => have_need, :rel => 'facebox', :class => 'button'
-  end
-
   def posting_table_row(posting)
     output = ''
     output << '<td>' << posting.description << '</td>' <<
