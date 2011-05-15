@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "admin@shareon.it"
+  default :from => "ShareOnIt@shareon.it"
 
   def welcome(user)
     @user = user
@@ -27,7 +27,7 @@ class Notifier < ActionMailer::Base
     @to_user = posting.user
     @posting = posting
     @message = message
-    subject = "#{@from_user.full_name} #{posting.have_need == 'have' ? 'needs' : 'has'} #{posting.description}"
+    subject = "#{@from_user.full_name} #{@posting.have_need == 'have' ? 'needs' : 'has'} #{@posting.description}"
     
     mail(:to => @to_user.email, :subject => subject, :reply_to => @from_user.email) do |format|
       format.html
