@@ -12,8 +12,8 @@ module ApplicationHelper
     inventory_class = action_name == 'inventory' ? 'current' : ''
     my_stuff_class = action_name == 'my_stuff' ? 'current' : ''
 
-    return "<li>#{link_to 'We Need', requests_postings_path, :class => requests_class}</li>" <<
-           "<li>#{link_to 'We Have', inventory_postings_path, :class => inventory_class}</li>" <<
+    return "<li>#{link_to 'Needs', requests_postings_path, :class => requests_class}</li>" <<
+           "<li>#{link_to 'Inventory', inventory_postings_path, :class => inventory_class}</li>" <<
            "<li>#{link_to 'My Stuff', my_stuff_postings_path, :class => my_stuff_class}</li>"
   end
 end
