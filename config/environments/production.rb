@@ -38,7 +38,7 @@ Neighborly::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'bulksmtp.shareon.it',
+    :address => 'relay.cloudsmtp.com',
     :port => 587,
     :domain => 'shareon.it',
     :user_name => 'jori', # Replace with a valid gmail UN.
