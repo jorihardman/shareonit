@@ -1,14 +1,14 @@
 Hi <%= @to_user.first_name %>,
 
 <% if @posting.have_need == 'have' %>
-  <%= @from_user %> would like to borrow <%= @posting.description %> from you.
+  <%= @from_user.full_name %> would like to borrow <%= @posting.description %> from you.
 <% else %>
-  <%= @to_user %> saw you needed <% @posting.description %> and would like to help you out.
+  <%= @to_user.full_name %> saw you needed <% @posting.description %> and would like to help you out.
 <% end %>
 
 <% if not @message.blank? %>
-  They want you to know that:<br/><br/>
-  <%= @message %>
+  They want you to know that:
+  <p><%= @message %></p>
 <% end %>
 
 Reply to this message to contact them and set up the trade!<br/><br/>

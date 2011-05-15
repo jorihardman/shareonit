@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "noreply@shareon.it"
+  default :from => "admin@shareon.it"
 
   def welcome(user)
     @user = user
