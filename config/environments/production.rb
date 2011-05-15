@@ -38,11 +38,11 @@ Neighborly::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'smtp.gmail.com',
+    :address => 'bulksmtp.shareon.it',
     :port => 587,
     :domain => 'shareon.it',
-    :user_name => 'nusharesonit', # Replace with a valid gmail UN.
-    :password => 'nuventionweb', # Replace with valid gmail password.
+    :user_name => 'jori', # Replace with a valid gmail UN.
+    :password => 'green.gorillaz!', # Replace with valid gmail password.
     :authentication => 'plain',
     :enable_starttls_auto => true 
   }

@@ -19,11 +19,11 @@ Neighborly::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'smtp.gmail.com',
+    :address => 'bulksmtp.shareon.it',
     :port => 587,
-    :domain => 'uswap.it',
-    :user_name => 'uswap', # Replace with a valid gmail UN.
-    :password => 'uswap', # Replace with valid gmail password.
+    :domain => 'shareon.it',
+    :user_name => 'jori', # Replace with a valid gmail UN.
+    :password => 'green.gorillaz!', # Replace with valid gmail password.
     :authentication => 'plain',
     :enable_starttls_auto => true 
   }

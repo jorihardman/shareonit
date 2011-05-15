@@ -38,7 +38,7 @@ class Notifier < ActionMailer::Base
     @user = user
     @message = feedback_message
     
-    mail(:to => 'jyro215@gmail.com', :subject => "Shareon.it Feedback") do |format|
+    mail(:to => 'feedback@shareon.it', :subject => "Shareon.it Feedback") do |format|
       format.html
     end
   end
