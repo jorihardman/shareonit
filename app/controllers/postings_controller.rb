@@ -101,7 +101,7 @@ class PostingsController < ApplicationController
 
   def destroy
     @posting = Posting.find(params[:id])
-    @posting.destroy
+    @posting.update_attribute(:deleted, true)
 
     respond_to do |format|
       format.js
