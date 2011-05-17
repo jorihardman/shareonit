@@ -2,7 +2,7 @@
 <div id="need">
   <%= render :partial => 'postings/list', :object => @requests, :as => :postings %>
 </div>
-
+<br/>
 <%= link_to 'I Have', new_posting_path(:have_need => 'have'), :rel => 'facebox', :class => 'button' %>
 <div id="have">
   <%= render :partial => 'postings/list', :object => @inventory, :as => :postings %>
