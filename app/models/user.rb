@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :received_offers, :through => :postings, :source => :offers
   has_many :offers
 
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :email, :password, :password_confirmation
 
   def full_name
     "#{first_name} #{last_name}"

@@ -8,7 +8,7 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  # To run this, create a cron job to run "rails runner Notifier.daily_digest.deliver".
+  # To run this, create a cron job to run "rails runner Notifier.delay.daily_digest".
   def daily_digest
     @postings = Posting.where('postings.have_need = ? AND (postings.created_at > ? OR (postings.from_date > ? AND postings.from_date < ?))',
                               'need',
