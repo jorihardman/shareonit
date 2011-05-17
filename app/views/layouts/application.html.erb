@@ -29,7 +29,11 @@
   <div class="container">
     <div id="page" class="span-24 last">
       <div id="content">
-        <p id="notice"><%= notice %></p>
+        <p style="color:#6699ce;">
+          Attention users! Our hosting provider is experiencing networking issues, which is causing intermittent downtime.
+          A fix is in the works, so bear with us. 
+        </p>
+        <% if notice %><p id="notice"><%= notice %></p><% end %>
         <%= yield %>  
       </div>
     </div>
