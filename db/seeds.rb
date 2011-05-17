@@ -7,4 +7,4 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 User.create(:first_name => 'Test', :last_name => 'User 1', :email => 'test1@test.com', :password => 'password', :password_confirmation => 'password')
 User.create(:first_name => 'Test', :last_name => 'User 2', :email => 'test2@test.com', :password => 'password', :password_confirmation => 'password')
-
+(1..25).each { |n| Posting.create(:description => "Posting #{n}", :user_id => 2, :have_need => 'need') }
