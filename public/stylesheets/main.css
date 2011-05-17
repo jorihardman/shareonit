@@ -180,6 +180,8 @@ div.field, div.actions { margin-bottom: 10px; }
   font-size: small;
 }
 
+#footer p a:hover { color: #6699ce; }
+
 h1 { 
   color: #44cd51;
   font-size: 18pt; 
