@@ -1,6 +1,6 @@
 class Posting < ActiveRecord::Base
   belongs_to :user
-  has_many :offers
+  belongs_to :community
 
   default_scope select('postings.*, users.first_name, users.last_name').includes(:user)
 

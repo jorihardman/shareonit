@@ -1,9 +1,5 @@
 Neighborly::Application.routes.draw do
-  post 'feedback/submit_feedback', :as => :submit_feedback
-	get 'feedback' => 'feedback#index'
-	get 'application' => 'home#application', :as => :application_js
-
-  resources :messages, :communities, :users
+  resources :users, :communities
 
   resources :postings do
     member do
@@ -23,6 +19,11 @@ Neighborly::Application.routes.draw do
 
   match 'about' => 'home#about', :as => 'about'
   match 'contact' => 'home#contact', :as => 'contact'
+  
+  post 'feedback/submit_feedback', :as => :submit_feedback
+	get 'feedback' => 'feedback#index'
+	
+	get 'application' => 'home#application', :as => :application_js
   
   root :to => 'user_sessions#new'
 end

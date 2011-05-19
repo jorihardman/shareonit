@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110517180352) do
+ActiveRecord::Schema.define(:version => 20110519185949) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -40,17 +40,18 @@ ActiveRecord::Schema.define(:version => 20110517180352) do
     t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",       :default => true
   end
 
   create_table "postings", :force => true do |t|
-    t.date     "from_date"
-    t.date     "to_date"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "have_need"
     t.string   "description"
-    t.boolean  "deleted",     :default => false
+    t.boolean  "deleted",      :default => false
+    t.integer  "community_id",                    :null => false
+    t.integer  "price",        :default => 0
   end
 
   create_table "sessions", :force => true do |t|

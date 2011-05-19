@@ -1,6 +1,4 @@
 class CommunitiesController < ApplicationController
-  # GET /communities
-  # GET /communities.xml
   def index
     @communities = Community.all
 
@@ -10,8 +8,6 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # GET /communities/1
-  # GET /communities/1.xml
   def show
     @community = Community.find(params[:id])
 
@@ -21,8 +17,6 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # GET /communities/new
-  # GET /communities/new.xml
   def new
     @community = Community.new
 
@@ -32,13 +26,10 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # GET /communities/1/edit
   def edit
     @community = Community.find(params[:id])
   end
 
-  # POST /communities
-  # POST /communities.xml
   def create
     @community = Community.new(params[:community])
 
@@ -53,8 +44,6 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # PUT /communities/1
-  # PUT /communities/1.xml
   def update
     @community = Community.find(params[:id])
 
@@ -69,8 +58,6 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # DELETE /communities/1
-  # DELETE /communities/1.xml
   def destroy
     @community = Community.find(params[:id])
     @community.destroy
