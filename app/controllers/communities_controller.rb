@@ -21,13 +21,15 @@ class CommunitiesController < ApplicationController
     @community = Community.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => false }
       format.xml  { render :xml => @community }
     end
   end
 
   def edit
-    @community = Community.find(params[:id])
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
   end
 
   def create
@@ -35,10 +37,10 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to(@community, :notice => 'Community was successfully created.') }
+        format.js
         format.xml  { render :xml => @community, :status => :created, :location => @community }
       else
-        format.html { render :action => "new" }
+        format.js
         format.xml  { render :xml => @community.errors, :status => :unprocessable_entity }
       end
     end

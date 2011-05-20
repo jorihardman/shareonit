@@ -1,10 +1,16 @@
 <%= link_to 'I Need', new_posting_path(:have_need => 'need'), :rel => 'facebox', :class => 'button' %>
 <div id="need">
+  <%= will_paginate @requests, :param_name => 'req_page' %>
   <%= render :partial => 'postings/list', :object => @requests, :as => :postings %>
+  <%= will_paginate @requests, :param_name => 'req_page' %>
 </div>
+
 <br/>
+
 <%= link_to 'I Have', new_posting_path(:have_need => 'have'), :rel => 'facebox', :class => 'button' %>
 <div id="have">
+  <%= will_paginate @inventory, :param_name => 'inv_page' %>
   <%= render :partial => 'postings/list', :object => @inventory, :as => :postings %>
+  <%= will_paginate @inventory, :param_name => 'inv_page' %>
 </div>
 

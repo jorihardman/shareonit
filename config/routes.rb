@@ -1,5 +1,13 @@
 Neighborly::Application.routes.draw do
-  resources :users, :communities
+  resources :users
+  
+  resources :communities do
+    member do
+      post 'request'
+      get 'add_users' => 'communities#edit'
+      post 'add_users' => 'communities#update'
+    end
+  end
 
   resources :postings do
     member do

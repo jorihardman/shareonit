@@ -1,5 +1,5 @@
-<%= form_for(@community) do |f| %>
-  <%= f.errors %>
+<%= form_for @community, :remote => true do |f| %>
+  <%= f.error_messages %>
   <div class="field">
     <%= f.label :name %><br/>
     <%= f.text_field :name %>
@@ -10,13 +10,14 @@
   </div>
   <div class="field">
     <%= f.label :description %><br/>
-    <%= f.text_area :description %>
+    <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :emails %><br/>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.label :emails, 'User emails' %> (comma separated)<br/>
     <%= text_area_tag 'emails' %>
+  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="actions">
+    <%= f.submit action_name == 'new' ? 'Create' : 'Update', :class => 'button' %>
   </div>
 <% end %>

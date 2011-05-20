@@ -10,14 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110519185949) do
+ActiveRecord::Schema.define(:version => 20110519235446) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
     t.integer  "zip_code"
-    t.text     "description"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",     :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -40,7 +41,8 @@ ActiveRecord::Schema.define(:version => 20110519185949) do
     t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",       :default => true
+    t.boolean  "active",       :default => false
+    t.boolean  "accepted",     :default => false
   end
 
   create_table "postings", :force => true do |t|
@@ -49,9 +51,13 @@ ActiveRecord::Schema.define(:version => 20110519185949) do
     t.datetime "updated_at"
     t.string   "have_need"
     t.string   "description"
-    t.boolean  "deleted",      :default => false
-    t.integer  "community_id",                    :null => false
-    t.integer  "price",        :default => 0
+    t.boolean  "deleted",     :default => false
+    t.integer  "price",       :default => 0
+  end
+
+  create_table "postings_communities", :force => true do |t|
+    t.integer "posting_id",   :null => false
+    t.integer "community_id", :null => false
   end
 
   create_table "sessions", :force => true do |t|

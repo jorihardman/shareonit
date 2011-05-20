@@ -1,6 +1,6 @@
 class Posting < ActiveRecord::Base
   belongs_to :user
-  belongs_to :community
+  has_and_belongs_to_many :communities
 
   default_scope select('postings.*, users.first_name, users.last_name').includes(:user)
 
@@ -16,11 +16,11 @@ class Posting < ActiveRecord::Base
   def self.search_or_where(search, condition, page)
     if search
       return Posting.where(condition).where(
-        "((first_name || ' ' || last_name) ILIKE ? OR description ILIKE ?) AND deleted = false", 
-        "%#{search}%", "%#{search}%"
+        "((first_name || ' ' || last_name) ILIKE ? OR description ILIKE ?) AND deleted = ?", 
+        "%#{search}%", "%#{search}%", false
       ).order('postings.created_at DESC').paginate(:page => page, :per_page => 15)
     else
-      return Posting.where(condition).where('deleted = false').order('postings.created_at DESC').paginate(:page => page, :per_page => 15)
+      return Posting.where(condition).where(:deleted => false).order('postings.created_at DESC').paginate(:page => page, :per_page => 15)
     end
   end
 end

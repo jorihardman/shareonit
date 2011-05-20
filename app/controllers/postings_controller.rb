@@ -10,8 +10,8 @@ class PostingsController < ApplicationController
   end
 
   def my_stuff
-    @requests = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id}, params[:page])
-    @inventory = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id}, params[:page])
+    @requests = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id}, params[:req_page])
+    @inventory = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id}, params[:inv_page])
 
     respond_to do |format|
       format.html
@@ -20,7 +20,6 @@ class PostingsController < ApplicationController
   end
 
   def inventory
-    store_location
     @postings = Posting.search_or_where(params[:search], ['have_need = ? and user_id != ?', 'have', current_user.id], params[:page])
 
     respond_to do |format|
@@ -30,7 +29,6 @@ class PostingsController < ApplicationController
   end
 
   def requests
-    store_location
     @postings = Posting.search_or_where(params[:search], ['have_need = ? and user_id != ?', 'need', current_user.id], params[:page])
 
     respond_to do |format|
