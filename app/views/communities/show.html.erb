@@ -1,7 +1,12 @@
-<p>
-  <b>Name:</b>
-  <%= @community.name %>
-</p>
+<h1><%= @community.name %></h1>
+
+<div class="buttonset">
+<%= link_to 'Add Users', new_users_community_path(@community), :rel => 'facebox' %>
+<%= link_to 'Edit', edit_community_path(@community), :rel => 'facebox' %>
+<%= link_to 'Delete', community_path(@community), :method => 'delete', 
+    :confirm => 'Are you sure? All postings will be deleted.'
+%>
+</div>
 
 <p>
   <b>Description:</b>
@@ -12,3 +17,15 @@
   <b>Zip code:</b>
   <%= @community.zip_code %>
 </p>
+
+<h2>Active Members</h2>
+<%= will_paginate @members, :page_param => :mem_page %>
+<%= render :partial => 'memberships/list', :object => @members, :as => :memberships %>
+<%= will_paginate @members, :page_param => :mem_page %>
+
+<br/>
+
+<h2>Join Requests</h2>
+<%= will_paginate @requests, :page_param => :req_page %>
+<%= render :partial => 'memberships/list', :object => @requests, :as => :memberships %>
+<%= will_paginate @requests, :page_param => :req_page %>

@@ -10,6 +10,8 @@ class CommunitiesController < ApplicationController
 
   def show
     @community = Community.find(params[:id])
+    @members = @community.memberships.where(:accepted => true).paginate(:page => params[:mem_page])
+    @requests = @community.memberships.where(:accepted => false).paginate(:page => params[:req_page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,6 +29,8 @@ class CommunitiesController < ApplicationController
   end
 
   def edit
+    @community = Community.find(params[:id])
+  
     respond_to do |format|
       format.html { render :layout => false }
     end
@@ -51,10 +55,10 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.update_attributes(params[:community])
-        format.html { redirect_to(@community, :notice => 'Community was successfully updated.') }
+        format.js
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.js
         format.xml  { render :xml => @community.errors, :status => :unprocessable_entity }
       end
     end
@@ -65,7 +69,7 @@ class CommunitiesController < ApplicationController
     @community.destroy
 
     respond_to do |format|
-      format.html { redirect_to(communities_url) }
+      format.html { redirect_to(communities_path) }
       format.xml  { head :ok }
     end
   end

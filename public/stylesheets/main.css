@@ -169,9 +169,17 @@ div.field, div.actions { margin-bottom: 10px; }
 
 .button { margin-bottom: 10px; }
 
-.buttonset { 
+table .buttonset { 
   padding: 5px 5px 5px 5px; 
   text-align: center;
+}
+
+div.buttonset {
+  margin-bottom: 10px;
+}
+
+div.buttonset a.ui-button {
+  margin-right: -.5em;
 }
 
 #footer p {
@@ -185,6 +193,11 @@ div.field, div.actions { margin-bottom: 10px; }
 h1 { 
   color: #44cd51;
   font-size: 18pt; 
+}
+
+h2 {
+  color: #44cd51;
+  font-size: 16pt;
 }
 
 #loading { display: none; }

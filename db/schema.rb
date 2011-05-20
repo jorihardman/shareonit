@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20110519235446) do
     t.integer  "user_id",     :null => false
   end
 
+  create_table "communities_postings", :id => false, :force => true do |t|
+    t.integer "posting_id",   :null => false
+    t.integer "community_id", :null => false
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -53,11 +58,6 @@ ActiveRecord::Schema.define(:version => 20110519235446) do
     t.string   "description"
     t.boolean  "deleted",     :default => false
     t.integer  "price",       :default => 0
-  end
-
-  create_table "postings_communities", :force => true do |t|
-    t.integer "posting_id",   :null => false
-    t.integer "community_id", :null => false
   end
 
   create_table "sessions", :force => true do |t|

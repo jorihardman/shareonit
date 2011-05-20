@@ -1,0 +1,13 @@
+<% if @community.errors.any? %>
+  $('#new_community_form').html('<%= escape_javascript(render :partial => 'communities/form') %>');
+<% else %>
+  $.facebox.close();
+  $('#notice').html('Community added.');
+  $('#communities_list > tbody > tr:first').after('<tr id="community_<%= @community.id %>"><%= escape_javascript(raw(community_table_row(@community))) %></tr>');
+  $('.buttonset').buttonset();
+  $('a[rel*=facebox]').facebox({
+    loadingImage : '<%= image_path('loading.gif') %>',
+    closeImage   : '<%= image_path('closelabel.png') %>'
+  });
+<% end %>
+

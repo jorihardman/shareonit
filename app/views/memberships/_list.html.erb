@@ -1,0 +1,12 @@
+<table id="memberships_list" class="ui-widget ui-widget-content">
+  <tr class="ui-widget-header">
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+
+<% memberships.each do |membership| %>
+  <%= raw(membership_table_row(membership)) %>
+<% end %>
+</table>
+

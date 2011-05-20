@@ -2,10 +2,16 @@ Neighborly::Application.routes.draw do
   resources :users
   
   resources :communities do
+    resources :memberships do
+      member do
+        put 'accept'
+      end
+    end
+    
     member do
       post 'request'
-      get 'add_users' => 'communities#edit'
-      post 'add_users' => 'communities#update'
+      get 'new_users' => 'communities#new_users'
+      post 'new_users' => 'communities#create_users'
     end
   end
 
