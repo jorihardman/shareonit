@@ -3,7 +3,7 @@
 <% else %>
   $.facebox.close();
   $('#notice').html('Community added.');
-  $('#communities_list > tbody > tr:first').after('<tr id="community_<%= @community.id %>"><%= escape_javascript(raw(community_table_row(@community))) %></tr>');
+  $('#communities_list > tbody > tr:first').after('<%= escape_javascript(raw(community_table_row(@community))) %>');
   $('.buttonset').buttonset();
   $('a[rel*=facebox]').facebox({
     loadingImage : '<%= image_path('loading.gif') %>',

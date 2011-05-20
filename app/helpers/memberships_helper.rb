@@ -6,7 +6,8 @@ module MembershipsHelper
     "<td>#{membership.user.email}</td>" << 
     '<td class="buttonset">'
     if membership.accepted
-      output << link_to('Remove', community_membership_path(membership.community_id, membership), :method => :delete, :remote => true)
+      output << link_to('Remove', community_membership_path(membership.community_id, membership), :method => :delete, 
+                :confirm => "Are you sure?", :remote => true)
     else
       output << link_to('Accept', accept_community_membership_path(membership.community_id, membership), :method => :put, :remote => true)
     end

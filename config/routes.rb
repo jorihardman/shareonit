@@ -10,8 +10,6 @@ Neighborly::Application.routes.draw do
     
     member do
       post 'request'
-      get 'new_users' => 'communities#new_users'
-      post 'new_users' => 'communities#create_users'
     end
   end
 

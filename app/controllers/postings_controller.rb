@@ -74,6 +74,9 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.save
+        current_user.active_communities.each do |community|
+          community.postings << @posting
+        end
         format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else

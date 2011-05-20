@@ -9,7 +9,7 @@ module PostingsHelper
       output << link_to(action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox')
     else
       output << link_to('Edit', edit_posting_path(posting), :rel => 'facebox') <<
-      link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'are you sure?')
+      link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'Are you sure?')
     end
     output << '</td></tr>'
   end

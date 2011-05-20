@@ -3,7 +3,7 @@
 <% else %>
   $.facebox.close();
   $('#notice').html('Posting added to <%= escape_javascript link_to('your stuff', my_stuff_postings_path) %>.');
-  $('#<%= @posting.have_need %> > #posting_list > tbody > tr:first').after('<tr id="posting_<%= @posting.id %>"><%= escape_javascript(raw(posting_table_row(@posting))) %></tr>');
+  $('#<%= @posting.have_need %> > #posting_list > tbody > tr:first').after('<%= escape_javascript(raw(posting_table_row(@posting))) %>');
   $('.buttonset').buttonset();
   $('a[rel*=facebox]').facebox({
     loadingImage : '<%= image_path('loading.gif') %>',

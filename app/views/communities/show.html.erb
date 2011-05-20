@@ -1,7 +1,7 @@
 <h1><%= @community.name %></h1>
 
 <div class="buttonset">
-<%= link_to 'Add Users', new_users_community_path(@community), :rel => 'facebox' %>
+<%= link_to 'Add Users', new_community_membership_path(@community), :rel => 'facebox' %>
 <%= link_to 'Edit', edit_community_path(@community), :rel => 'facebox' %>
 <%= link_to 'Delete', community_path(@community), :method => 'delete', 
     :confirm => 'Are you sure? All postings will be deleted.'
@@ -20,12 +20,16 @@
 
 <h2>Active Members</h2>
 <%= will_paginate @members, :page_param => :mem_page %>
-<%= render :partial => 'memberships/list', :object => @members, :as => :memberships %>
+<div id="members">
+  <%= render :partial => 'memberships/list', :object => @members, :as => :memberships %>
+</div>
 <%= will_paginate @members, :page_param => :mem_page %>
 
 <br/>
 
 <h2>Join Requests</h2>
 <%= will_paginate @requests, :page_param => :req_page %>
-<%= render :partial => 'memberships/list', :object => @requests, :as => :memberships %>
+<div id="requests">
+  <%= render :partial => 'memberships/list', :object => @requests, :as => :memberships %>
+</div>
 <%= will_paginate @requests, :page_param => :req_page %>

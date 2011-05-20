@@ -1,0 +1,5 @@
+$('#notice').html('<%= escape_javascript(@membership.user.full_name) %> accepted.');
+$('#membership_<%= @membership.id %>').remove();
+$('#members > #membership_list > tbody > tr:first').after('<%= escape_javascript(raw(membership_table_row(@membership))) %>');
+$('.buttonset').buttonset();
+
