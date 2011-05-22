@@ -7,8 +7,7 @@ class FeedbackController < ApplicationController
   end
 
   def submit_feedback
-    message = params[:feedback_text]
-    Notifier.delay.feedback(current_user, message)
+    Notifier.delay.feedback(params[:feedback_text])
     
     respond_to do |format|
       format.js

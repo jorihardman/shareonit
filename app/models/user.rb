@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
   
   def active_communities
-    communities.where('memberships.active = ?', true)
+    communities.where('memberships.active = ?', true).select(:community_id).map { |it| it.community_id }
   end
 
   # workaround for mongomapper bug

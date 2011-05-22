@@ -10,8 +10,8 @@ class PostingsController < ApplicationController
   end
 
   def my_stuff
-    @requests = Posting.search_or_where(params[:search], {:have_need => 'need', :user_id => current_user.id}, params[:req_page])
-    @inventory = Posting.search_or_where(params[:search], {:have_need => 'have', :user_id => current_user.id}, params[:inv_page])
+    @requests = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id = ?', 'need', current_user.id], params[:req_page])
+    @inventory = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id = ?', 'have', current_user.id], params[:inv_page])
 
     respond_to do |format|
       format.html
@@ -20,7 +20,7 @@ class PostingsController < ApplicationController
   end
 
   def inventory
-    @postings = Posting.search_or_where(params[:search], ['have_need = ? and user_id != ?', 'have', current_user.id], params[:page])
+    @postings = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id != ?', 'have', current_user.id], params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -29,7 +29,7 @@ class PostingsController < ApplicationController
   end
 
   def requests
-    @postings = Posting.search_or_where(params[:search], ['have_need = ? and user_id != ?', 'need', current_user.id], params[:page])
+    @postings = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id != ?', 'need', current_user.id], params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -112,7 +112,7 @@ class PostingsController < ApplicationController
   
   def email
     @posting = Posting.find(params[:id])
-    Notifier.delay.offer(current_user, @posting, params[:message])
+    Notifier.delay.offer(@posting, params[:message])
     @posting.add_to_inventory(current_user) if params[:add_to_inventory]
   
     respond_to do |format|
