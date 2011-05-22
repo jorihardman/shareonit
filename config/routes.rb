@@ -7,10 +7,6 @@ Neighborly::Application.routes.draw do
         put 'accept'
       end
     end
-    
-    member do
-      post 'request'
-    end
   end
 
   resources :postings do

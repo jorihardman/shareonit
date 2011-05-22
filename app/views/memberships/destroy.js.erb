@@ -1,0 +1,8 @@
+if ($('#membership_list').length > 0) {
+  $('#membership_<%= @membership.id %>').remove();
+  $('#notice').html('<%= @membership.user.full_name %> removed.');
+} else {
+  $('#notice').html('Left <%= @membership.community.name %>.');
+  $('#community_<%= @membership.community_id %>').replaceWith('<%= raw(escape_javascript(community_table_row(@membership.community)))%>');
+  $('.buttonset').buttonset();
+}
