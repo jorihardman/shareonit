@@ -74,9 +74,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.save
-        current_user.active_communities.each do |community|
-          community.postings << @posting
-        end
+        @posting.add_to_active_communities
         format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
@@ -113,7 +111,7 @@ class PostingsController < ApplicationController
   def email
     @posting = Posting.find(params[:id])
     Notifier.delay.offer(@posting, params[:message])
-    @posting.add_to_inventory(current_user) if params[:add_to_inventory]
+    @posting.add_to_inventory if params[:add_to_inventory]
   
     respond_to do |format|
       format.js

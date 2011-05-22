@@ -8,16 +8,23 @@ class Posting < ActiveRecord::Base
                 ).includes(
                   :user, :communities
                 ).where(
-                  'deleted = ? AND community_id IN (?)', false, UserSession.find.user.active_communities
+                  'deleted = ? AND community_id IN (?)', false, UserSession.find.user.active_communities.map{ |it| it.community_id }
                 ).order('postings.created_at DESC')
 
   validates :description, :presence => true
 
-  def add_to_inventory(user)
+  def add_to_inventory
     invPosting = self.clone
     invPosting.have_need = 'have'
-    invPosting.user_id = user.id
+    invPosting.user_id = UserSession.find.user_id
     invPosting.save
+    invPosting.add_to_active_communities
+  end
+  
+  def add_to_active_communities
+    UserSession.find.user.active_communities.each do |community|
+      community.postings << self
+    end
   end
 
   def self.search_or_where(search, condition, page)
