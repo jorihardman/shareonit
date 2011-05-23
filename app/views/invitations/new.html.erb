@@ -1,0 +1,13 @@
+<%= javascript_include_tag application_js_path %>
+
+<h1>Add Users</h1>
+
+<%= form_tag community_invitations_path(@community), :method => :post, :remote => true do %>
+  <div class="field">
+    <%= label_tag :emails, 'User emails' %> (comma separated)<br/>
+    <%= text_area_tag 'emails' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Send Invitations', :class => 'button' %>
+  </div>
+<% end %>

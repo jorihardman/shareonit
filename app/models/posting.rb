@@ -4,12 +4,13 @@ class Posting < ActiveRecord::Base
   @@per_page = 10
 
   default_scope select(
-                  'postings.*, communities.name, users.first_name, users.last_name'
-                ).includes(
-                  :user, :communities
-                ).where(
-                  'deleted = ? AND community_id IN (?)', false, UserSession.find.user.active_communities.map{ |it| it.community_id }
-                ).order('postings.created_at DESC')
+      'postings.*, communities.name, users.first_name, users.last_name'
+    ).includes(
+      :user, :communities
+    ).where(
+      'postings.deleted = ? AND communities.id IN (?)', 
+      false, UserSession.find.user.active_communities
+    ).order('postings.created_at DESC')
 
   validates :description, :presence => true
 

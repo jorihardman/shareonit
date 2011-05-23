@@ -5,12 +5,14 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-User.create(:first_name => 'Test', :last_name => 'User 1', :email => 'test1@test.com', :password => 'password', :password_confirmation => 'password')
-User.create(:first_name => 'Test', :last_name => 'User 2', :email => 'test2@test.com', :password => 'password', :password_confirmation => 'password')
+2.times do |i|
+  id = i+1
+  User.create(:first_name => 'Test', :last_name => "User #{id}", :email => "test#{id}@test.com", :password => 'password', :password_confirmation => 'password')
+end
+
 Community.create(:name => 'Test Community 1', :description => 'For testing communities.', :zip_code => 60201, :user_id => 1)
-Community.create(:name => 'Test Community 2', :description => 'For testing communities.', :zip_code => 60201, :user_id => 1)
+
 User.all.each do |user|
   Membership.create(:user_id => user.id, :community_id => 1, :accepted => true, :active => true)  
-  Membership.create(:user_id => user.id, :community_id => 2, :accepted => true, :active => true)
 end
 

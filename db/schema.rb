@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523045930) do
+ActiveRecord::Schema.define(:version => 20110523194722) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20110523045930) do
 
   create_table "invitations", :force => true do |t|
     t.string   "email"
-    t.integer  "group_id"
+    t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

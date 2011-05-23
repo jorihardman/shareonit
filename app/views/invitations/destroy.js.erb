@@ -1,0 +1,5 @@
+$('#notice').html('Invitation to <%= escape_javascript(@invitation.community.name) %> rejected.');
+$('#invitation_<%= @invitation.id %>').remove();
+if ($('#invitation_list tr').length == 1) {
+  $('#invitations').remove();
+}

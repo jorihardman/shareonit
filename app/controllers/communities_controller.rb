@@ -1,9 +1,11 @@
 class CommunitiesController < ApplicationController
   before_filter :require_user
+  before_filter :require_owner, :only => ['show', 'edit', 'update', 'destroy']
 
   def index
     @communities = Community.all
     @invitations = Invitation.where(:email => current_user.email)
+    puts @invitations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -56,7 +58,6 @@ class CommunitiesController < ApplicationController
 
   def update
     @community = Community.find(params[:id])
-    @community.send_invitations(params[:emails])
     
     respond_to do |format|
       if @community.update_attributes(params[:community])
@@ -76,6 +77,15 @@ class CommunitiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(communities_path) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def require_owner
+    if Community.find(params[:id]).user_id != current_user.id
+      redirect_to root_path, :notice => 'Sorry, but you don\'t own that community.'
+      return false
     end
   end
   

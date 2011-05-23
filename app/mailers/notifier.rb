@@ -47,7 +47,7 @@ class Notifier < ActionMailer::Base
     @invitation = invitation
     @recipient = User.find_by_email(@invitation.email)
     
-    mail(:to => email, :subject => "You've been invited to a Shareon.it community!") do |format|
+    mail(:to => @invitation.email, :subject => "You've been invited to a Shareon.it community!") do |format|
       format.html
     end
   end
