@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110519235446) do
+ActiveRecord::Schema.define(:version => 20110523045930) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20110519235446) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "invitations", :force => true do |t|
+    t.string   "email"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["email"], :name => "index_invitations_on_email"
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -89,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20110519235446) do
     t.string   "last_name",                          :null => false
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 

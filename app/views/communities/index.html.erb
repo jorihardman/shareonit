@@ -1,5 +1,22 @@
 <%= link_to 'New Community', new_community_path, :class => 'button', :rel => 'facebox' %>
 
+<% if not @invitations.empty? %>
+<table id="invitation_list" class="ui-widget ui-widget-content">
+  <tr class="ui-widget-header">
+    <th>Name</th>
+    <th>Description</th>
+    <th>Zip Code</th>
+    <th></th>
+  </tr>
+
+<% @invitations.each do |invitation| %>
+  <%= raw(invitation_table_row(invitation)) %>
+<% end %>
+</table>
+
+<br/>
+<% end %>
+
 <table id="communities_list" class="ui-widget ui-widget-content">
   <tr class="ui-widget-header">
     <th>Name</th>

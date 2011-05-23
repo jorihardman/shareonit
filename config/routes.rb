@@ -7,6 +7,11 @@ Neighborly::Application.routes.draw do
         put 'accept'
       end
     end
+    resources :invitations do
+      member do
+        post 'accept'
+      end
+    end
   end
 
   resources :postings do

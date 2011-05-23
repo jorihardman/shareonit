@@ -1,6 +1,9 @@
 class CommunitiesController < ApplicationController
+  before_filter :require_user
+
   def index
     @communities = Community.all
+    @invitations = Invitation.where(:email => current_user.email)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,6 +41,7 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.new(params[:community])
+    @community.send_invitations(params[:emails])
 
     respond_to do |format|
       if @community.save
@@ -52,7 +56,8 @@ class CommunitiesController < ApplicationController
 
   def update
     @community = Community.find(params[:id])
-
+    @community.send_invitations(params[:emails])
+    
     respond_to do |format|
       if @community.update_attributes(params[:community])
         format.js
@@ -73,4 +78,5 @@ class CommunitiesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

@@ -1,7 +1,7 @@
 <h1><%= @community.name %></h1>
 
 <div class="buttonset">
-<%= link_to 'Add Users', new_community_membership_path(@community), :rel => 'facebox' %>
+<%= link_to 'Add Users', new_community_invitation_path(@community), :rel => 'facebox' %>
 <%= link_to 'Edit', edit_community_path(@community), :rel => 'facebox' %>
 <%= link_to 'Delete', community_path(@community), :method => 'delete', 
     :confirm => 'Are you sure? All postings will be deleted.'

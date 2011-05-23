@@ -1,0 +1,17 @@
+Hi <%= @recipient.nil? ? 'there' : @recipient.first_name %>!<br/><br/>
+
+<%= @community.user.full_name %> has invited you to join the <%= @community.name %>
+community on Shareon.it!<br/>
+
+<% if @recipient %>
+  To accept the invitation, go to <%= accept_community_invitation_url(@community, @invitation) %>.
+<% else %>
+  Shareon.it helps social living communities save money by allowing them to share and sell goods.
+  To create an account and accept this invitation, go to 
+  <%= accept_community_invitation_url(@invitation.community_id, @invitation) %>, 
+  and use the email <%= @invitation.email %>.
+<% end %>
+<br/><br/>
+
+Happy sharing!<br/>
+The Shareon.it Team
