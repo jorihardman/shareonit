@@ -3,6 +3,6 @@ $('#loading').hide();
   $('#new_user_form').html('<%= escape_javascript(render :partial => 'users/form') %>');
 <% else %>
   $.facebox.close();
-  window.location.replace('<%= root_path %>');
+  window.location.replace('<%= session[:return_to].nil? ? root_path : session[:return_to] %>');
 <% end %>
 

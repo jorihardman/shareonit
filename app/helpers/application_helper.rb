@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def login_link
     if current_user
       return link_to 'Logout ' << current_user.full_name, logout_path, :method => :delete
@@ -18,5 +19,6 @@ module ApplicationHelper
            "<li>#{link_to 'My Stuff', my_stuff_postings_path, :class => my_stuff_class}</li>" <<
            "<li>#{link_to 'Communities', communities_path, :class => communities_class}</li>"
   end
+  
 end
 
