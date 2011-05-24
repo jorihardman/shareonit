@@ -43,10 +43,10 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.new(params[:community])
-    @community.send_invitations(params[:emails])
 
     respond_to do |format|
       if @community.save
+        @community.send_invitations(params[:emails])
         format.js
         format.xml  { render :xml => @community, :status => :created, :location => @community }
       else

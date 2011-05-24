@@ -1,5 +1,6 @@
 class Notifier < ActionMailer::Base
   default :from => "ShareOnIt@shareon.it"
+  default_url_options[:host] = "shareon.it"
 
   def welcome()
     @user = UserSession.find.user

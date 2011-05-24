@@ -11,8 +11,8 @@ class Community < ActiveRecord::Base
       membership = Membership.find_by_user_id(user.id) if user
       invitation = Invitation.new(:email => email, :community_id => self.id)
       
-      if membership.nil? and invitation.save
-        Notifier.send_invitation(invitation)
+      if membership.nil?
+        Notifier.delay.send_invitation(invitation) if invitation.save
       end
     end
   end
