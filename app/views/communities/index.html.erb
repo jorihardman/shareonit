@@ -20,16 +20,19 @@
 </div>
 <% end %>
 
-<table id="community_list" class="ui-widget ui-widget-content">
-  <tr class="ui-widget-header">
-    <th>Name</th>
-    <th>Description</th>
-    <th>Zip Code</th>
-    <th></th>
-  </tr>
+<h2>My Communites</h2>
+<%= render :partial => 'communities/list', :object => @my_communities, :as => :communities %>
 
-<% @communities.each do |community| %>
-  <%= raw(community_table_row(community)) %>
-<% end %>
-</table>
+<br/>
 
+<h2>All Communities</h2>
+
+<div id="search">
+  <%= form_tag request.path, :method => :get do %>
+    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
+  <% end %>
+</div>
+
+<%= will_paginate @all_communities %>
+<%= render :partial => 'communities/list', :object => @all_communities, :as => :communities %>
+<%= will_paginate @all_communities %>

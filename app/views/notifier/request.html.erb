@@ -1,0 +1,9 @@
+Hi <%= @membership.community.user.first_name %>!<br/><br/>
+
+<%= @membership.user.full_name %> has requested to join the <%= @membership.community.name %> community on Shareon.it! 
+To accept this person, click 
+<%= link_to 'here', accept_community_membership_url(@membership.community_id, @membership), :method => :put %>.
+<br/<br/>
+
+Happy sharing!<br/>
+The Shareon.it Team

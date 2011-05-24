@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 	acts_as_authentic
 	has_many :memberships
 	has_many :communities, :through => :memberships
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
   end
   
   def active_communities
-    communities.where('active = ?', true).select('communities.id')
+    communities.select('communities.id').where('active = ?', true)
   end
 
   # workaround for mongomapper bug
@@ -20,5 +21,6 @@ class User < ActiveRecord::Base
   def to_key
     [id.to_s]
   end
+  
 end
 

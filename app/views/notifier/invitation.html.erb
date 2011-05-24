@@ -4,7 +4,8 @@ Hi <%= @recipient.nil? ? 'there' : @recipient.first_name %>!<br/><br/>
 community on Shareon.it!<br/>
 
 <% if @recipient %>
-  To accept the invitation, go to <%= accept_community_invitation_url(@invitation.community_id, @invitation) %>.
+  To accept the invitation, click
+  <%= link_to 'here', accept_community_invitation_url(@invitation.community_id, @invitation), :method => :post %>.
 <% else %>
   Shareon.it helps social living communities save money by allowing them to share and sell goods.
   To create an account and accept this invitation, go to 

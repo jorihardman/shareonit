@@ -1,6 +1,8 @@
 class Posting < ActiveRecord::Base
+  
   belongs_to :user
   has_and_belongs_to_many :communities
+  
   @@per_page = 10
 
   default_scope select(
@@ -10,7 +12,7 @@ class Posting < ActiveRecord::Base
     ).where(
       'postings.deleted = ? AND communities.id IN (?)', 
       false, UserSession.find.user.active_communities
-    ).order('postings.created_at DESC')
+    )
 
   validates :description, :presence => true
 
@@ -38,5 +40,5 @@ class Posting < ActiveRecord::Base
       return Posting.where(condition).paginate(:page => page)
     end
   end
+  
 end
-

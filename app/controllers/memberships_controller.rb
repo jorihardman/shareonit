@@ -1,9 +1,13 @@
 class MembershipsController < ApplicationController
+  
+  before_filter :require_user
+  
   def accept
     @membership = Membership.find(params[:id])
     @membership.update_attributes(:accepted => true, :active => true)
     
     respond_to do |format|
+      format.html { redirect_to community_path(@membership.community_id), :notice => "#{@membership.user.full_name} accepted." }
       format.js
     end
   end
@@ -21,7 +25,7 @@ class MembershipsController < ApplicationController
     
   def create
     @membership = Membership.new(:user_id => current_user.id, :community_id => params[:community_id])
-    @membership.save
+    Notifier.delay.request(@membership) if @membership.save
     
     respond_to do |format|
       format.js
@@ -36,4 +40,5 @@ class MembershipsController < ApplicationController
       format.js
     end
   end
+  
 end

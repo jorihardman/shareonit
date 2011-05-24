@@ -1,4 +1,5 @@
 module MembershipsHelper
+
   def membership_table_row(membership)
     output = '' << 
     "<tr id=\"membership_#{membership.id}\">" << 
@@ -13,4 +14,5 @@ module MembershipsHelper
     end
     output << '</td></tr>'
   end
+  
 end

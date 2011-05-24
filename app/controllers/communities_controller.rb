@@ -1,11 +1,12 @@
 class CommunitiesController < ApplicationController
+  
   before_filter :require_user
   before_filter :require_owner, :only => ['show', 'edit', 'update', 'destroy']
 
   def index
-    @communities = Community.all
+    @all_communities = Community.search(params[:search], params[:page])
+    @my_communities = current_user.communities
     @invitations = Invitation.where(:email => current_user.email)
-    puts @invitations
 
     respond_to do |format|
       format.html # index.html.erb

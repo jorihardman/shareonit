@@ -1,4 +1,5 @@
 module CommunitiesHelper
+
   def community_table_row(community)
     output = '' <<
     "<tr id=\"community_#{community.id}\">" <<
@@ -20,4 +21,5 @@ module CommunitiesHelper
     end
     output << '</td></tr>'
   end
+  
 end

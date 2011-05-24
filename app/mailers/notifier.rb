@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+
   default :from => "ShareOnIt@shareon.it"
   default_url_options[:host] = "shareon.it"
 
@@ -44,7 +45,7 @@ class Notifier < ActionMailer::Base
     end
   end
   
-  def send_invitation(invitation)
+  def invitation(invitation)
     @invitation = invitation
     @recipient = User.find_by_email(@invitation.email)
     
@@ -52,5 +53,8 @@ class Notifier < ActionMailer::Base
       format.html
     end
   end
-end
+  
+  def request(membership)
+  end
 
+end
