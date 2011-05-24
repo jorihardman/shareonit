@@ -1,2 +1,2 @@
-$('#notice').html('Membership to <%= @membership.community.name %> requested.');
+$('#notice').html('Membership to <%= @membership.community.name %> requested. You will be notified via email when it is accepted.');
 $('#community_<%= @membership.community_id %>').replaceWith('<%= raw(escape_javascript(community_table_row(@membership.community)))%>');

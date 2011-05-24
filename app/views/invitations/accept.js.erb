@@ -3,6 +3,5 @@ $('#invitation_<%= @invitation.id %>').remove();
 if ($('#invitation_list tr').length == 1) {
   $('#invitations').remove();
 }
-$('#community_<%= @invitation.community_id %>').replaceWith('<%= escape_javascript(raw(community_table_row(@invitation.community))) %>');
+$('#my_communities > #community_list > tbody > tr:first').after('<%= escape_javascript(raw(community_table_row(@invitation.community))) %>');
 $('.buttonset').buttonset();
-

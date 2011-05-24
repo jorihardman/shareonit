@@ -5,6 +5,7 @@ class MembershipsController < ApplicationController
   def accept
     @membership = Membership.find(params[:id])
     @membership.update_attributes(:accepted => true, :active => true)
+    Notifier.delay.request_accepted(@membership)
     
     respond_to do |format|
       format.html { redirect_to community_path(@membership.community_id), :notice => "#{@membership.user.full_name} accepted." }

@@ -49,12 +49,26 @@ class Notifier < ActionMailer::Base
     @invitation = invitation
     @recipient = User.find_by_email(@invitation.email)
     
-    mail(:to => @invitation.email, :subject => "You've been invited to a Shareon.it community!") do |format|
+    mail(:to => @invitation.email, :subject => "You've been invited to a Shareon.it community") do |format|
       format.html
     end
   end
   
   def request(membership)
+    @membership = membership
+    
+    mail(:to => @membership.community.user.email, 
+         :subject => "#{@membership.user.full_name} wants to join #{@membership.community.name}") do |format|
+      format.html
+    end
+  end
+  
+  def request_accepted(membership)
+    @membership = membership
+    
+    mail(:to => @membership.user.email, :subject => "Your Shareon.it request was accepted") do |format|
+      format.html
+    end
   end
 
 end

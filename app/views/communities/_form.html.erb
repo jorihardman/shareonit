@@ -1,25 +1,27 @@
+<%= javascript_include_tag application_js_path %>
+
 <%= form_for @community, :remote => true do |f| %>
   <%= f.error_messages %>
-  <% if action_name == 'new' %>
-  <div class="field">
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %><br/>
-    <%= f.text_field :zip_code %>
-  </div>
+  <% if action_name =~ /new|create/ %>
+    <div class="field">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :zip_code %><br/>
+      <%= f.text_field :zip_code %>
+    </div>
   <% end %>
   <div class="field">
     <%= f.label :description %><br/>
     <%= f.text_area :description %>
   </div>
-  <% if action_name == 'new' %>
-  <div class="field">
-    <%= f.label :emails, 'User emails' %> (comma separated)<br/>
-    <%= text_area_tag 'emails' %>
-  </div>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% if action_name =~ /new|create/ %>
+    <div class="field">
+      <%= f.label :emails, 'User emails' %> (comma separated)<br/>
+      <%= text_area_tag 'emails' %>
+    </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
   <div class="actions">
     <%= f.submit action_name == 'new' ? 'Create' : 'Update', :class => 'button' %>
