@@ -11,7 +11,7 @@ module CommunitiesHelper
     '<td class="buttonset">'
     if current_user.id == community.user_id
       output << link_to(membership.active ? 'Deactivate' : 'Activate', community_membership_path(community, membership), :remote => true, :method => :put)
-      output << link_to('Show', community_path(community))
+      output << link_to('Manage', community_path(community))
     elsif membership.nil? 
       output << link_to('Request membership', community_memberships_path(community), :remote => true, :method => :post)
     elsif not membership.accepted

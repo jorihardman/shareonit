@@ -1,6 +1,6 @@
 <%= link_to 'New Community', new_community_path, :class => 'button', :rel => 'facebox' %>
 
-<% if not @invitations.empty? %>
+<% unless @invitations.empty? %>
 <div id="invitations">
   <h2>Invitations</h2>
   <table id="invitation_list" class="ui-widget ui-widget-content">
