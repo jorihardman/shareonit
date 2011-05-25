@@ -21,6 +21,7 @@ class Posting < ActiveRecord::Base
   process_in_background :photo
   
   validates :description, :presence => true
+  validates :price, :numericality => true
   
   @@per_page = 10 #will_paginate
 
