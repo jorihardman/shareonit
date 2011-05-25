@@ -5,6 +5,7 @@ module PostingsHelper
     "<tr id=\"posting_#{posting.id}\">" <<
     "<td>#{posting.description}</td>" <<
     "<td>#{posting.user.full_name}</td>" << 
+    "<td>#{posting.free ? 'FREE' : number_to_currency(posting.price, :unit => '$')}</td>" << 
     "<td>" 
     unless posting.photo_file_name.nil?
       output << link_to(image_tag(posting.photo.url(:thumb)), posting.photo.url, :rel => 'facebox')

@@ -73,11 +73,10 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.save
-        @posting.add_to_active_communities
-        format.html { redirect_to my_stuff_postings_path, :notice => 'Posting added.' }
+        format.js
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
-        format.html { redirect_to my_stuff_posting_path, :notice => 'Sorry, but an error occurred while posting.' }
+        format.js
         format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
     end

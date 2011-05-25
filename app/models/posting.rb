@@ -30,7 +30,7 @@ class Posting < ActiveRecord::Base
       :user, :communities
     ).where(
       'postings.deleted = ?', false
-    )
+    ).order('postings.created_at DESC')
     
   scope :for_current_user, lambda { 
     where('communities.id IN (?)', UserSession.find.user.active_communities)
@@ -46,12 +46,6 @@ class Posting < ActiveRecord::Base
     invPosting.user_id = UserSession.find.user_id
     invPosting.save
     invPosting.add_to_active_communities
-  end
-  
-  def add_to_active_communities
-    UserSession.find.user.active_communities.each do |community|
-      community.postings << self
-    end
   end
 
   def self.search_or_where(search, condition, page)

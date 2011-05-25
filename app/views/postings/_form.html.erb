@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'application' %>
 
-<%= form_for @posting, :html => { :multipart => true } do |f| %>
+<%= form_for @posting, :html => { :multipart => true }, :remote => true do |f| %>
   <%= f.error_messages  %>
   <div class="field">
     <%= f.label (params[:have_need] == 'have' ? 'I have' : 'I need') %><br/>
@@ -10,6 +10,20 @@
     <div class="field">
       <%= f.label :photo %><br/>
       <%= f.file_field :photo %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :price %><br/>
+    <%= f.radio_button :free, true %>Free<%= f.radio_button :free, false %>Pay
+    <div id="price">
+      $<%= f.text_field :price %>
+    </div>
+  </div>
+  <%= f.label 'Post on' %>
+  <% current_user.communities.each do |community| %>
+    <div class ="field">
+      <%= check_box_tag "posting[community_ids][]", community.id, @posting.communities.include?(community) %>
+      <%= community.name %>
     </div>
   <% end %>
   <%= f.hidden_field :have, :value => (params[:have_need] == 'have' ? true : false) %>

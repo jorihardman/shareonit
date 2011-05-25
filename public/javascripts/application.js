@@ -9,9 +9,13 @@ $(document).ready(function() {
     closeImage   : '/images/closelabel.png'
   });
   
-  $('#new_posting').submit(function() {
-    $.facebox.close();
-    return true;
+  //posting form
+  if ($('#posting_free_true').is(':checked')) {
+    $('#price').hide();
+  }
+  
+  $('#posting_free_true, #posting_free_false').change(function() {
+    $('#price').toggle();
   });
 });
 

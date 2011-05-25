@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525015157) do
+ActiveRecord::Schema.define(:version => 20110525170746) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -64,14 +64,15 @@ ActiveRecord::Schema.define(:version => 20110525015157) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.boolean  "deleted",            :default => false
-    t.integer  "price",              :default => 0
-    t.boolean  "have",                                  :null => false
+    t.boolean  "deleted",                                          :default => false
+    t.decimal  "price",              :precision => 8, :scale => 2, :default => 0.0
+    t.boolean  "have",                                                                :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.boolean  "photo_processing"
+    t.boolean  "free",                                             :default => true
   end
 
   create_table "sessions", :force => true do |t|
