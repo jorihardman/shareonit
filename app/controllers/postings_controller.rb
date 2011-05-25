@@ -1,6 +1,8 @@
 class PostingsController < ApplicationController
+
   before_filter :require_user
   before_filter :require_owner, :only => ['edit', 'update', 'destroy']
+  before_filter :require_community
 
   def index
     respond_to do |format|
@@ -10,8 +12,8 @@ class PostingsController < ApplicationController
   end
 
   def my_stuff
-    @requests = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id = ?', 'need', current_user.id], params[:req_page])
-    @inventory = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id = ?', 'have', current_user.id], params[:inv_page])
+    @requests = Posting.search_or_where(params[:search], ['have = ? and postings.user_id = ?', false, current_user.id], params[:req_page])
+    @inventory = Posting.search_or_where(params[:search], ['have = ? and postings.user_id = ?', true, current_user.id], params[:inv_page])
 
     respond_to do |format|
       format.html
@@ -20,7 +22,7 @@ class PostingsController < ApplicationController
   end
 
   def inventory
-    @postings = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id != ?', 'have', current_user.id], params[:page])
+    @postings = Posting.search_or_where(params[:search], ['have = ? and postings.user_id != ?', true, current_user.id], params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -29,7 +31,7 @@ class PostingsController < ApplicationController
   end
 
   def requests
-    @postings = Posting.search_or_where(params[:search], ['have_need = ? and postings.user_id != ?', 'need', current_user.id], params[:page])
+    @postings = Posting.search_or_where(params[:search], ['have = ? and postings.user_id != ?', false, current_user.id], params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -49,6 +51,7 @@ class PostingsController < ApplicationController
 
   def new
     @posting = Posting.new
+    store_location
 
     respond_to do |format|
       format.html { render :layout => false }
@@ -67,18 +70,14 @@ class PostingsController < ApplicationController
 
   def create
     @posting = Posting.new(params[:posting])
-    unless params[:posting][:to_date].blank? and params[:posting][:from_date].blank?
-      @posting.from_date = Date.strptime(params[:posting][:from_date], "%m/%d/%Y")
-      @posting.to_date = Date.strptime(params[:posting][:to_date], "%m/%d/%Y")
-    end
 
     respond_to do |format|
       if @posting.save
         @posting.add_to_active_communities
-        format.js
+        format.html { redirect_to my_stuff_postings_path, :notice => 'Posting added.' }
         format.xml  { render :xml => @posting, :status => :created, :location => @posting }
       else
-        format.js
+        format.html { redirect_to my_stuff_posting_path, :notice => 'Sorry, but an error occurred while posting.' }
         format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
     end
@@ -127,5 +126,13 @@ class PostingsController < ApplicationController
       return false
     end
   end
+  
+  def require_community
+    if current_user.communities.count == 0
+      redirect_to communities_path, :notice => 'You aren\'t a part of a community! Request membership to one below to start sharing.'
+      return false
+    end
+  end
+  
 end
 

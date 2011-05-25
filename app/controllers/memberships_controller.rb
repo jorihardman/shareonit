@@ -26,7 +26,7 @@ class MembershipsController < ApplicationController
     
   def create
     @membership = Membership.new(:user_id => current_user.id, :community_id => params[:community_id])
-    Notifier.delay.request(@membership) if @membership.save
+    Notifier.delay.membership_request(@membership) if @membership.save
     
     respond_to do |format|
       format.js

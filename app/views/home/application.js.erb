@@ -2,12 +2,16 @@ $(document).ready(function() {
   //jquery-ui setup
   $('.button').button();
   $('.buttonset').buttonset();
-  $('.date').datepicker();
   
   //facebox setup
   $('a[rel*=facebox]').facebox({
     loadingImage : '<%= image_path "loading.gif" %>',
     closeImage   : '<%= image_path "closelabel.png" %>'
+  });
+  
+  $('#new_posting').submit(function() {
+    $.facebox.close();
+    return true;
   });
 });
 

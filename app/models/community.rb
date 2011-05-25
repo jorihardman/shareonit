@@ -15,6 +15,7 @@ class Community < ActiveRecord::Base
   
   def send_invitations(email_list)
     email_list.strip.split(',').each do |email|
+      email.strip!
       user = User.find_by_email(email)
       membership = Membership.find_by_user_id_and_community_id(user.id, self.id) if user
       invitation = Invitation.new(:email => email, :community_id => self.id)

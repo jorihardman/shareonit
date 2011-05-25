@@ -1,10 +1,15 @@
 module PostingsHelper
+
   def posting_table_row(posting)
     output = '' << 
-    "<tr id=\"posting_#{posting.id}\">" << 
+    "<tr id=\"posting_#{posting.id}\">" <<
     "<td>#{posting.description}</td>" <<
     "<td>#{posting.user.full_name}</td>" << 
-    '<td class="buttonset">'
+    "<td>" 
+    unless posting.photo_file_name.nil?
+      output << link_to(image_tag(posting.photo.url(:thumb)), posting.photo.url, :rel => 'facebox')
+    end
+    output << '</td><td class="buttonset">'
     if current_user.id != posting.user_id
       output << link_to(action_name =~ /requests/ ? 'Offer' : 'Borrow', posting, :rel => 'facebox')
     else
@@ -13,5 +18,6 @@ module PostingsHelper
     end
     output << '</td></tr>'
   end
+  
 end
 

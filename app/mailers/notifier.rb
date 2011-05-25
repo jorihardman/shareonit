@@ -12,8 +12,8 @@ class Notifier < ActionMailer::Base
 
   # To run this, create a cron job to run "rails runner Notifier.delay.daily_digest".
   def daily_digest
-    @postings = Posting.where('postings.have_need = ? AND (postings.created_at > ? OR (postings.from_date > ? AND postings.from_date < ?))',
-                              'need',
+    @postings = Posting.where('postings.have = ? AND (postings.created_at > ? OR (postings.from_date > ? AND postings.from_date < ?))',
+                              false,
                               1.day.ago.strftime('%Y-%m-%d %H:%M:%S'),
                               Time.now.strftime('%Y-%m-%d %H:%M:%S'),
                               1.day.from_now.strftime('%Y-%m-%d %H:%M:%S')
@@ -29,7 +29,7 @@ class Notifier < ActionMailer::Base
     @to_user = posting.user
     @posting = posting
     @message = message
-    subject = "#{@from_user.full_name} #{@posting.have_need == 'have' ? 'needs' : 'has'} #{@posting.description}"
+    subject = "#{@from_user.full_name} #{@posting.have ? 'needs' : 'has'} #{@posting.description}"
     
     mail(:to => @to_user.email, :subject => subject, :reply_to => @from_user.email) do |format|
       format.html
@@ -47,26 +47,26 @@ class Notifier < ActionMailer::Base
   
   def invitation(invitation)
     @invitation = invitation
-    @recipient = User.find_by_email(@invitation.email)
+    @recipient = User.where(:email => @invitation.email).first
     
     mail(:to => @invitation.email, :subject => "You've been invited to a Shareon.it community") do |format|
       format.html
     end
   end
-  
-  def request(membership)
-    @membership = membership
-    
-    mail(:to => @membership.community.user.email, 
-         :subject => "#{@membership.user.full_name} wants to join #{@membership.community.name}") do |format|
-      format.html
-    end
-  end
-  
+
   def request_accepted(membership)
     @membership = membership
     
     mail(:to => @membership.user.email, :subject => "Your Shareon.it request was accepted") do |format|
+      format.html
+    end
+  end
+  
+  def membership_request(membership)
+    @membership = membership
+    
+    mail(:to => @membership.community.user.email, 
+         :subject => "#{@membership.user.full_name} wants to join #{@membership.community.name}") do |format|
       format.html
     end
   end

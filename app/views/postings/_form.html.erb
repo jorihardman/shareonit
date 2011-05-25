@@ -1,18 +1,18 @@
-<%= javascript_include_tag application_js_path %>
+<%= javascript_include_tag 'application' %>
 
-<%= form_for @posting, :remote => true do |f| %>
+<%= form_for @posting, :html => { :multipart => true } do |f| %>
   <%= f.error_messages  %>
-  <p>
-    I
-    <% if params[:have_need] == 'have' %>
-      have
-      <%= f.hidden_field :have_need, :value => 'have' %>
-    <% else %>
-      need
-      <%= f.hidden_field :have_need, :value => 'need' %>
-    <% end %>
+  <div class="field">
+    <%= f.label (params[:have_need] == 'have' ? 'I have' : 'I need') %><br/>
     <%= f.text_field :description, :placeholder => 'e.g. one ring to rule them all...' %>
-  </p>
+  </div>
+  <% if params[:have_need] == 'have' %>
+    <div class="field">
+      <%= f.label :photo %><br/>
+      <%= f.file_field :photo %>
+    </div>
+  <% end %>
+  <%= f.hidden_field :have, :value => (params[:have_need] == 'have' ? true : false) %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.submit 'Post', :class => 'button' %>

@@ -35,8 +35,6 @@ Neighborly::Application.routes.draw do
   
   post 'feedback/submit_feedback', :as => :submit_feedback
 	get 'feedback' => 'feedback#index'
-	
-	get 'application' => 'home#application', :as => :application_js
   
   root :to => 'user_sessions#new'
 end
