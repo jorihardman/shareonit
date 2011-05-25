@@ -1,24 +1,24 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: neighborly
+  database: shareonit
   pool: 5
-  username: neighborly
-  password: neigh.borly!
+  username: shareonit
+  password: share.onit!
 
 test:
   adapter: mysql2
   encoding: utf8
-  database: neighborly
+  database: shareonit
   pool: 5
-  username: neighborly
-  password: neigh.borly!
+  username: shareonit
+  password: share.onit!
 
 production:
   adapter: mysql2
   encoding: utf8
-  database: neighborly
+  database: shareonit
   pool: 5
-  username: neighborly
-  password: neigh.borly!
+  username: shareonit
+  password: share.onit!
 
