@@ -126,8 +126,9 @@ class PostingsController < ApplicationController
   end
   
   def require_community
-    if current_user.communities.count == 0
-      redirect_to communities_path, :notice => 'You aren\'t a part of a community! Request membership to one below to start sharing.'
+    if current_user.active_communities.count == 0
+      redirect_to communities_path, 
+        :notice => 'You don\'t have any active communities! Activate a community or request membership to a new one to start sharing.'
       return false
     end
   end
