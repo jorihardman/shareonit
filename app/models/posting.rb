@@ -23,7 +23,6 @@ class Posting < ActiveRecord::Base
   validates :description, :presence => true
   validates :price, :numericality => true
   
-  @@per_page = 10 #will_paginate
 
   default_scope select(
       'postings.*, communities.name, users.first_name, users.last_name'
@@ -37,9 +36,6 @@ class Posting < ActiveRecord::Base
     where('communities.id IN (?)', UserSession.find.user.active_communities)
   }  
 
-  def for_current_user
-    
-  end
 
   def add_to_inventory
     invPosting = self.clone
@@ -55,7 +51,7 @@ class Posting < ActiveRecord::Base
       postings = postings.where("(first_name || ' ' || last_name) ILIKE ? OR description ILIKE ?", 
         "%#{search}%", "%#{search}%")
     end
-    return postings.paginate(:page => page)
+    return postings.paginate(:page => page, :per_page => 10)
   end
   
 end

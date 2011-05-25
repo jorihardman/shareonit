@@ -11,8 +11,6 @@ class Community < ActiveRecord::Base
   
   after_save :create_user_membership
   
-  @@per_page = 10
-  
   def send_invitations(email_list)
     email_list.strip.split(',').each do |email|
       email.strip!
@@ -39,7 +37,7 @@ class Community < ActiveRecord::Base
       communities = Community.all
     end
     communities = communities.where('name ILIKE ?', "%#{search}%") if search
-    communities.paginate(:page => page)
+    return communities.paginate(:page => page, :per_page => 10)
   end
   
 end
