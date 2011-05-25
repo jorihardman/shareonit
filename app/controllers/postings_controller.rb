@@ -51,7 +51,6 @@ class PostingsController < ApplicationController
 
   def new
     @posting = Posting.new
-    store_location
 
     respond_to do |format|
       format.html { render :layout => false }
