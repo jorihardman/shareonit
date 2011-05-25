@@ -48,7 +48,7 @@ class Posting < ActiveRecord::Base
   def self.search_or_where(search, condition, page)
     postings = Posting.for_current_user.where(condition)
     if search 
-      postings = postings.where("(first_name || ' ' || last_name) ILIKE ? OR description ILIKE ?", 
+      postings = postings.where("(users.first_name || ' ' || users.last_name) ILIKE ? OR postings.description ILIKE ?", 
         "%#{search}%", "%#{search}%")
     end
     return postings.paginate(:page => page, :per_page => 10)
