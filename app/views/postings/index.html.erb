@@ -1,7 +1,7 @@
 <% if action_name == 'requests' %>
-  <%= link_to 'Create New Request', new_posting_path(:have_need => 'need'), :rel => 'facebox', :class => 'button' %>
+  <%= link_to 'Create New Request', new_posting_path(:have => 0), :rel => 'facebox', :class => 'button' %>
 <% else %>
-  <%= link_to 'Add to Inventory', new_posting_path(:have_need => 'have'), :rel => 'facebox', :class => 'button' %>
+  <%= link_to 'Add to Inventory', new_posting_path(:have => 1), :rel => 'facebox', :class => 'button' %>
 <% end %>
 
 <div id="search">

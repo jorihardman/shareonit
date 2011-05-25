@@ -3,15 +3,13 @@
 <%= form_for @posting, :html => { :multipart => true }, :remote => true do |f| %>
   <%= f.error_messages  %>
   <div class="field">
-    <%= f.label (params[:have_need] == 'have' ? 'I have' : 'I need') %><br/>
+    <%= f.label (params[:have] ? 'I have' : 'I need') %><br/>
     <%= f.text_field :description, :placeholder => 'e.g. one ring to rule them all...' %>
   </div>
-  <% if params[:have_need] == 'have' %>
-    <div class="field">
-      <%= f.label :photo %><br/>
-      <%= f.file_field :photo %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :photo %><br/>
+    <%= f.file_field :photo %>
+  </div>
   <div class="field">
     <%= f.label :price %><br/>
     <%= f.radio_button :free, true %>Free<%= f.radio_button :free, false %>Pay
@@ -29,7 +27,7 @@
       <%= community.name %>
     </div>
   <% end %>
-  <%= f.hidden_field :have, :value => (params[:have_need] == 'have' ? true : false) %>
+  <%= f.hidden_field :have, :value => (@posting.have.nil? ? params[:have] : @posting.have) %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.submit 'Post', :class => 'button' %>
