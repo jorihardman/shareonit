@@ -10,7 +10,7 @@ module MembershipsHelper
       output << link_to('Remove', community_membership_path(membership.community_id, membership), :method => :delete, 
                 :confirm => "Are you sure?", :remote => true)
     else
-      output << link_to('Accept', accept_community_membership_path(membership.community_id, membership), :method => :put, :remote => true)
+      output << link_to('Accept', accept_community_membership_path(membership.community_id, membership), :remote => true)
     end
     output << '</td></tr>'
   end

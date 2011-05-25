@@ -1,5 +1,6 @@
 $('#notice').html('Joined <%= escape_javascript(@invitation.community.name) %>.');
 $('#invitation_<%= @invitation.id %>').remove();
+$('#community_<%= @invitation.community.id %>').remove();
 if ($('#invitation_list tr').length == 1) {
   $('#invitations').remove();
 }

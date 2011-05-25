@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
   
   before_filter :require_user
+  before_filter :require_owner, :only => 'accept'
   
   def accept
     @membership = Membership.find(params[:id])
@@ -39,6 +40,15 @@ class MembershipsController < ApplicationController
     
     respond_to do |format|
       format.js
+    end
+  end
+  
+  private
+  
+  def require_owner
+    if current_user.id != Membership.find(params[:id]).community.user_id
+      redirect_to communities_path, :notice => 'That community doesn\'t belong to you.'
+      return false
     end
   end
   

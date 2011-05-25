@@ -5,12 +5,12 @@ community on Shareon.it!<br/>
 
 <% if @recipient %>
   To accept the invitation, click
-  <%= link_to 'here', accept_community_invitation_url(@invitation.community_id, @invitation), :method => :post %>.
+  <%= link_to 'here', accept_community_invitation_url(@invitation.community_id, @invitation) %>.
 <% else %>
   Shareon.it helps social living communities save money by allowing them to share and sell goods.
-  To create an account and accept this invitation, go to 
-  <%= accept_community_invitation_url(@invitation.community_id, @invitation) %>, 
-  and use the email <%= @invitation.email %>.
+  To accept this invitation, go 
+  <%= link_to 'here', accept_community_invitation_url(@invitation.community_id, @invitation) %>, 
+  and register with the email <%= @invitation.email %>.
 <% end %>
 <br/><br/>
 

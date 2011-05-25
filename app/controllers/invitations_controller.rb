@@ -1,6 +1,7 @@
 class InvitationsController < ApplicationController
   
   before_filter :require_user
+  before_filter :require_owner, :only => 'accept'
   
   def new
     @community = Community.find(params[:community_id])
@@ -43,6 +44,15 @@ class InvitationsController < ApplicationController
     respond_to do |format|
       format.js
     end  
+  end
+  
+  private
+  
+  def require_owner
+    if current_user.email != Invitation.find(params[:id]).email
+      redirect_to communities_path, :notice => 'That invitation doesn\'t belong to you.'
+      return false
+    end
   end
   
 end

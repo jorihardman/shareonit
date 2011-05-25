@@ -4,12 +4,12 @@ Neighborly::Application.routes.draw do
   resources :communities do
     resources :memberships do
       member do
-        put 'accept'
+        get 'accept'
       end
     end
     resources :invitations do
       member do
-        post 'accept'
+        get 'accept'
       end
     end
   end

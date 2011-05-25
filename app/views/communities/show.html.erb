@@ -21,16 +21,16 @@
 <% unless @requests.empty? %>
 <div id="requests">
   <h2>Join Requests</h2>
-  <%= will_paginate @requests, :page_param => :req_page %>
+  <%= will_paginate @requests, :param_name => :req_page %>
     <%= render :partial => 'memberships/list', :object => @requests, :as => :memberships %>
-  <%= will_paginate @requests, :page_param => :req_page %>
+  <%= will_paginate @requests, :param_name => :req_page %>
   <br/>
 </div>
 <% end %>
 
 <div id="members">
   <h2>Active Members</h2>
-  <%= will_paginate @members, :page_param => :mem_page %>
+  <%= will_paginate @members, :param_name => :mem_page %>
     <%= render :partial => 'memberships/list', :object => @members, :as => :memberships %>
-  <%= will_paginate @members, :page_param => :mem_page %>
+  <%= will_paginate @members, :param_name => :mem_page %>
 </div>
