@@ -5,7 +5,7 @@ module CommunitiesHelper
     output = '' <<
     "<tr id=\"community_#{community.id}\">" <<
     "<td>#{community.name}</td>" <<
-    "<td>#{community.description}</td>" <<
+    #"<td>#{community.description}</td>" <<
     "<td>#{community.zip_code}</td>" <<
     "<td>" << (membership ? "#{membership.active ? 'Active' : 'Inactive'}" : '') << "</td>" <<
     '<td class="buttonset">'
