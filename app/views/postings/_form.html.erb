@@ -3,7 +3,7 @@
 <%= form_for @posting, :html => { :multipart => true }, :remote => true do |f| %>
   <%= f.error_messages  %>
   <div class="field">
-    <%= f.label (params[:have] ? 'I have' : 'I need') %><br/>
+    <%= f.label (params[:have] == '1' ? 'I have' : 'I need') %><br/>
     <%= f.text_field :description, :placeholder => 'e.g. one ring to rule them all...' %>
   </div>
   <div class="field">
