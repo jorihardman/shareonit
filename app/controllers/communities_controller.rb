@@ -16,8 +16,8 @@ class CommunitiesController < ApplicationController
 
   def show
     @community = Community.find(params[:id])
-    @members = @community.memberships.where(:accepted => true).paginate(:page => params[:mem_page])
-    @requests = @community.memberships.where(:accepted => false).paginate(:page => params[:req_page])
+    @members = @community.memberships.where(:accepted => true).paginate(:page => params[:mem_page], :per_page => 10)
+    @requests = @community.memberships.where(:accepted => false).paginate(:page => params[:req_page]), :per_page => 10)
 
     respond_to do |format|
       format.html # show.html.erb
