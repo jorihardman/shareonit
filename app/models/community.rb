@@ -9,7 +9,7 @@ class Community < ActiveRecord::Base
   validates :zip_code, :presence => true, :numericality => true
   validates :name, :presence => true, :uniqueness => true
   
-  after_save :create_user_membership
+  after_create :create_user_membership
   
   def send_invitations(email_list)
     email_list.strip.split(',').each do |email|
