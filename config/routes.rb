@@ -20,9 +20,9 @@ Neighborly::Application.routes.draw do
     end
     
     collection do
-      get 'inventory' => 'postings#inventory'
-      get 'requests' => 'postings#requests'
-      get 'my_stuff' => 'postings#my_stuff'
+      get 'inventory'
+      get 'requests'
+      get 'my_stuff'
     end
   end
 
