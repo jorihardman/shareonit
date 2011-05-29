@@ -18,7 +18,7 @@
     </div>
   </div>
   <%= f.label 'Post on' %>
-  <% current_user.active_communities.each do |community| %>
+  <% current_user.accepted_communities.each do |community| %>
     <div class ="field">
       <%= check_box_tag "posting[community_ids][]", community.id, 
           (action_name == 'new' ? true : @posting.communities.include?(community)), 

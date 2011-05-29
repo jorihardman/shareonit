@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   def active_communities
     communities.select('communities.id, communities.name').where('active = ?', true)
   end
+  
+  def accepted_communities
+    communities.select('communities.id, communities.name').where('accepted = ?', true)
+  end
 
   # workaround for mongomapper bug
   # http://bit.ly/bcQn3z
