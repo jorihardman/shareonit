@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
 
   def index
     @all_communities = Community.search(params[:search], params[:page])
-    @my_communities = current_user.communities.order('memberships.created_at DESC')
+    @my_communities = current_user.communities.order('communities.name ASC')
     @invitations = Invitation.where(:email => current_user.email)
 
     respond_to do |format|
