@@ -5,4 +5,3 @@ if ($('#requests tr').length == 1) {
 }
 $('#members > table > tbody > tr:first').after('<%= escape_javascript(raw(membership_table_row(@membership))) %>');
 $('.buttonset').buttonset();
-

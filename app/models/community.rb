@@ -29,16 +29,19 @@ class Community < ActiveRecord::Base
   end
   
   def self.search(search, page)
+    communities = Community.where('communities.id != ?', 0) #start with all records
     joined_communities = UserSession.find.user.communities.select('communities.id')
-    communities = []
-    unless joined_communities.empty?
-      communities = Community.where('id NOT IN (?)', joined_communities)
-    else
-      communities = Community.all
+    communities = Community.where('communities.id NOT IN (?)', joined_communities) unless joined_communities.empty?
+   
+    if search
+      if search =~ /^\d+$/ #if search is a number
+        communities = communities.where('communities.zip_code = ?', search.to_i)
+      else
+        communities = communities.where('communities.name ILIKE ?', "%#{search}%")
+      end
     end
-    communities = communities.where('name ILIKE ?', "%#{search}%") if search
+    
     return communities.paginate(:page => page, :per_page => 10)
   end
   
 end
-

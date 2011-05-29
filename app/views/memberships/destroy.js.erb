@@ -3,6 +3,7 @@ if ($('#membership_list').length > 0) {
   $('#notice').html('<%= @membership.user.full_name %> removed.');
 } else {
   $('#notice').html('Left <%= @membership.community.name %>.');
-  $('#community_<%= @membership.community_id %>').replaceWith('<%= raw(escape_javascript(community_table_row(@membership.community)))%>');
+  $('#community_<%= @membership.community_id %>').remove();
+  $('#all_communities > table > tbody > tr:first').after ('<%= raw(escape_javascript(community_table_row(@membership.community)))%>');
   $('.buttonset').buttonset();
 }
