@@ -2,6 +2,6 @@ $('#loading').hide();
 <% if @user.errors.any? %>
   $('#new_user_form').html('<%= escape_javascript(render :partial => 'users/form') %>');
 <% else %>
-  $.facebox.close();
+  $.fancybox.close();
   window.location.replace('<%= session[:return_to].nil? ? root_path : session[:return_to] %>');
 <% end %>

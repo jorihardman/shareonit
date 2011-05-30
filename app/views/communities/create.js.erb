@@ -1,7 +1,7 @@
 <% if @community.errors.any? %>
   $('#new_community_form').html('<%= escape_javascript(render :partial => 'communities/form') %>');
 <% else %>
-  $.facebox.close();
+  $.fancybox.close();
   $('#notice').html('Community added.');
   $('#community_list > tbody > tr:first').after('<%= escape_javascript(raw(community_table_row(@community))) %>');
   $('.buttonset').buttonset();

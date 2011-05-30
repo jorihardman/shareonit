@@ -3,10 +3,11 @@ $(document).ready(function() {
   $('.button').button();
   $('.buttonset').buttonset();
   
-  //facebox setup
-  $('a[rel*=facebox]').facebox({
-    loadingImage : '/images/loading.gif',
-    closeImage   : '/images/closelabel.png'
+  //fancybox setup
+  $('a[rel*=facebox]').fancybox({
+	  'transitionIn'	:	'elastic',
+		'transitionOut'	:	'elastic',
+		'showNavArrows': false 
   });
   
   //posting form

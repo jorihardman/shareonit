@@ -1,13 +1,14 @@
 <% if @posting.errors.any? %>
   $('#edit_posting_form').html('<%= escape_javascript(render :partial => 'postings/form') %>');
 <% else %>
-  $.facebox.close();
+  $.fancybox.close();
   $('#notice').html('Posting updated.');
   $('#posting_<%= @posting.id %>').replaceWith('<%= escape_javascript(raw(posting_table_row(@posting))) %>');
   $('.buttonset').buttonset();
-  $('a[rel*=facebox]').facebox({
-    loadingImage : '<%= image_path('loading.gif') %>',
-    closeImage   : '<%= image_path('closelabel.png') %>'
+  $('a[rel*=facebox]').fancybox({
+	  'transitionIn'	:	'elastic',
+		'transitionOut'	:	'elastic',
+		'showNavArrows': false 
   });
 <% end %>
 
