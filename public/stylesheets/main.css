@@ -25,10 +25,6 @@ div.field, div.actions { margin-bottom: 10px; }
   color: #99cd68;
 }
 
-#notice a:hover {
-  color: #6699ce;
-}
-
 .field_with_errors {
   padding: 2px;
   background-color: red;
@@ -187,8 +183,6 @@ div.buttonset a.ui-button {
   text-align: center; 
   font-size: small;
 }
-
-#footer p a:hover { color: #6699ce; }
 
 h1 { 
   color: #44cd51;
