@@ -202,4 +202,17 @@ h2 {
 
 #loading { display: none; }
 
-table { margin-bottom: 0; }
+table { 
+  margin-bottom: 0; 
+  border: 1px solid black;
+}
+
+.community_list th:last-child { width: 200px; }
+
+.posting_list th:last-child { width: 110px; }
+
+.membership_list th:last-child { width: 100px; }
+
+a.truncate:hover {
+  color: #6699ce;
+}

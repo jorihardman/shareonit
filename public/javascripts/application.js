@@ -18,6 +18,8 @@ $(document).ready(function() {
   $('#posting_free_true, #posting_free_false').change(function() {
     $('#price').toggle();
   });
+  
+  $('tr td:first-child').truncate({max_length: 75});
 });
 
 //google analytics

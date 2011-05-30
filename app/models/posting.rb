@@ -20,7 +20,7 @@ class Posting < ActiveRecord::Base
 
   process_in_background :photo
   
-  validates :description, :presence => true
+  validates :description, :presence => true, :length => { :within => 1..255 }
   validates :price, :numericality => true
   
 

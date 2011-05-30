@@ -2,7 +2,7 @@
 
 <div id="posting_info">
   <p>
-    <%= @posting.user.full_name %>
+    <%= @posting.user.full_name %> 
     <%= @posting.have ? 'has' : 'needs' %>
     <%= @posting.description %>
   </p>
@@ -20,4 +20,3 @@
     <%= submit_tag @posting.have ? 'Send Request' : 'Send Offer', :class => 'button' %>
   <% end %>
 <% end %>
-

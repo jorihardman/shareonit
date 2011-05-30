@@ -1,4 +1,4 @@
-if ($('#membership_list').length > 0) {
+if ($('.membership_list').length > 0) {
   $('#membership_<%= @membership.id %>').remove();
   $('#notice').html('<%= @membership.user.full_name %> removed.');
 } else {

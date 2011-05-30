@@ -3,6 +3,6 @@
 <% else %>
   $.fancybox.close();
   $('#notice').html('Community added.');
-  $('#community_list > tbody > tr:first').after('<%= escape_javascript(raw(community_table_row(@community))) %>');
+  $('#my_communities tr:first').after('<%= escape_javascript(raw(community_table_row(@community))) %>');
   $('.buttonset').buttonset();
 <% end %>
