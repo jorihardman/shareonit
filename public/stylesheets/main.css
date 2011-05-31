@@ -169,6 +169,8 @@ div.field, div.actions { margin-bottom: 10px; }
 
 .button { margin-bottom: 10px; }
 
+a.button:hover { color: #99cd68; }
+
 table .buttonset { 
   padding: 5px 5px 5px 5px; 
   text-align: center;
@@ -211,6 +213,4 @@ table {
 
 .membership_list th:last-child { width: 100px; }
 
-a.truncate:hover {
-  color: #6699ce;
-}
+a.truncate:hover { color: #6699ce; }
