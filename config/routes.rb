@@ -7,6 +7,7 @@ Neighborly::Application.routes.draw do
         get 'accept'
       end
     end
+    
     resources :invitations do
       member do
         get 'accept'

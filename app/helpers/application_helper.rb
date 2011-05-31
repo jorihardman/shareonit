@@ -14,10 +14,10 @@ module ApplicationHelper
     my_stuff_class = action_name == 'my_stuff' ? 'current' : ''
     communities_class = controller_name == 'communities' ? 'current' : ''
 
-    return "<li>#{link_to 'We Need', requests_postings_path, :class => requests_class}</li>" <<
-           "<li>#{link_to 'Our Inventory', inventory_postings_path, :class => inventory_class}</li>" <<
-           "<li>#{link_to 'My Stuff', my_stuff_postings_path, :class => my_stuff_class}</li>" <<
-           "<li>#{link_to 'Communities', communities_path, :class => communities_class}</li>"
+    return "<li>#{link_to 'Our Inventory', inventory_postings_path, :class => inventory_class}</li>" <<
+      "<li>#{link_to 'We Need', requests_postings_path, :class => requests_class}</li>" <<
+      "<li>#{link_to 'My Stuff', my_stuff_postings_path, :class => my_stuff_class}</li>" <<
+      "<li>#{link_to 'Communities', communities_path, :class => communities_class}</li>"
   end
   
 end

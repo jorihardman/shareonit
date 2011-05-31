@@ -22,7 +22,7 @@ class PostingsController < ApplicationController
   end
 
   def inventory
-    @postings = Posting.search_or_where(params[:search], ['have = ? and postings.user_id != ?', true, current_user.id], params[:page])
+    @postings = Posting.search_or_where(params[:search], ['have = ?', true], params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }
@@ -31,7 +31,7 @@ class PostingsController < ApplicationController
   end
 
   def requests
-    @postings = Posting.search_or_where(params[:search], ['have = ? and postings.user_id != ?', false, current_user.id], params[:page])
+    @postings = Posting.search_or_where(params[:search], ['have = ?', false], params[:page])
 
     respond_to do |format|
       format.html { render :action => 'index' }

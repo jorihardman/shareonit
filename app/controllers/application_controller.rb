@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def require_no_user
     if current_user
-      redirect_to requests_postings_path
+      redirect_to inventory_postings_path
       return false
     end
   end

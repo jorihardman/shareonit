@@ -10,6 +10,8 @@
   <% end %>
 </div>
 
-<%= will_paginate @postings %>
-<%= render :partial => 'postings/list', :object => @postings, :as => :postings %>
-<%= will_paginate @postings %>
+<div id="<%= action_name == 'requests' ? 'need' : 'have' %>">
+  <%= will_paginate @postings %>
+  <%= render :partial => 'postings/list', :object => @postings, :as => :postings %>
+  <%= will_paginate @postings %>
+</div>

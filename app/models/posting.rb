@@ -17,25 +17,25 @@ class Posting < ActiveRecord::Base
     :styles => { 
       :thumb => ["30x30#"] 
     }
-
+    
   process_in_background :photo
   
   validates :description, :presence => true, :length => { :within => 1..255 }
   validates :price, :numericality => true
-  
 
   default_scope select(
-      'postings.*, communities.name, users.first_name, users.last_name'
-    ).includes(
-      :user, :communities
-    ).where(
-      'postings.deleted = ?', false
-    ).order('postings.created_at DESC')
+    'postings.*, communities.name, users.first_name, users.last_name'
+  ).includes(
+    :user, :communities
+  ).where(
+    'postings.deleted = ?', false
+  ).order(
+    'postings.created_at DESC'
+  )
     
   scope :for_current_user, lambda { 
     where('communities.id IN (?)', UserSession.find.user.active_communities)
   }  
-
 
   def add_to_inventory
     invPosting = self.clone

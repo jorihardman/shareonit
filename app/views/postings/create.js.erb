@@ -3,7 +3,7 @@
     $('#new_posting_form').html('<%= escape_javascript(render :partial => 'postings/form') %>');
   <% else %>
     $.fancybox.close();
-    $('#notice').html('Posting added. Check it out in <%= escape_javascript link_to('my stuff', my_stuff_postings_path) %>.');
+    $('#notice').html('Posting added.');
     $('#<%= @posting.have ? 'have' : 'need' %> > table > tbody > tr:first').after('<%= escape_javascript(raw(posting_table_row(@posting))) %>');
     $('.buttonset').buttonset();
     $('a[rel*=facebox]').fancybox({
