@@ -15,7 +15,7 @@
     <%= text_area_tag 'message', nil, :placeholder => 'Enter optional message to user...' %>
     <br/>
     <% unless @posting.have %>
-      <%= check_box_tag 'add_to_inventory' %>Add this item to your inventory?<br/>
+      <%= check_box_tag 'add_to_inventory' %>Add item to active communities?<br/>
     <% end %>
     <%= submit_tag @posting.have ? 'Send Request' : 'Send Offer', :class => 'button' %>
   <% end %>

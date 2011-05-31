@@ -40,9 +40,15 @@ class Posting < ActiveRecord::Base
   def add_to_inventory
     invPosting = self.clone
     invPosting.have = true
-    invPosting.user_id = UserSession.find.user_id
+    invPosting.user_id = UserSession.find.user.id
     invPosting.save
     invPosting.add_to_active_communities
+  end
+  
+  def add_to_active_communities
+    UserSession.find.user.active_communities.each do |community|
+      community.postings << self
+    end
   end
 
   def self.search_or_where(search, condition, page)
