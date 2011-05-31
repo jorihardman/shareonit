@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :postings
 
   validates_presence_of :first_name, :last_name, :email, :password, :password_confirmation
+  
+  before_save :init
 
   def full_name
     "#{first_name} #{last_name}"
@@ -26,5 +28,11 @@ class User < ActiveRecord::Base
     [id.to_s]
   end
   
+  private
+  
+  def init
+    self.first_name = first_name.capitalize
+    self.last_name = last_name.capitalize
+  end
+  
 end
-
