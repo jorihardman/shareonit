@@ -34,6 +34,7 @@ class Community < ActiveRecord::Base
     communities = Community.where('communities.id NOT IN (?)', joined_communities) unless joined_communities.empty?
    
     if search
+      Search.create(:model => 'community', :query => search)
       if search =~ /^\d+$/ #if search is a number
         communities = communities.where('communities.zip_code = ?', search.to_i)
       else
