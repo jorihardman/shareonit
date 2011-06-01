@@ -19,6 +19,7 @@ $(document).ready(function() {
     $('#price').toggle();
   });
   
+  //create more/less links for first table field
   $('tr td:first-child').truncate({max_length: 75});
 });
 
