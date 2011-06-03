@@ -1,13 +1,5 @@
-<table class="posting_list ui-widget ui-widget-content">
-  <tr class="ui-widget-header">
-    <th>Description</th>
-    <th>User</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="posting_list">
 <% postings.each do |posting| %>
-  <%= raw(posting_table_row(posting)) %>
+  <%= raw(posting_div(posting)) %>
 <% end %>
-</table>
+</div>

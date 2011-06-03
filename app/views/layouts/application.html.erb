@@ -2,9 +2,6 @@
 <html>
 <head>
   <title>Shareon.it</title>
-  <%= stylesheet_link_tag 'blueprint/screen.css', :media => 'screen, projection' %>
-  <%= stylesheet_link_tag 'blueprint/print.css', :media => 'print' %>
-  <!–-[if IE]><%= stylesheet_link_tag 'blueprint/ie.css', :media => 'screen, projection' %><![endif]-–>
   <%= stylesheet_link_tag 'fancybox' %>
   <%= stylesheet_link_tag 'custom-theme/jquery-ui-custom.css' %>
   <%= stylesheet_link_tag 'main' %>
@@ -29,19 +26,17 @@
       <div id="login"><%= login_link %></div>
     </div>
   </div>
-  <div class="container">
-    <div id="page" class="span-24 last">
-      <div id="content">
-        <p id="notice"><%= notice %></p>
-        <%= yield %>  
-      </div>
-    </div>
-    <div id="footer" class="span-24 last">
-      <p>
-        <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %><br/>
-        Copyright 2011 Green Gorillaz LLC
-      </p>
-    </div>
+  <div id="page">
+    <div id="content">
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </div>  
+  </div>
+  <div id="footer" class="span-24 last">
+    <p>
+      <%= link_to 'Provide Feedback!', feedback_path, :rel => 'facebox' %><br/>
+      Copyright 2011 Green Gorillaz LLC
+    </p>
   </div>
 </body>
 </html>

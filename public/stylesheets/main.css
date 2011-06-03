@@ -1,6 +1,10 @@
 /* begin rails defaults */
 
-body { background-color: #99cd68 }
+body { 
+  background-color: #99cd68;
+  margin: 0;
+  padding: 0; 
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -78,20 +82,11 @@ div.field, div.actions { margin-bottom: 10px; }
   width: 449px;
   height: 85px;
   margin-top: 15px;
-  padding: 0;
-  background-color: #404040;
-	-moz-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #404040;
 }
 
 #header_content a:hover {
   background-color: transparent;
 }
-
-#search { margin-bottom: 10px; }
 
 #nav {
   width: 100%;
@@ -157,9 +152,11 @@ div.field, div.actions { margin-bottom: 10px; }
 
 #login a:hover { color: #6699ce; }
 
-.container #content {
+#page {
+  width: 950px;
+  margin: 0 auto 0 auto;
+  text-align: left; 
   background: white;
-  padding: 10px 20px 20px 20px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
 	border-width: 3px;
@@ -167,28 +164,21 @@ div.field, div.actions { margin-bottom: 10px; }
 	border-color: #404040;
 }
 
-.button { margin-bottom: 10px; }
+#content { padding: 10px 20px 20px 20px; }
 
-a.button:hover { color: #99cd68; }
-
-table .buttonset { 
-  padding: 5px 5px 5px 5px; 
-  text-align: center;
-}
-
-div.buttonset {
-  margin-bottom: 10px;
-}
-
-div.buttonset a.ui-button {
-  margin-right: -.5em;
+#footer {
+  width: 950px;
+  margin: 0 auto 10px auto;
 }
 
 #footer p {
-  margin-top: 10px; 
   text-align: center; 
   font-size: small;
 }
+
+#search { margin-bottom: 10px; }
+
+.button { margin-bottom: 10px; }
 
 h1 { 
   color: #44cd51;
@@ -200,17 +190,45 @@ h2 {
   font-size: 16pt;
 }
 
-#loading { display: none; }
+a.truncate:hover { color: #6699ce; }
 
-table { 
-  margin-bottom: 0; 
-  border: 1px solid black;
+.list-element {
+  width: 900px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #F3F9FF;
+	-moz-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #6699ce;
+	overflow: hidden;
 }
 
-.community_list th:last-child { width: 200px; }
+.list-left {
+  width: 750px;
+  float: left;
+  text-align: left;
+}
 
-.posting_list th:last-child { width: 120px; }
+.photo {
+  float: left;
+  padding: 0 10px 10px 0;
+}
 
-.membership_list th:last-child { width: 100px; }
+.list-right {
+  width: 150px;
+  float: right;
+  text-align: right;
+}
 
-a.truncate:hover { color: #6699ce; }
+textarea {
+  width: 390px;
+  height: 100px;
+}
+
+a { color: black; }
+a:visited { color: black; }
+a:hover { color: #6699ce; }
+
+.pagination { margin-bottom: 5px; }

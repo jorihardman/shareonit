@@ -20,7 +20,7 @@ $(document).ready(function() {
   });
   
   //create more/less links for first table field
-  $('tr td:first-child').truncate({max_length: 75});
+//  $('.description').truncate({max_length: 100});
 });
 
 function resize_fancybox() {
