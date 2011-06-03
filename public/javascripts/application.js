@@ -5,8 +5,8 @@ $(document).ready(function() {
   
   //fancybox setup
   $('a[rel*=facebox]').fancybox({
-	  'transitionIn'	:	'elastic',
-		'transitionOut'	:	'elastic',
+	  'transitionIn':	'elastic',
+		'transitionOut': 'elastic',
 		'showNavArrows': false 
   });
   
@@ -22,6 +22,12 @@ $(document).ready(function() {
   //create more/less links for first table field
   $('tr td:first-child').truncate({max_length: 75});
 });
+
+function resize_fancybox() {
+  $('#fancybox-wrap').width(430);
+  $('#fancybox-content').width(410);
+  $.fancybox.resize();
+}
 
 //google analytics
 var _gaq = _gaq || [];

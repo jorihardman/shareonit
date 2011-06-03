@@ -1,5 +1,6 @@
 <% if @community.errors.any? %>
   $('#new_community_form').html('<%= escape_javascript(render :partial => 'communities/form') %>');
+  resize_fancybox();
 <% else %>
   $.fancybox.close();
   $('#notice').html('Community added.');
