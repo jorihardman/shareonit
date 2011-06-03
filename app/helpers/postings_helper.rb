@@ -22,14 +22,14 @@ module PostingsHelper
     end
     
     output = <<-TEXT
-      <div id="posting_#{posting.id}" class="list-element"> 
-        <div class="list-left">
+      <div id="posting_#{posting.id}" class="list_element"> 
+        <div class="list_left">
           #{image}
-          #{posting.description}
+          <b>Description:</b> #{posting.description}<br/>
+          <b>Price:</b> #{posting.price == 0 ? 'FREE' : posting.price}
         </div>
-        <div class="list-right">
-          #{posting.user.full_name}<br/>
-          Price: #{posting.free ? 'FREE' : number_to_currency(posting.price, :unit => '$')}<br/>
+        <div class="list_right">
+          Posted by #{posting.user.full_name}<br/>
           <div class="buttonset">#{buttonset}</div>
         </div>
       </div>

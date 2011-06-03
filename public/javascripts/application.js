@@ -18,9 +18,6 @@ $(document).ready(function() {
   $('#posting_free_true, #posting_free_false').change(function() {
     $('#price').toggle();
   });
-  
-  //create more/less links for first table field
-//  $('.description').truncate({max_length: 100});
 });
 
 function resize_fancybox() {

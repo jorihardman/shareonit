@@ -4,7 +4,7 @@
 <% else %>
   $.fancybox.close();
   $('#notice').html('Posting updated.');
-  $('#posting_<%= @posting.id %>').replaceWith('<%= escape_javascript(raw(posting_table_row(@posting))) %>');
+  $('#posting_<%= @posting.id %>').replaceWith('<%= escape_javascript(raw(posting_div(@posting))) %>');
   $('.buttonset').buttonset();
   $('a[rel*=facebox]').fancybox({
 	  'transitionIn'	:	'elastic',

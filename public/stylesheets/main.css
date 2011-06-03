@@ -192,32 +192,35 @@ h2 {
 
 a.truncate:hover { color: #6699ce; }
 
-.list-element {
+.list_element {
   width: 900px;
   margin-bottom: 5px;
   padding: 5px;
-  background-color: #F3F9FF;
 	-moz-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
-	border-width: 3px;
+	border-width: 1px;
 	border-style: solid;
 	border-color: #6699ce;
 	overflow: hidden;
 }
 
-.list-left {
-  width: 750px;
+.list_element:nth-child(odd) {
+  background-color: #E6FFE6;
+}
+
+.list_left {
+  width: 700px;
   float: left;
   text-align: left;
 }
 
 .photo {
   float: left;
-  padding: 0 10px 10px 0;
+  padding-right: 10px;
 }
 
-.list-right {
-  width: 150px;
+.list_right {
+  width: 200px;
   float: right;
   text-align: right;
 }
