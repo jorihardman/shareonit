@@ -1,5 +1,5 @@
-<%= link_to 'I Need', new_posting_path(:have => 0), :rel => 'facebox', :class => 'button' %>
-<div id="need">
+<%= link_to 'I Want', new_posting_path(:have => 0), :rel => 'facebox', :class => 'button' %>
+<div id="want">
   <%= will_paginate @requests, :param_name => 'req_page' %>
   <%= render :partial => 'postings/list', :object => @requests, :as => :postings %>
   <%= will_paginate @requests, :param_name => 'req_page' %>
@@ -13,4 +13,3 @@
   <%= render :partial => 'postings/list', :object => @inventory, :as => :postings %>
   <%= will_paginate @inventory, :param_name => 'inv_page' %>
 </div>
-
