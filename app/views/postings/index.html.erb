@@ -1,16 +1,17 @@
 <div id="top">
   <div id="buttons" class="buttonset">
   <% unless action_name == 'requests' %>
-    <%= link_to 'I Have', new_posting_path(:have => 1), :rel => 'facebox' %>
+    <%= link_to 'Add To Inventory', new_posting_path(:have => 1), :rel => 'facebox' %>
   <% end %>
   <% unless action_name == 'inventory' %>
-    <%= link_to 'I Want', new_posting_path(:have => 0), :rel => 'facebox' %>
+    <%= link_to 'Create New Request', new_posting_path(:have => 0), :rel => 'facebox' %>
   <% end %>
   </div>
 
   <div id="search">
     <%= form_tag request.path, :method => :get do %>
       <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
+      <%= hidden_field_tag :category, params[:category] %>
     <% end %>
     <br/>
     <div id="categories">

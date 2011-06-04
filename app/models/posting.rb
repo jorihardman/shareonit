@@ -66,7 +66,7 @@ class Posting < ActiveRecord::Base
     search = params[:search]
     postings = Posting.for_current_user.where(condition)
     
-    postings = postings.where('postings.category = ?', params[:category]) if params[:category]
+    postings = postings.where('postings.category = ?', params[:category]) unless params[:category].blank?
     
     if search
       Search.create(:model => 'posting', :query => search)

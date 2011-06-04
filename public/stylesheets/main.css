@@ -164,7 +164,10 @@ div.field, div.actions { margin-bottom: 10px; }
 	border-color: #404040;
 }
 
-#content { padding: 10px 20px 20px 20px; }
+#content { 
+  padding: 10px 20px 20px 20px; 
+	overflow: hidden;  
+}
 
 #footer {
   width: 950px;
@@ -190,14 +193,30 @@ h2 {
 
 a.truncate:hover { color: #6699ce; }
 
-#buttons { float: left; }
+#top {
+  height: 100px;
+}
 
-#search { float: right; }
+#buttons {  
+  float: left;
+}
+
+#search { 
+  float: right; 
+}
+
+#search input {
+  width: 300px;
+  float: right;
+}
 
 #categories {
   width: 300px;
   text-align: right;
+  float: right;
 }
+
+posting_list { width: 100%; }
 
 #categories ul { padding: 0; }
 
