@@ -1,18 +1,27 @@
-<div class="buttonset">
-<% unless action_name == 'requests' %>
-  <%= link_to 'I Have', new_posting_path(:have => 1), :rel => 'facebox' %>
-<% end %>
-<% unless action_name == 'inventory' %>
-  <%= link_to 'I Want', new_posting_path(:have => 0), :rel => 'facebox' %>
-<% end %>
-</div>
-
-<div id="search">
-  <%= form_tag request.path, :method => :get do %>
-    <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
+<div id="top">
+  <div id="buttons" class="buttonset">
+  <% unless action_name == 'requests' %>
+    <%= link_to 'I Have', new_posting_path(:have => 1), :rel => 'facebox' %>
   <% end %>
+  <% unless action_name == 'inventory' %>
+    <%= link_to 'I Want', new_posting_path(:have => 0), :rel => 'facebox' %>
+  <% end %>
+  </div>
+
+  <div id="search">
+    <%= form_tag request.path, :method => :get do %>
+      <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
+    <% end %>
+    <br/>
+    <div id="categories">
+      <ul>
+        <li><%= link_to 'All', :action => action_name %></li>
+      <% Posting.categories.each do |category| %>
+        <li><%= link_to category, :action => action_name, :category => category %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<%= will_paginate @postings %>
 <%= render :partial => 'postings/list', :object => @postings, :as => :postings %>
-<%= will_paginate @postings %>

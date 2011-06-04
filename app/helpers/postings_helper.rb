@@ -21,11 +21,13 @@ module PostingsHelper
         '</div>'
     end
     
+    subtext = "<div class=\"subtext\">"
     if action_name != 'my_stuff'
-      subtext = "<div class=\"subtext\">Posted by #{posting.user.full_name}</div>"
+      subtext << "Posted by #{posting.user.full_name}"
     else
-      subtext = "<div class=\"subtext\">I #{posting.have ? 'have' : 'want'} this</div>"
+      subtext << "I #{posting.have ? 'have' : 'want'} this"
     end
+    subtext << " in #{link_to posting.category, :action => action_name, :category => posting.category}</div>"
     
     output = <<-TEXT
       <div id="posting_#{posting.id}" class="list_element"> 

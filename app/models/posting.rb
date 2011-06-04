@@ -43,6 +43,10 @@ class Posting < ActiveRecord::Base
       self.errors[:base] << "You must set a price."
     end
   end  
+  
+  def self.categories
+    ['Other', 'Movies', 'Games', 'Furniture', 'Electronics', 'Food', 'Books', 'Cleaning Supplies', 'Service']
+  end
 
   def add_to_inventory
     invPosting = self.clone
@@ -58,8 +62,11 @@ class Posting < ActiveRecord::Base
     end
   end
 
-  def self.search_or_where(search, condition, page)
+  def self.search_or_where(params, condition)
+    search = params[:search]
     postings = Posting.for_current_user.where(condition)
+    
+    postings = postings.where('postings.category = ?', params[:category]) if params[:category]
     
     if search
       Search.create(:model => 'posting', :query => search)
@@ -67,7 +74,7 @@ class Posting < ActiveRecord::Base
         "%#{search}%", "%#{search}%")
     end
     
-    return postings.paginate(:page => page, :per_page => 10)
+    return postings.paginate(:page => params[:page], :per_page => 10)
   end
   
 end

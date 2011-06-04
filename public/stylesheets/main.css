@@ -176,8 +176,6 @@ div.field, div.actions { margin-bottom: 10px; }
   font-size: small;
 }
 
-#search { margin-bottom: 10px; }
-
 .button, .buttonset { margin-bottom: 10px; }
 
 h1 { 
@@ -192,9 +190,20 @@ h2 {
 
 a.truncate:hover { color: #6699ce; }
 
-#posting_list {
-  border-bottom: 1px solid #6699ce;
+#buttons { float: left; }
+
+#search { float: right; }
+
+#categories {
+  width: 300px;
+  text-align: right;
 }
+
+#categories ul { padding: 0; }
+
+#categories ul li { display: inline; }
+
+#posting_list { border-bottom: 1px solid #6699ce; }
 
 .list_element {
   width: 900px;
@@ -246,6 +255,9 @@ a.ui-button :hover { color: #99cd68; }
   color: gray;
   margin-top: 2px;
 }
+
+.subtext a { color: gray; }
+.subtext a:hover { color: #6699ce; }
 
 div.buttonset a.ui-button { margin-right: -.5em; }
 
