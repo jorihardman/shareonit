@@ -5,7 +5,7 @@
   <% else %>
     $.fancybox.close();
     $('#notice').html('Posting added.');
-    $('#<%= @posting.have ? 'have' : 'want' %> .list_element:first').before('<%= escape_javascript(raw(posting_div(@posting))) %>');
+    $('#posting_list .list_element:first').before('<%= escape_javascript(raw(posting_div(@posting))) %>');
     $('.buttonset').buttonset();
     $('a[rel*=facebox]').fancybox({
 	    'transitionIn'	:	'elastic',

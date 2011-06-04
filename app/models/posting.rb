@@ -15,15 +15,9 @@ class Posting < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     },
     :styles => { 
-      :thumb => ["75x150>"] 
-    }
-    
+      :thumb => ["100x100>"]
+    }    
   process_in_background :photo
-  
-  validates_attachment_size :photo, :less_than => 5.megabytes
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
-  validates :description, :presence => true, :length => { :within => 1..255 }
-  validates :price, :numericality => true
 
   default_scope select(
     'postings.*, communities.name, users.first_name, users.last_name'
@@ -37,7 +31,18 @@ class Posting < ActiveRecord::Base
     
   scope :for_current_user, lambda { 
     where('communities.id IN (?)', UserSession.find.user.active_communities)
-  }  
+  }
+  
+  validates_attachment_size :photo, :less_than => 5.megabytes
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates :description, :presence => true, :length => { :within => 1..255 }
+  validates :price, :numericality => true
+  
+  def validate
+    if free == false and price == 0
+      self.errors[:base] << "You must set a price."
+    end
+  end  
 
   def add_to_inventory
     invPosting = self.clone

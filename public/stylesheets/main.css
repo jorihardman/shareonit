@@ -178,7 +178,7 @@ div.field, div.actions { margin-bottom: 10px; }
 
 #search { margin-bottom: 10px; }
 
-.button { margin-bottom: 10px; }
+.button, .buttonset { margin-bottom: 10px; }
 
 h1 { 
   color: #44cd51;
@@ -191,6 +191,10 @@ h2 {
 }
 
 a.truncate:hover { color: #6699ce; }
+
+#posting_list {
+  border-bottom: 1px solid #6699ce;
+}
 
 .list_element {
   width: 900px;
@@ -212,7 +216,8 @@ a.truncate:hover { color: #6699ce; }
 
 .photo {
   float: left;
-  padding-right: 10px;
+  padding: 0 10px 0 0;
+  min-height: 75px;
 }
 
 .list_right {
@@ -226,9 +231,33 @@ textarea {
   height: 100px;
 }
 
-a { color: black; }
-a:visited { color: black; }
+a { color: #362B36; }
+a:visited { color: #362B36; }
 a:hover { color: #6699ce; }
 a.ui-button :hover { color: #99cd68; }
 
-.pagination { margin-bottom: 5px; }
+.price {
+  font-weight: bold;
+  color: green;
+  margin: 10px 7px 10px 0;
+}
+
+.subtext {
+  color: gray;
+  margin-top: 2px;
+}
+
+div.buttonset a.ui-button { margin-right: -.5em; }
+
+table {
+  width: 100%;
+  margin-bottom: 0; 
+  border-collapse: collapse;
+}
+
+table .buttonset { 
+  padding: 5px 5px 5px 5px; 
+  text-align: center;
+}
+
+table tr:nth-child(even) { background-color: #E6FFE6; }

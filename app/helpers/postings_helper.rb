@@ -21,15 +21,23 @@ module PostingsHelper
         '</div>'
     end
     
+    if action_name != 'my_stuff'
+      subtext = "<div class=\"subtext\">Posted by #{posting.user.full_name}</div>"
+    else
+      subtext = "<div class=\"subtext\">I #{posting.have ? 'have' : 'want'} this</div>"
+    end
+    
     output = <<-TEXT
       <div id="posting_#{posting.id}" class="list_element"> 
         <div class="list_left">
           #{image}
-          <b>Description:</b> #{posting.description}<br/>
-          <b>Price:</b> #{posting.price == 0 ? 'FREE' : number_to_currency(posting.price, :unit => '$')}
+          #{posting.description}
+          #{subtext}
         </div>
         <div class="list_right">
-          Posted by #{posting.user.full_name}<br/>
+          <div class="price">
+            #{posting.price == 0 ? 'FREE' : number_to_currency(posting.price, :unit => '$')}
+          </div>
           <div class="buttonset">#{buttonset}</div>
         </div>
       </div>

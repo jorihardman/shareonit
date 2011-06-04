@@ -12,11 +12,10 @@ class PostingsController < ApplicationController
   end
 
   def my_stuff
-    @requests = Posting.search_or_where(params[:search], ['have = ? and postings.user_id = ?', false, current_user.id], params[:req_page])
-    @inventory = Posting.search_or_where(params[:search], ['have = ? and postings.user_id = ?', true, current_user.id], params[:inv_page])
+    @postings = Posting.search_or_where(params[:search], ['postings.user_id = ?', current_user.id], params[:page])
 
     respond_to do |format|
-      format.html
+      format.html { render :action => 'index' }
       format.xml  { render :xml => @requests + @inventory }
     end
   end
