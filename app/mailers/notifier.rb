@@ -3,8 +3,8 @@ class Notifier < ActionMailer::Base
   default :from => "ShareOnIt@shareon.it"
   default_url_options[:host] = "shareon.it"
 
-  def welcome()
-    @user = UserSession.find.user
+  def welcome(user)
+    @user = user
     mail(:subject => 'Welcome to Shareon.it', :to => user.email) do |format|
       format.html
     end
@@ -24,8 +24,8 @@ class Notifier < ActionMailer::Base
     end
   end
   
-  def offer(posting, message)
-    @from_user = UserSession.find.user
+  def offer(posting, message, user)
+    @from_user = user
     @to_user = posting.user
     @posting = posting
     @message = message
@@ -36,8 +36,8 @@ class Notifier < ActionMailer::Base
     end
   end
   
-  def feedback(feedback_message)
-    @user = UserSession.find.user
+  def feedback(feedback_message, user)
+    @user = user
     @message = feedback_message
     
     mail(:to => 'feedback@shareon.it', :subject => "Shareon.it Feedback") do |format|
