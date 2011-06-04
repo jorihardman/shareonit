@@ -7,7 +7,7 @@ module PostingsHelper
       if action_name == 'requests'
         link_text = 'Offer'
       elsif action_name == 'inventory'
-        link_text = posting.free ? 'Borrow' : 'Buy'
+        link_text = posting.for_sale ? 'Buy' : 'Borrow'
       end
       buttonset << link_to(link_text, posting, :rel => 'facebox')
     else
@@ -41,6 +41,7 @@ module PostingsHelper
         <div class="list_right">
           <div class="price">
             #{posting.price == 0 ? 'FREE' : number_to_currency(posting.price, :unit => '$')}
+            to #{posting.for_sale ? 'buy' : 'borrow'}
           </div>
           <div class="buttonset">#{buttonset}</div>
         </div>

@@ -298,3 +298,5 @@ table .buttonset {
 }
 
 table tr:nth-child(even) { background-color: #E6FFE6; }
+
+#posting_info { width: 390px; }
