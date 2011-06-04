@@ -26,7 +26,7 @@ class Posting < ActiveRecord::Base
   ).where(
     'postings.deleted = ?', false
   ).order(
-    'postings.updated_at DESC'
+    'postings.created_at DESC'
   )
     
   scope :for_current_user, lambda { 
