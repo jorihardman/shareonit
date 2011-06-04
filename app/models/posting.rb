@@ -15,7 +15,7 @@ class Posting < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     },
     :styles => { 
-      :thumb => ["30x30#"] 
+      :thumb => ["75x150>"] 
     }
     
   process_in_background :photo

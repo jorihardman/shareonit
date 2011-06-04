@@ -108,7 +108,7 @@ class PostingsController < ApplicationController
   
   def email
     @posting = Posting.find(params[:id])
-    Notifier.delay.offer(@posting, params[:message])
+    Notifier.offer(@posting, params[:message])
     @posting.add_to_inventory if params[:add_to_inventory]
   
     respond_to do |format|

@@ -26,7 +26,7 @@ module PostingsHelper
         <div class="list_left">
           #{image}
           <b>Description:</b> #{posting.description}<br/>
-          <b>Price:</b> #{posting.price == 0 ? 'FREE' : posting.price}
+          <b>Price:</b> #{posting.price == 0 ? 'FREE' : number_to_currency(posting.price, :unit => '$')}
         </div>
         <div class="list_right">
           Posted by #{posting.user.full_name}<br/>

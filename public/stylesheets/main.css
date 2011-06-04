@@ -194,13 +194,9 @@ a.truncate:hover { color: #6699ce; }
 
 .list_element {
   width: 900px;
-  margin-bottom: 5px;
+  min-height: 75px;
   padding: 5px;
-	-moz-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #6699ce;
+  border-top: 1px solid #6699ce;
 	overflow: hidden;
 }
 
@@ -233,5 +229,6 @@ textarea {
 a { color: black; }
 a:visited { color: black; }
 a:hover { color: #6699ce; }
+a.ui-button :hover { color: #99cd68; }
 
 .pagination { margin-bottom: 5px; }
