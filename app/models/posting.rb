@@ -45,7 +45,7 @@ class Posting < ActiveRecord::Base
   end  
   
   def self.categories
-    ['Other', 'Movies', 'Games', 'Furniture', 'Electronics', 'Food', 'Books', 'Cleaning Supplies', 'Service']
+    ['Other', 'Free', 'Movies', 'Games', 'Furniture', 'Electronics', 'Food', 'Books', 'Cleaning Supplies', 'Service']
   end
 
   def add_to_inventory
@@ -66,7 +66,13 @@ class Posting < ActiveRecord::Base
     search = params[:search]
     postings = Posting.for_current_user.where(condition)
     
-    postings = postings.where('postings.category = ?', params[:category]) unless params[:category].blank?
+    unless params[:category].blank?
+      if params[:category] == 'Free'
+        postings = postings.where('postings.free = ?', true)
+      else
+        postings = postings.where('postings.category = ?', params[:category])
+      end
+    end
     
     if search
       Search.create(:model => 'posting', :query => search)

@@ -33,7 +33,9 @@ module PostingsHelper
       <div id="posting_#{posting.id}" class="list_element"> 
         <div class="list_left">
           #{image}
-          #{posting.description}
+          <div class="description">
+            #{link_to posting.description, posting_path(posting), :rel => 'facebox'}
+          </div>
           #{subtext}
         </div>
         <div class="list_right">

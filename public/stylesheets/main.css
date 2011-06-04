@@ -206,12 +206,12 @@ a.truncate:hover { color: #6699ce; }
 }
 
 #search input {
-  width: 300px;
+  width: 330px;
   float: right;
 }
 
 #categories {
-  width: 300px;
+  width: 330px;
   text-align: right;
   float: right;
 }
@@ -246,6 +246,12 @@ posting_list { width: 100%; }
   float: left;
   padding: 0 10px 0 0;
   min-height: 75px;
+}
+
+.description a {
+  font-weight: bold;
+  color: #4C7CAE;
+  text-decoration: none;
 }
 
 .list_right {

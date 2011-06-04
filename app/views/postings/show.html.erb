@@ -9,7 +9,7 @@
 </div>
 
 <% if current_user.id == @posting.user_id %>
-  <%= link_to 'Edit Posting', edit_posting_path(@posting), :rel => 'facebox' %>
+  <%= link_to 'Edit Posting', edit_posting_path(@posting), :rel => 'facebox', :class => 'button' %>
 <% else %>
   <%= form_tag email_posting_path, :remote => true do %>
     <%= text_area_tag 'message', nil, :placeholder => 'Enter optional message to user...' %>
