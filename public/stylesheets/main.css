@@ -138,8 +138,8 @@ div.field, div.actions { margin-bottom: 10px; }
 #nav_list li a.current, a:hover.current {
   color: #404040;
   background-color: #99cd68;
-	-moz-border-radius: 2px 2px 2px 2px;
-	border-radius: 2px 2px 2px 2px;
+	-moz-border-radius: 7px 7px 7px 7px;
+	border-radius: 7px 7px 7px 7px;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #404040;
