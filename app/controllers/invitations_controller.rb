@@ -33,7 +33,7 @@ class InvitationsController < ApplicationController
     
     respond_to do |format|
       format.js
-      format.html { redirect_to communities_path, :notice => "#{membership.community.name} joined." }
+      format.html { redirect_to root_path, :notice => "#{membership.community.name} joined." }
     end
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604195318) do
+ActiveRecord::Schema.define(:version => 20110605015153) do
 
   create_table "communities", :force => true do |t|
     t.string   "name"
@@ -76,6 +76,9 @@ ActiveRecord::Schema.define(:version => 20110604195318) do
     t.string   "category",                                                            :null => false
     t.boolean  "for_sale",                                         :default => false
   end
+
+  add_index "postings", ["category"], :name => "index_postings_on_category"
+  add_index "postings", ["free"], :name => "index_postings_on_free"
 
   create_table "searches", :force => true do |t|
     t.string   "query"
