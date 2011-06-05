@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Neighborly::Application.load_tasks
+Shareonit::Application.load_tasks

@@ -1,4 +1,4 @@
-Neighborly::Application.routes.draw do
+Shareonit::Application.routes.draw do
   resources :users
   
   resources :communities do
