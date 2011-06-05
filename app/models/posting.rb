@@ -45,7 +45,7 @@ class Posting < ActiveRecord::Base
   end  
   
   def self.categories
-    ['Other', 'Movies', 'Games', 'Furniture', 'Electronics', 'Food', 'Books', 'Cleaning Supplies', 'Service']
+    ['Other', 'Books', 'Cleaning Supplies', 'Electronics', 'Food', 'Furniture', 'Games', 'Movies', 'Service']
   end
 
   def add_to_inventory
