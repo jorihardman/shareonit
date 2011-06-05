@@ -68,7 +68,7 @@ div.field, div.actions { margin-bottom: 10px; }
 
 #header { 
   width: 100%;
-  height: 117px;
+  height: 115px;
   background-color: #6699ce;
 }
 
@@ -81,7 +81,7 @@ div.field, div.actions { margin-bottom: 10px; }
 #header_content img {
   width: 449px;
   height: 85px;
-  margin: 16px 0 0 -7px;
+  margin: 15px 0 0 -7px;
 }
 
 #header_content a:hover {
@@ -92,7 +92,7 @@ div.field, div.actions { margin-bottom: 10px; }
   width: 100%;
   height: 40px;
   background-image: url('../images/nav.gif');
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
 }
 
 #nav_content {
@@ -105,8 +105,8 @@ div.field, div.actions { margin-bottom: 10px; }
 	border-width: 1px;
 	border-style: solid;
 	border-color: #404040;
-	-moz-box-shador: 1px 1px 5px #404040;
-	box-shadow: 1px 1px 5px #404040;
+	-moz-box-shador: 2px 2px 7px #404040;
+	box-shadow: 2px 2px 7px #404040;
 }
 
 #nav_list {
@@ -138,8 +138,8 @@ div.field, div.actions { margin-bottom: 10px; }
 #nav_list li a.current, a:hover.current {
   color: #404040;
   background-color: #99cd68;
-	-moz-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 2px 2px 2px 2px;
+	border-radius: 2px 2px 2px 2px;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #404040;
@@ -162,7 +162,7 @@ div.field, div.actions { margin-bottom: 10px; }
 
 #page {
   width: 950px;
-  margin: 0 auto 0 auto;
+  margin: 20px auto 20px auto;
   text-align: left; 
   background: white;
 	-moz-border-radius: 10px 10px 10px 10px;
@@ -172,8 +172,30 @@ div.field, div.actions { margin-bottom: 10px; }
 	border-color: #404040;
 }
 
+#landing {
+  width: 950px;
+  margin: 0 auto 10px auto;
+}
+
+#splash {
+  font-weight: bold;
+  background-image: url(../images/splash.png);
+  color: white;
+  margin: 0 auto;
+  width: 680px;
+  height: 600px;
+}
+
+#splash .new_user_session {
+  padding: 255px 0 0 225px;
+}
+
+input[type="text"], input[type="password"] {
+  width: 220px;
+}
+
 #content { 
-  padding: 10px 20px 20px 20px; 
+  padding: 10px 20px 10px 20px; 
 	overflow: hidden;  
 }
 
@@ -185,12 +207,13 @@ div.field, div.actions { margin-bottom: 10px; }
 #footer p {
   text-align: center; 
   font-size: small;
+  margin-top: 0;
 }
 
 .button, .buttonset { margin-bottom: 10px; }
 
 h1 { 
-  color: #44cd51;
+  color: #404040;
   font-size: 18pt; 
 }
 
@@ -273,10 +296,12 @@ textarea {
   height: 100px;
 }
 
-a { color: #362B36; }
-a:visited { color: #362B36; }
+a { color: #404040; }
+a:visited { color: #404040; }
 a:hover { color: #6699ce; }
-a.ui-button :hover { color: #99cd68; }
+
+a.ui-button { color: white; }
+a.ui-button:hover { color: white; }
 
 .price {
   font-weight: bold;
