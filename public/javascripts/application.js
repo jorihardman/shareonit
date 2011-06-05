@@ -7,7 +7,8 @@ $(document).ready(function() {
   $('a[rel*=facebox]').fancybox({
 	  'transitionIn':	'elastic',
 		'transitionOut': 'elastic',
-		'showNavArrows': false 
+		'showNavArrows': false,
+		'scrolling': 'no'
   });
   
   //posting form
