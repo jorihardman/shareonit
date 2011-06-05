@@ -17,6 +17,7 @@
     <div id="categories">
       <ul>
         <li><%= link_to 'All', :action => action_name %></li>
+        <li><%= link_to 'Free', :action => action_name, :category => 'Free'%></li>
       <% Posting.categories.each do |category| %>
         <li><%= link_to category, :action => action_name, :category => category %></li>
       <% end %>
