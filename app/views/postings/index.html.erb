@@ -1,10 +1,10 @@
 <div id="top">
   <div id="buttons" class="buttonset">
   <% unless action_name == 'requests' %>
-    <%= link_to 'Add To Inventory', new_posting_path(:have => 1), :rel => 'facebox' %>
+    <%= link_to 'Lend/Sell Something', new_posting_path(:have => 1), :rel => 'facebox' %>
   <% end %>
   <% unless action_name == 'inventory' %>
-    <%= link_to 'Create New Request', new_posting_path(:have => 0), :rel => 'facebox' %>
+    <%= link_to 'Request Something', new_posting_path(:have => 0), :rel => 'facebox' %>
   <% end %>
   </div>
 
