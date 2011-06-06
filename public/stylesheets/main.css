@@ -332,4 +332,6 @@ table .buttonset {
 
 table tr:nth-child(even) { background-color: #E6FFE6; }
 
+table td:last-child { text-align: right; }
+
 #posting_info { width: 390px; }

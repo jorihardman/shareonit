@@ -16,8 +16,6 @@ class MembershipsController < ApplicationController
   
   def destroy
     @membership = Membership.find(params[:id])
-    postings = @membership.community.postings.where(:user_id => @membership.user_id)
-    @membership.community.postings.delete(postings) if not postings.empty?
     @membership.destroy
     
     respond_to do |format|
