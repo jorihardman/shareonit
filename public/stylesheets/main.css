@@ -20,6 +20,8 @@ pre {
 
 div.field, div.actions { margin-bottom: 10px; }
 
+#landing div.field { margin-bottom: 5px; }
+
 #notice {
   color: #99cd68;
   margin: 0 0 10px 0;
@@ -38,6 +40,8 @@ div.field, div.actions { margin-bottom: 10px; }
   background-color: red;
   display: table;
 }
+
+label { display: block; }
 
 #errorExplanation {
   width: 350px;

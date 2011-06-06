@@ -4,23 +4,23 @@
   <%= f.error_messages  %>
   
   <div class="field">
-    <%= f.label :category %><br/>
+    <%= f.label :category %>
     <%= f.select :category, Posting.categories %>
   </div>
   
   <div class="field">
-    <%= f.label :description, (params[:have] == '1' ? 'I have' : 'I want') %><br/>
+    <%= f.label :description, (params[:have] == '1' ? 'I have' : 'I want') %>
     <%= f.text_area :description, :placeholder => 'e.g. one ring to rule them all...' %>
   </div>
   
   <div class="field">
-    <%= f.label :for_sale, 'To' %><br/>
+    <%= f.label :for_sale, 'To' %>
     <%= f.radio_button :for_sale, false %><%= params[:have] == '1' ? 'Lend' : 'Borrow' %>
     <%= f.radio_button :for_sale, true %><%= params[:have] == '1' ? 'Sell' : 'Buy' %>
   </div>
   
   <div class="field">
-    <%= f.label :price %><br/>
+    <%= f.label :price %>
     <%= f.radio_button :free, true %>Free<%= f.radio_button :free, false %>Pay
     <div id="price">
       $<%= f.text_field :price %>
@@ -28,7 +28,7 @@
   </div>
   
   <div class="field">
-    <%= f.label :photo %><br/>
+    <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
   
