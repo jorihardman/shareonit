@@ -2,10 +2,13 @@ module PostingsHelper
 
   def posting_div(posting)
     if current_user.id != posting.user_id
-      if action_name == 'requests'
-        link_text = 'Offer'
-      elsif action_name == 'inventory'
-        link_text = posting.for_sale ? 'Buy' : 'Borrow'
+      link_text = 'Offer' if action_name == 'requests'
+      if action_name == 'inventory'
+        if posting.for_sale
+          link_text = posting.free ? 'Take' : 'Buy'
+        else
+          link_text = 'Borrow'
+        end
       end
       buttonset = link_to(link_text, posting, :rel => 'facebox')
     else
@@ -19,10 +22,10 @@ module PostingsHelper
         '</div>'
     end
     
-    if action_name != 'my_stuff'
-      subtext = (posting.have ? 'Posted' : 'Requested') << ' by ' << posting.user.full_name
-    else
+    if action_name == 'my_stuff'
       subtext = "I #{posting.have ? 'have' : 'want'} this"
+    else
+      subtext = (posting.have ? 'Posted' : 'Requested') << ' by ' << posting.user.full_name
     end
     subtext << ' in ' << link_to(posting.category, :action => action_name, :category => posting.category)
     
