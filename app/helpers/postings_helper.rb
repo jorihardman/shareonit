@@ -23,7 +23,7 @@ module PostingsHelper
     
     subtext = "<div class=\"subtext\">"
     if action_name != 'my_stuff'
-      subtext << "Posted by #{posting.user.full_name}"
+      subtext << (posting.have ? 'Posted' : 'Requested') << ' by ' << posting.user.full_name
     else
       subtext << "I #{posting.have ? 'have' : 'want'} this"
     end
