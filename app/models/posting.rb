@@ -36,7 +36,7 @@ class Posting < ActiveRecord::Base
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
   validates :description, :presence => true, :length => {:within => 1..255}
-  validates :price, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than => 0}
+  validates :price, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => true
   
   def validate
     if free == false and price == 0
