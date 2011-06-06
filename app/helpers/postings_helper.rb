@@ -30,7 +30,7 @@ module PostingsHelper
     subtext << ' in ' << link_to(posting.category, :action => action_name, :category => posting.category)
     
     if posting.free
-      price = 'FREE to ' << (posting.for_sale ? 'keep' : 'borrow')
+      price = 'FREE to ' << (posting.for_sale ? 'take' : 'borrow')
     else
       price = number_to_currency(posting.price, :unit => '$') << ' to ' << (posting.for_sale ? 'buy' : 'borrow')
     end
