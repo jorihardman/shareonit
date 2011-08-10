@@ -3,5 +3,5 @@ $('#membership_<%= @membership.id %>').remove();
 if ($('#requests tr').length == 1) {
   $('#requests').remove();
 }
-$('#members > table > tbody > tr:first').after('<%= escape_javascript(raw(membership_table_row(@membership))) %>');
+$('#members > table > tbody > tr:first').after('<%= escape_javascript(membership_table_row @membership) %>');
 $('.buttonset').buttonset();

@@ -4,7 +4,7 @@
   <%= will_paginate postings %>
   <div id="posting_list">
     <% postings.each do |posting| %>
-      <%= raw(posting_div(posting)) %>
+      <%= posting_div(posting) %>
     <% end %>
   </div>
   <%= will_paginate postings %>

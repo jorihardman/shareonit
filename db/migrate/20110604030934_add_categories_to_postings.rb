@@ -1,6 +1,7 @@
 class AddCategoriesToPostings < ActiveRecord::Migration
   def self.up
     add_column :postings, :category, :string, :null => false
+    Posting.reset_column_information
     Posting.all.each do |posting|
       posting.update_attribute(:category, 'Other')
     end

@@ -2,22 +2,26 @@ module CommunitiesHelper
 
   def community_table_row(community)
     membership = Membership.where('user_id = ? AND community_id = ?', current_user.id, community.id).first
-    output = '' <<
-    "<tr id=\"community_#{community.id}\">" <<
-    "<td>#{community.name}</td>" <<
-    "<td>#{community.zip_code}</td>" <<
-    "<td>#{community.memberships.where(:accepted => true).count}</td>" <<
-    '<td class="buttonset">'
     if current_user.id == community.user_id
-      output << link_to('Manage', community_path(community))
+      button = link_to('Manage', community_path(community))
     elsif membership.nil? 
-      output << link_to('Request membership', community_memberships_path(community), :remote => true, :method => :post)
+      button = link_to('Request membership', community_memberships_path(community), :remote => true, :method => :post)
     elsif not membership.accepted
-      output << 'Request pending approval...'
+      button = 'Request pending approval...'
     else
-      output << link_to('Leave Group', community_membership_path(community, membership), :remote => true, :method => :delete, :confirm => 'Are you sure?')
+      button = link_to('Leave Group', community_membership_path(community, membership), :remote => true, :method => :delete, :confirm => 'Are you sure?')
     end
-    output << '</td></tr>'
+    
+    raw <<-END
+      <tr id="community_#{community.id}">
+        <td>#{community.name}</td>
+        <td>#{community.zip_code}</td>
+        <td>#{community.memberships.where(:accepted => true).count}</td>
+        <td class="buttonset">
+          #{button}
+        </td>
+      </tr>
+    END
   end
   
 end

@@ -35,7 +35,7 @@ module PostingsHelper
       price = number_to_currency(posting.price, :unit => '$') << ' to ' << (posting.for_sale ? 'buy' : 'borrow')
     end
     
-    output = <<-TEXT
+    raw <<-TEXT
       <div id="posting_#{posting.id}" class="list_element"> 
         <div class="list_left">
           #{image}
@@ -54,8 +54,6 @@ module PostingsHelper
         </div>
       </div>
     TEXT
-    
-    return output
   end
   
 end
