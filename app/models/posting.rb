@@ -1,8 +1,4 @@
 class Posting < ActiveRecord::Base
-  
-  belongs_to :user
-  has_and_belongs_to_many :communities
-  
   has_attached_file :photo,
     :storage => :s3,
     :bucket => 'photos.shareon.it',
@@ -18,50 +14,25 @@ class Posting < ActiveRecord::Base
       :thumb => ["100x100>"]
     }    
   process_in_background :photo
-
-  default_scope select(
-    'postings.*, communities.name, users.first_name, users.last_name'
-  ).includes(
-    :user, :communities
-  ).where(
-    'postings.deleted = ?', false
-  ).order(
-    'postings.created_at DESC'
-  )
-    
-  scope :for_current_user, lambda { 
-    where('communities.id IN (?)', UserSession.find.user.active_communities)
-  }
+  
+  belongs_to :user
+  has_and_belongs_to_many :communities
   
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
   validates :description, :presence => true, :length => {:within => 1..255}
-  validates :price, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => true
+  validates :price, :format => {:with => /^\d+??(?:\.\d{0,2})?$/}, :numericality => {:greater_than => 0}, :if => 'not free'
   
-  def validate
-    if free == false and price == 0
-      self.errors[:base] << "You must set a price."
-    end
-  end  
+  default_scope select('postings.*, communities.name, users.first_name, users.last_name').
+    includes(:user, :communities).
+    where('postings.deleted = ?', false).
+    order('postings.created_at DESC')
+  scope :for_current_user, where('communities.id IN (?)', UserSession.find.user.active_communities)
   
   def self.categories
     ['Other', 'Books', 'Cleaning Supplies', 'Electronics', 'Food', 'Furniture', 'Games', 'Movies', 'Service']
   end
-
-  def add_to_inventory
-    invPosting = self.clone
-    invPosting.have = true
-    invPosting.user_id = UserSession.find.user.id
-    invPosting.save
-    invPosting.add_to_active_communities
-  end
   
-  def add_to_active_communities
-    UserSession.find.user.active_communities.each do |community|
-      community.postings << self
-    end
-  end
-
   def self.search_or_where(params, condition)
     search = params[:search]
     postings = Posting.for_current_user.where(condition)
@@ -82,5 +53,18 @@ class Posting < ActiveRecord::Base
     
     return postings.paginate(:page => params[:page], :per_page => 10)
   end
+
+  def add_to_inventory
+    invPosting = self.clone
+    invPosting.have = true
+    invPosting.user_id = UserSession.find.user.id
+    invPosting.save
+    invPosting.add_to_active_communities
+  end
   
+  def add_to_active_communities
+    UserSession.find.user.active_communities.each do |community|
+      community.postings << self
+    end
+  end
 end
