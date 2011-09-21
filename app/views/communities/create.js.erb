@@ -1,9 +1,9 @@
 <% if @community.errors.any? %>
-  $('#new_community_form').html('<%= escape_javascript(render 'communities/form') %>');
+  $('#new_community_form').html('<%= j render('communities/form') %>');
   resize_fancybox();
 <% else %>
   $.fancybox.close();
   $('#notice').html('Community added.');
-  $('#my_communities tr:first').after('<%= escape_javascript(community_table_row @community) %>');
+  $('#my_communities tr:first').after('<%= j community_table_row(@community) %>');
   $('.buttonset').buttonset();
 <% end %>

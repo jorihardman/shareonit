@@ -1,11 +1,11 @@
 <%= remotipart_response do %>
   <% if @posting.errors.any? %>
-    $('#new_posting_form').html('<%= escape_javascript(render 'postings/form') %>');
+    $('#new_posting_form').html('<%= j render('postings/form') %>');
     resize_fancybox();
   <% else %>
     $.fancybox.close();
     $('#notice').html('Posting added.');
-    $('#posting_list .list_element:first').before('<%= escape_javascript(posting_div @posting) %>');
+    $('#posting_list .list_element:first').before('<%= j posting_div(@posting) %>');
     $('.buttonset').buttonset();
     $('a[rel*=facebox]').fancybox({
 	    'transitionIn'	:	'elastic',

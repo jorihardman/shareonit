@@ -1,7 +1,7 @@
-$('#notice').html('<%= escape_javascript(@membership.user.full_name) %> accepted.');
+$('#notice').html('<%= j @membership.user.full_name %> accepted.');
 $('#membership_<%= @membership.id %>').remove();
 if ($('#requests tr').length == 1) {
   $('#requests').remove();
 }
-$('#members > table > tbody > tr:first').after('<%= escape_javascript(membership_table_row @membership) %>');
+$('#members > table > tbody > tr:first').after('<%= j membership_table_row(@membership) %>');
 $('.buttonset').buttonset();

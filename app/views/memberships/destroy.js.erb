@@ -4,6 +4,6 @@ if ($('.membership_list').length > 0) {
 } else {
   $('#notice').html('Left <%= @membership.community.name %>.');
   $('#community_<%= @membership.community_id %>').remove();
-  $('#all_communities > table > tbody > tr:first').after ('<%= escape_javascript(community_table_row @membership.community) %>');
+  $('#all_communities > table > tbody > tr:first').after ('<%= j community_table_row(@membership.community) %>');
   $('.buttonset').buttonset();
 }

@@ -1,10 +1,10 @@
 <% if @posting.errors.any? %>
-  $('#edit_posting_form').html('<%= escape_javascript(render 'postings/form') %>');
+  $('#edit_posting_form').html('<%= j render('postings/form') %>');
   resize_fancybox();
 <% else %>
   $.fancybox.close();
   $('#notice').html('Posting updated.');
-  $('#posting_<%= @posting.id %>').replaceWith('<%= escape_javascript(posting_div @posting) %>');
+  $('#posting_<%= @posting.id %>').replaceWith('<%= j posting_div(@posting) %>');
   $('.buttonset').buttonset();
   $('a[rel*=facebox]').fancybox({
 	  'transitionIn'	:	'elastic',
