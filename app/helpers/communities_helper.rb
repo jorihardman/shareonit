@@ -14,7 +14,7 @@ module CommunitiesHelper
     
     raw <<-END
       <tr id="community_#{community.id}">
-        <td>#{community.name}</td>
+        <td>#{h community.name}</td>
         <td>#{community.zip_code}</td>
         <td>#{community.memberships.where(:accepted => true).count}</td>
         <td class="buttonset">

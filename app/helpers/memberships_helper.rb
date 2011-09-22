@@ -9,8 +9,8 @@ module MembershipsHelper
     
     raw <<-END 
       <tr id=\"membership_#{membership.id}\">
-        <td>#{membership.user.full_name}</td>
-        <td>#{membership.user.email}</td>
+        <td>#{h membership.user.full_name}</td>
+        <td>#{h membership.user.email}</td>
         <td class="buttonset">
           #{button}
         </td>
