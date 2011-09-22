@@ -1,4 +1,4 @@
 $('#notice').html('Membership to <%= @membership.community.name %> requested. You will be notified via email when it is accepted.');
 $('#community_<%= @membership.community_id %>').remove();
-$('#my_communities tr:first').after('<%= j community_table_row(@membership.community) %>');
+$('#user_communities .list_element:first').after('<%= escape_javascript community_div(@membership.community) %>');
 $('.buttonset').buttonset();

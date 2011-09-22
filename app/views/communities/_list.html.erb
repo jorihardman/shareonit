@@ -1,12 +1,5 @@
-<table class="community_list ui-widget ui-widget-content">
-  <tr class="ui-widget-header">
-    <th>Name</th>
-    <th>Zip Code</th>
-    <th>Users</th>
-    <th></th>
-  </tr>
-
-<% communities.each do |community| %>
-  <%= community_table_row(community) %>
-<% end %>
-</table>
+<div class="list">
+  <% communities.each do |community| %>
+    <%= community_div(community) %>
+  <% end %>
+</div>

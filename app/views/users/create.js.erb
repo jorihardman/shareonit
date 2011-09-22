@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  $('#new_user_form').html('<%= j render('users/form') %>');
+  $('#new_user_form').html('<%= escape_javascript render(:partial => 'form') %>'');
   resize_fancybox();
 <% else %>
   $.fancybox.close();

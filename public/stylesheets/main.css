@@ -251,13 +251,11 @@ a.truncate:hover { color: #6699ce; }
   float: right;
 }
 
-posting_list { width: 100%; }
-
 #categories ul { padding: 0; }
 
 #categories ul li { display: inline; }
 
-#posting_list { border-bottom: 1px solid #6699ce; }
+.list { border-bottom: 1px solid #6699ce; }
 
 .list_element {
   width: 900px;
@@ -283,8 +281,11 @@ posting_list { width: 100%; }
   min-height: 75px;
 }
 
+.description {
+	font-weight: bold;
+}
+
 .description a {
-  font-weight: bold;
   color: #4C7CAE;
   text-decoration: none;
 }
@@ -311,6 +312,11 @@ a.ui-button:hover { color: white; }
   font-weight: bold;
   color: green;
   margin: 10px 7px 10px 0;
+}
+
+.members {
+	font-weight: bold;
+	margin: 10px 7px 10px 0;
 }
 
 .subtext {

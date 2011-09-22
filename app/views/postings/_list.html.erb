@@ -2,7 +2,7 @@
   No results found. <%= link_to 'Display All', :action => action_name %>.
 <% else %>
   <%= will_paginate postings %>
-  <div id="posting_list">
+  <div class="list">
     <% postings.each do |posting| %>
       <%= posting_div(posting) %>
     <% end %>

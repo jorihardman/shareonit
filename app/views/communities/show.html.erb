@@ -24,7 +24,7 @@
 <div id="requests">
   <h2>Join Requests</h2>
   <%= will_paginate @requests, :param_name => :req_page %>
-    <%= render :partial => 'list', :object => @requests, :as => :memberships %>
+    <%= render :partial => 'memberships/list', :object => @requests, :as => :memberships %>
   <%= will_paginate @requests, :param_name => :req_page %>
   <br/>
 </div>
@@ -33,6 +33,6 @@
 <div id="members">
   <h2>Active Members</h2>
   <%= will_paginate @members, :param_name => :mem_page %>
-    <%= render :partial => 'list', :object => @members, :as => :memberships %>
+    <%= render :partial => 'memberships/list', :object => @members, :as => :memberships %>
   <%= will_paginate @members, :param_name => :mem_page %>
 </div>

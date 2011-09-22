@@ -19,9 +19,10 @@
 </div>
 <% end %>
 
-<div id="my_communities">
+<div id="user_communities">
   <h2>My Communites</h2>
-  <%= render :partial => 'list', :object => @my_communities, :as => :communities %>
+  <%= will_paginate @user_communities, :param_name => 'user_page' %>
+  <%= render :partial => 'list', :object => @user_communities, :as => :communities %>
 </div>
 
 <br/>
@@ -29,13 +30,12 @@
 <div id="all_communities">
   <h2>All Communities</h2>
 
-  <div id="search">
+  <!-- <div id="search">
     <%= form_tag request.path, :method => :get do %>
       <%= text_field_tag 'search', nil, :placeholder => 'search term here' %>
     <% end %>
-  </div>
-
-  <%= will_paginate @all_communities %>
+  </div> -->
+  
+  <%= will_paginate @all_communities, :param_name => 'all_page' %>
   <%= render :partial => 'list', :object => @all_communities, :as => :communities %>
-  <%= will_paginate @all_communities %>
 </div>

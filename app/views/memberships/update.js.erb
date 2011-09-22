@@ -1,4 +1,4 @@
 $('#notice').html('<%= @membership.community.name %> <%= @membership.active ? 'activated' : 'deactivated' %>.');
-$('#community_<%= @membership.community_id %>').replaceWith('<%= j community_table_row(@membership.community) %>');
+$('#community_<%= @membership.community_id %>').replaceWith('<%= escape_javascript community_table_row(@membership.community) %>');
 $('.buttonset').buttonset();
 

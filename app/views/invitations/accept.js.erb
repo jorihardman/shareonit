@@ -1,8 +1,8 @@
-$('#notice').html('Joined <%= j @invitation.community.name %>.');
+$('#notice').html('Joined <%= escape_javascript @invitation.community.name %>.');
 $('#invitation_<%= @invitation.id %>').remove();
 $('#community_<%= @invitation.community.id %>').remove();
 if ($('#invitation_list tr').length == 1) {
   $('#invitations').remove();
 }
-$('#my_communities tr:first').after('<%= j community_table_row(@invitation.community) %>');
+$('#user_communities .list_element:first').after('<%= escape_javascript community_div(@invitation.community) %>');
 $('.buttonset').buttonset();
