@@ -27,7 +27,10 @@ class Posting < ActiveRecord::Base
     includes(:user, :communities).
     where('postings.deleted = ?', false).
     order('postings.created_at DESC')
-  scope :for_current_user, where('communities.id IN (?)', UserSession.find.user.active_communities)
+  
+  def for_current_user
+    where('communities.id IN (?)', UserSession.find.user.active_communities)
+  end
   
   def self.categories
     ['Other', 'Books', 'Cleaning Supplies', 'Electronics', 'Food', 'Furniture', 'Games', 'Movies', 'Service']
