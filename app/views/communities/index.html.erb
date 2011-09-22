@@ -21,7 +21,7 @@
 
 <div id="my_communities">
   <h2>My Communites</h2>
-  <%= render 'communities/list', :object => @my_communities, :as => :communities %>
+  <%= render :partial => 'list', :object => @my_communities, :as => :communities %>
 </div>
 
 <br/>
@@ -36,6 +36,6 @@
   </div>
 
   <%= will_paginate @all_communities %>
-  <%= render 'communities/list', :object => @all_communities, :as => :communities %>
+  <%= render :partial => 'list', :object => @all_communities, :as => :communities %>
   <%= will_paginate @all_communities %>
 </div>

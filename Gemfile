@@ -1,7 +1,7 @@
-source 'http://rubygems.org'
+source :rubygems
 
-gem 'rails', '3.0.3'
-gem 'mysql2'
+gem 'rails', '3.0.10'
+gem 'mysql2', '0.2.7'
 gem 'jquery-rails'
 gem 'dynamic_form'
 gem 'will_paginate'
@@ -11,4 +11,4 @@ gem 'delayed_job'
 gem 'aws-s3'
 gem 'rmagick'
 gem 'delayed_paperclip'
-gem 'remotipart', :git => 'git://github.com/JangoSteve/remotipart.git', :branch => 'latest-and-greatest'
+gem 'remotipart', :git => 'https://github.com/leppert/remotipart.git'
