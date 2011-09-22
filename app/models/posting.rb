@@ -28,7 +28,7 @@ class Posting < ActiveRecord::Base
     where('postings.deleted = ?', false).
     order('postings.created_at DESC')
   
-  def for_current_user
+  def self.for_current_user
     where('communities.id IN (?)', UserSession.find.user.active_communities)
   end
   
