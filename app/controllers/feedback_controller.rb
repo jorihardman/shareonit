@@ -13,4 +13,5 @@ class FeedbackController < ApplicationController
       format.js
     end
   end
+  
 end

@@ -1,4 +1,5 @@
 class Membership < ActiveRecord::Base
+  
   belongs_to :user
   belongs_to :community
     
@@ -12,5 +13,5 @@ class Membership < ActiveRecord::Base
     postings = community.postings.where(:user_id => user_id)
     community.postings.delete(postings) if not postings.empty?
   end
+  
 end
-

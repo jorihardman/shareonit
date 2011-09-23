@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  
   def application
     respond_to do |format|
       format.js
@@ -10,4 +11,5 @@ class HomeController < ApplicationController
 
   def contact_us
   end
+  
 end

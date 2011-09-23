@@ -1,4 +1,5 @@
 class Posting < ActiveRecord::Base
+  
   has_attached_file :photo,
     :storage => :s3,
     :bucket => 'photos.shareon.it',
@@ -70,4 +71,5 @@ class Posting < ActiveRecord::Base
       community.postings << self
     end
   end
+  
 end

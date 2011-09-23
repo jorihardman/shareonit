@@ -1,4 +1,5 @@
 class Community < ActiveRecord::Base
+  
   has_many :memberships
   has_many :users, :through => :memberships
   has_many :invitations
@@ -43,4 +44,5 @@ class Community < ActiveRecord::Base
   def create_user_membership
     Membership.new(:user_id => UserSession.find.user.id, :community_id => id, :active => true, :accepted => true).save  
   end
+  
 end

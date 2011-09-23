@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  
 	acts_as_authentic
 	
   has_many :postings, :dependent => :destroy
@@ -34,4 +35,5 @@ class User < ActiveRecord::Base
     self.first_name = first_name.capitalize
     self.last_name = last_name.capitalize
   end
+  
 end
