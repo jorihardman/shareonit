@@ -1,4 +1,5 @@
 Shareonit::Application.routes.draw do
+  
   resources :users
   
   resources :communities do
@@ -38,5 +39,5 @@ Shareonit::Application.routes.draw do
 	get 'feedback' => 'feedback#index'
   
   root :to => 'user_sessions#new'
+  
 end
-

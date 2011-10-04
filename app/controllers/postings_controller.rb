@@ -5,17 +5,14 @@ class PostingsController < ApplicationController
   before_filter :require_community
 
   def index
-    respond_to do |format|
-      format.html { redirect_to :action => 'products_requests' }
-      format.js
-    end
+    redirect_to :action => :requests
   end
 
   def my_stuff
     @postings = Posting.search_or_where(params, ['postings.user_id = ?', current_user.id])
 
     respond_to do |format|
-      format.html { render :action => 'index' }
+      format.html { render :action => :index }
       format.xml  { render :xml => @requests + @inventory }
     end
   end
@@ -24,7 +21,7 @@ class PostingsController < ApplicationController
     @postings = Posting.search_or_where(params, ['have = ?', true])
 
     respond_to do |format|
-      format.html { render :action => 'index' }
+      format.html { render :action => :index }
       format.xml  { render :xml => @postings }
     end
   end
@@ -33,7 +30,7 @@ class PostingsController < ApplicationController
     @postings = Posting.search_or_where(params, ['have = ?', false])
 
     respond_to do |format|
-      format.html { render :action => 'index' }
+      format.html { render :action => :index }
       format.xml  { render :xml => @postings }
     end
   end
