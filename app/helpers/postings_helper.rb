@@ -2,8 +2,8 @@ module PostingsHelper
 
   def posting_div(posting)
     if current_user.id != posting.user_id
-      link_text = 'Offer' if action_name == 'requests'
-      if action_name == 'inventory'
+      link_text = 'Offer' if params[:scope] == 'requests'
+      if params[:scope] == 'inventory'
         if posting.for_sale
           link_text = posting.free ? 'Take' : 'Buy'
         else
@@ -22,12 +22,12 @@ module PostingsHelper
         '</div>'
     end
     
-    if action_name == 'my_stuff'
+    if params[:scope] == 'my_stuff'
       subtext = "I #{posting.have ? 'have' : 'want'} this"
     else
       subtext = (posting.have ? 'Posted' : 'Requested') << ' by ' << posting.user.full_name
     end
-    subtext << ' in ' << link_to(posting.category, :action => action_name, :category => posting.category)
+    subtext << ' in ' << link_to(posting.category, request_path(:category => posting.category))
     
     if posting.free
       price = 'FREE to ' << (posting.for_sale ? 'take' : 'borrow')

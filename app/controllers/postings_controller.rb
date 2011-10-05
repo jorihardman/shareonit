@@ -5,32 +5,16 @@ class PostingsController < ApplicationController
   before_filter :require_community
 
   def index
-    redirect_to :action => :requests
-  end
-
-  def my_stuff
-    @postings = Posting.search_or_where(params, ['postings.user_id = ?', current_user.id])
-
-    respond_to do |format|
-      format.html { render :action => :index }
-      format.xml  { render :xml => @requests + @inventory }
+    redirect_to inventory_postings_path and return if request_path == postings_path
+    
+    @postings = case params[:scope]
+    when 'inventory' then Posting.search_or_where(params, ['have = ?', true])
+    when 'requests' then Posting.search_or_where(params, ['have = ?', false])
+    else Posting.search_or_where(params, ['postings.user_id = ?', current_user.id])  
     end
-  end
-
-  def inventory
-    @postings = Posting.search_or_where(params, ['have = ?', true])
-
+  
     respond_to do |format|
-      format.html { render :action => :index }
-      format.xml  { render :xml => @postings }
-    end
-  end
-
-  def requests
-    @postings = Posting.search_or_where(params, ['have = ?', false])
-
-    respond_to do |format|
-      format.html { render :action => :index }
+      format.html
       format.xml  { render :xml => @postings }
     end
   end
@@ -39,7 +23,6 @@ class PostingsController < ApplicationController
     @posting = Posting.find(params[:id])
 
     respond_to do |format|
-      format.js
       format.html { render :layout => false }
       format.xml  { render :xml => @posting }
     end
@@ -51,7 +34,6 @@ class PostingsController < ApplicationController
     respond_to do |format|
       format.html { render :layout => false }
       format.xml  { render :xml => @posting }
-      format.js
     end
   end
 

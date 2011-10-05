@@ -1,5 +1,5 @@
 <% if postings.empty? %>
-  No results found. <%= link_to 'Display All', :action => action_name %>.
+  No results found. <%= link_to 'Display All', request_path %>.
 <% else %>
   <%= will_paginate postings %>
   <div class="list">

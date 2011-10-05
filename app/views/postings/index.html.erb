@@ -1,9 +1,9 @@
 <div id="top">
   <div id="buttons" class="buttonset">
-  <% unless action_name == 'requests' %>
+  <% unless params[:scope] == 'requests' %>
     <%= link_to 'Lend/Sell Something', new_posting_path(:have => 1), :rel => 'facebox' %>
   <% end %>
-  <% unless action_name == 'inventory' %>
+  <% unless params[:scope] == 'inventory' %>
     <%= link_to 'Request Something', new_posting_path(:have => 0), :rel => 'facebox' %>
   <% end %>
   </div>
@@ -16,10 +16,10 @@
     <br/>
     <div id="categories">
       <ul>
-        <li><%= link_to 'All', :action => action_name %></li>
-        <li><%= link_to 'Free', :action => action_name, :category => 'Free'%></li>
+        <li><%= link_to 'All', request_path %></li>
+        <li><%= link_to 'Free', request_path(:category => 'Free') %></li>
       <% Posting.categories.each do |category| %>
-        <li><%= link_to category, :action => action_name, :category => category %></li>
+        <li><%= link_to category, request_path(:category => category) %></li>
       <% end %>
       </ul>
     </div>

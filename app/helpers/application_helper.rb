@@ -9,9 +9,9 @@ module ApplicationHelper
   end
 
   def navigation_content
-    requests_class = action_name == 'requests' ? 'current' : ''
-    inventory_class = action_name == 'inventory' ? 'current' : ''
-    my_stuff_class = action_name == 'my_stuff' ? 'current' : ''
+    requests_class = params[:scope] == 'requests' ? 'current' : ''
+    inventory_class = params[:scope] == 'inventory' ? 'current' : ''
+    my_stuff_class = params[:scope] == 'my_stuff' ? 'current' : ''
     communities_class = controller_name == 'communities' ? 'current' : ''
 
     raw <<-END

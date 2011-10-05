@@ -1,9 +1,20 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-  helper_method :current_user, :current_user_session
+  helper_method :request_url, :request_path, :current_user, :current_user_session
 
   private
+  
+  def request_url(params={})
+    @request_path ||= ActionController::Routing::Routes.recognize_path(request.path)
+    url_for(@request_path.merge(params))
+  end
+  
+  def request_path(params={})
+    parsed_url = URI.parse(request_url(params))
+    query = parsed_url.query.to_s
+    parsed_url.path.to_s << (query.blank? ? '' : '?' << query)
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

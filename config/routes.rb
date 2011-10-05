@@ -22,9 +22,9 @@ Shareonit::Application.routes.draw do
     end
     
     collection do
-      get 'inventory'
-      get 'requests'
-      get 'my_stuff'
+      get 'inventory' => 'postings#index', :scope => 'inventory'
+      get 'requests' => 'postings#index', :scope => 'requests'
+      get 'my_stuff' => 'postings#index', :scope => 'my_stuff'
     end
   end
 
