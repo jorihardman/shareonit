@@ -1,5 +1,5 @@
 <% if @posting.errors.any? %>
-  $('#edit_posting_form').html('<%= escape_javascript render(:partial => 'form') %>'');
+  $('#edit_posting_form').html('<%= escape_javascript render(:partial => 'form') %>');
   resize_fancybox();
 <% else %>
   $.fancybox.close();
