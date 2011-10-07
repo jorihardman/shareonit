@@ -1,6 +1,6 @@
 <%= link_to 'New Community', new_community_path, :class => 'button', :rel => 'facebox' %>
 
-<% unless @invitations.empty? %>
+<% unless @invitations.blank? %>
 <div id="invitations">
   <h2>Invitations</h2>
   <table id="invitation_list" class="ui-widget ui-widget-content">
@@ -19,13 +19,13 @@
 </div>
 <% end %>
 
+<% unless @user_communities.blank? %>
 <div id="user_communities">
   <h2>My Communites</h2>
   <%= will_paginate @user_communities, :param_name => 'user_page' %>
   <%= render :partial => 'list', :object => @user_communities, :as => :communities %>
 </div>
-
-<br/>
+<% end %>
 
 <div id="all_communities">
   <h2>All Communities</h2>

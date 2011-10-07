@@ -1,4 +1,4 @@
-<% if postings.empty? %>
+<% if postings.blank? %>
   No results found. <%= link_to 'Display All', request_path %>.
 <% else %>
   <%= will_paginate postings %>

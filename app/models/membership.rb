@@ -11,7 +11,7 @@ class Membership < ActiveRecord::Base
   
   def delete_postings
     postings = community.postings.where(:user_id => user_id)
-    community.postings.delete(postings) if not postings.empty?
+    community.postings.delete(postings) if not postings.blank?
   end
   
 end

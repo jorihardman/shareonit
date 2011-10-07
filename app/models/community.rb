@@ -14,7 +14,7 @@ class Community < ActiveRecord::Base
   def self.search(search, page)
     communities = Community.where('communities.id != ?', 0) #start with all records
     joined_communities = UserSession.find.user.communities.select('communities.id')
-    communities = Community.where('communities.id NOT IN (?)', joined_communities) unless joined_communities.empty?
+    communities = Community.where('communities.id NOT IN (?)', joined_communities) unless joined_communities.blank?
    
     if search
       Search.create(:model => 'community', :query => search)

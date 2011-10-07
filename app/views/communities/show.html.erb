@@ -20,7 +20,7 @@
   <%= @community.zip_code %>
 </p>
 
-<% unless @requests.empty? %>
+<% unless @requests.blank? %>
 <div id="requests">
   <h2>Join Requests</h2>
   <%= will_paginate @requests, :param_name => :req_page %>
