@@ -57,4 +57,3 @@ module PostingsHelper
   end
   
 end
-

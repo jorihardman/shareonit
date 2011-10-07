@@ -112,4 +112,3 @@ class PostingsController < ApplicationController
   end
   
 end
-
