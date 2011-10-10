@@ -13,7 +13,7 @@ module PostingsHelper
       buttonset = link_to(link_text, posting, :rel => 'facebox')
     else
       buttonset = link_to('Edit', edit_posting_path(posting), :rel => 'facebox') <<
-      link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'Are you sure?')
+        link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'Are you sure?')
     end
     
     unless posting.photo_file_name.blank?
