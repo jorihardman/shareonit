@@ -11,7 +11,7 @@
     <%= f.check_box :remember_me %> Remember me
   </div>
   <div class="action">
-    <%= f.submit "Login", :class => 'button' %> or
+    <%= f.submit "Login", :disable_with => 'Submitting...', :class => 'button' %> or
     <%= link_to "Register", new_user_path, :rel => 'facebox', :class => 'button' %>
   </div>
 <% end %>

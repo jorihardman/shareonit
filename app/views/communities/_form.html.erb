@@ -29,6 +29,6 @@
   <% end %>
   
   <div class="actions">
-    <%= f.submit action_name == 'new' ? 'Create' : 'Update', :class => 'button' %>
+    <%= f.submit action_name == 'new' ? 'Create' : 'Update', :disable_with => 'Submitting...', :class => 'button' %>
   </div>
 <% end %>

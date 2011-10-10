@@ -23,7 +23,7 @@
     <% end %>
     
     <div class="action">
-      <%= submit_tag @posting.have ? 'Send Request' : 'Send Offer', :class => 'button' %>
+      <%= submit_tag @posting.have ? 'Send Request' : 'Send Offer', :disable_with => 'Submitting...', :class => 'button' %>
     </div>
   <% end %>
 <% end %>
