@@ -1,14 +1,12 @@
 Your friends are looking for this stuff. Can you help any of them out?
 
-<table>
 <% @postings.each do |posting| %>
-  <tr>
-    <td><%= posting.user.full_name %></td>
-    <td>needs</td>
-    <td><%= link_to posting.name, new_posting_offer_url(posting) %></td>
-  </tr>
+  <p>
+    <%= posting.user.full_name %>
+    <%= posting.have ? 'has' : 'needs' %>
+    <%= link_to posting.description, new_posting_offer_url(posting) %>.
+  </p>
 <% end %>
-</table>
 
 Thanks,
 The Shareon.it Team

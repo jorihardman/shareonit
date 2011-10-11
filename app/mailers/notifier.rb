@@ -12,13 +12,8 @@ class Notifier < ActionMailer::Base
 
   # To run this, create a cron job to run "rails runner Notifier.delay.daily_digest".
   def daily_digest
-    @postings = Posting.where('postings.have = ? AND (postings.created_at > ? OR (postings.from_date > ? AND postings.from_date < ?))',
-                              false,
-                              1.day.ago.strftime('%Y-%m-%d %H:%M:%S'),
-                              Time.now.strftime('%Y-%m-%d %H:%M:%S'),
-                              1.day.from_now.strftime('%Y-%m-%d %H:%M:%S')
-                              )
-
+    @postings = Posting.where('postings.created_at > ?', 1.day.ago)
+    
     mail(:subject => 'Your Shareon.it Friends Need You', :bcc => User.all.map(&:email)) do |format|
       format.html
     end
