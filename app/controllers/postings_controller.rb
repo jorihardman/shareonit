@@ -8,9 +8,9 @@ class PostingsController < ApplicationController
     redirect_to inventory_postings_path and return if request_path == postings_path
     
     @postings = case params[:scope]
-    when 'inventory' then Posting.search_or_where(params, ['have = ?', true])
-    when 'requests' then Posting.search_or_where(params, ['have = ?', false])
-    else Posting.search_or_where(params, ['postings.user_id = ?', current_user.id])  
+      when 'inventory' then Posting.search_or_where(params, ['have = ?', true])
+      when 'requests' then Posting.search_or_where(params, ['have = ?', false])
+      else Posting.search_or_where(params, ['postings.user_id = ?', current_user.id])  
     end
   
     respond_to do |format|
@@ -106,7 +106,10 @@ class PostingsController < ApplicationController
   def require_community
     if current_user.active_communities.count == 0
       redirect_to communities_path, 
-        :notice => 'You don\'t have any active communities! Activate a community or request membership to a new one to start sharing.'
+        :notice => <<-ENDNOTICE
+          You don't have any active communities! 
+          Activate a community or request membership to a new one to start sharing.
+        ENDNOTICE
       return false
     end
   end

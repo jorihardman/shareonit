@@ -41,7 +41,7 @@ class Community < ActiveRecord::Base
   end
   
   def create_user_membership
-    Membership.new(:user_id => UserSession.find.user.id, :community_id => id, :active => true, :accepted => true).save  
+    Membership.new(:user_id => UserSession.find.user.id, :community_id => id, :active => true, :accepted => true).save
   end
   
 end

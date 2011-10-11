@@ -2,9 +2,11 @@ module MembershipsHelper
 
   def membership_table_row(membership)
     if membership.accepted
-      button = link_to('Remove', community_membership_path(membership.community_id, membership), :method => :delete, :confirm => "Are you sure?", :remote => true)
+      button = link_to('Remove', community_membership_path(membership.community_id, membership), :method => :delete,
+          :confirm => "Are you sure?", :remote => true)
     else
-      button = link_to('Accept', accept_community_membership_path(membership.community_id, membership), :remote => true)
+      button = link_to('Accept', accept_community_membership_path(membership.community_id, membership),
+          :remote => true)
     end
     
     raw <<-END 

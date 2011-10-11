@@ -4,8 +4,12 @@ class CommunitiesController < ApplicationController
   before_filter :require_owner, :only => ['show', 'edit', 'update', 'destroy']
 
   def index
-    @all_communities = Community.search(params[:search], params[:page]).order('communities.name ASC').paginate(:page => params[:all_page], :per_page => 5)
-    @user_communities = current_user.communities.order('communities.name ASC').paginate(:page => params[:user_page], :per_page => 5)
+    @all_communities = Community.search(params[:search], params[:page]).
+        order('communities.name ASC').
+        paginate(:page => params[:all_page], :per_page => 5)
+    @user_communities = current_user.communities.
+        order('communities.name ASC').
+        paginate(:page => params[:user_page], :per_page => 5)
     @invitations = Invitation.where(:email => current_user.email)
 
     respond_to do |format|

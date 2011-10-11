@@ -9,7 +9,8 @@ module CommunitiesHelper
     elsif not membership.accepted
       button = 'Request pending approval...'
     else
-      button = link_to('Leave Group', community_membership_path(community, membership), :remote => true, :method => :delete, :confirm => 'Are you sure?')
+      button = link_to('Leave Group', community_membership_path(community, membership), :remote => true,
+          :method => :delete, :confirm => 'Are you sure?')
     end
     
     raw <<-TEXT

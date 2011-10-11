@@ -1,9 +1,15 @@
 Hi <%= @to_user.first_name %>,<br/><br/>
 
 <% if @posting.have %>
-  <%= @from_user.full_name %> would like to <%= @posting.for_sale ? 'buy' : 'borrow' %> <%= @posting.description %> from you.
+  <%= @from_user.full_name %>
+  would like to
+  <%= @posting.for_sale ? 'buy' : 'borrow' %> <%= @posting.description %>
+  from you.
 <% else %>
-  <%= @to_user.full_name %> saw you needed <%= @posting.description %> and would like to help you out.
+  <%= @to_user.full_name %>
+  saw you needed
+  <%= @posting.description %>
+  and would like to help you out.
 <% end %>
 
 <% if not @message.blank? %>

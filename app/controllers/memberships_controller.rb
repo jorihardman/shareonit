@@ -9,7 +9,9 @@ class MembershipsController < ApplicationController
     Notifier.delay.request_accepted(@membership)
     
     respond_to do |format|
-      format.html { redirect_to community_path(@membership.community_id), :notice => "#{@membership.user.full_name} accepted." }
+      format.html do
+        redirect_to community_path(@membership.community_id), :notice => "#{@membership.user.full_name} accepted."
+      end
       format.js
     end
   end

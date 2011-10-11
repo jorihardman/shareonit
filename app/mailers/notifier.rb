@@ -11,8 +11,8 @@ class Notifier < ActionMailer::Base
   end
 
   # To run this, create a cron job to run "rails runner Notifier.delay.daily_digest".
-  def daily_digest
-    @postings = Posting.where('postings.created_at > ?', 1.day.ago)
+  def daily_digest(user)
+    @postings = Posting.for_user(user).where('postings.created_at > ?', 1.day.ago)
     
     mail(:subject => 'Your Shareon.it Friends Need You', :bcc => User.all.map(&:email)) do |format|
       format.html
@@ -61,7 +61,7 @@ class Notifier < ActionMailer::Base
     @membership = membership
     
     mail(:to => @membership.community.user.email, 
-         :subject => "#{@membership.user.full_name} wants to join #{@membership.community.name}") do |format|
+        :subject => "#{@membership.user.full_name} wants to join #{@membership.community.name}") do |format|
       format.html
     end
   end

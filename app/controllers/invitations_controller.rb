@@ -25,7 +25,8 @@ class InvitationsController < ApplicationController
     @invitation.destroy
     membership = Membership.where(:user_id => current_user.id, :community_id => @invitation.community_id).first
     if membership.nil?
-      membership = Membership.new(:user_id => current_user.id, :community_id => @invitation.community_id, :active => true, :accepted => true)
+      membership = Membership.new(:user_id => current_user.id, :community_id => @invitation.community_id,
+          :active => true, :accepted => true)
       membership.save
     else
       membership.update_attributes(:active => true, :accepted => true)
