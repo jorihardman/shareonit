@@ -99,7 +99,7 @@ class PostingsController < ApplicationController
   def require_owner
     if Posting.find(params[:id]).user_id != current_user.id
       redirect_to root_path, :notice => 'Sorry, but you don\'t own that posting.'
-      return false
+      false
     end
   end
   
@@ -110,7 +110,7 @@ class PostingsController < ApplicationController
           You don't have any active communities! 
           Activate a community or request membership to a new one to start sharing.
         ENDNOTICE
-      return false
+      false
     end
   end
   

@@ -91,7 +91,7 @@ class CommunitiesController < ApplicationController
   def require_owner
     if Community.find(params[:id]).user_id != current_user.id
       redirect_to root_path, :notice => 'Sorry, but you don\'t own that community.'
-      return false
+      false
     end
   end
   

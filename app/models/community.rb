@@ -25,7 +25,7 @@ class Community < ActiveRecord::Base
       end
     end
     
-    return communities.paginate(:page => page, :per_page => 10)
+    communities.paginate(:page => page, :per_page => 10)
   end
   
   def send_invitations(email_list)

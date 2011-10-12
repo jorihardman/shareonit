@@ -48,7 +48,7 @@ class MembershipsController < ApplicationController
   def require_owner
     if current_user.id != Membership.find(params[:id]).community.user_id
       redirect_to communities_path, :notice => 'That community doesn\'t belong to you.'
-      return false
+      false
     end
   end
   

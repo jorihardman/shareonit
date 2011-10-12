@@ -60,7 +60,7 @@ class Posting < ActiveRecord::Base
           "%#{search}%", "%#{search}%")
     end
     
-    return postings.paginate(:page => params[:page], :per_page => 10)
+    postings.paginate(:page => params[:page], :per_page => 10)
   end
 
   def add_to_inventory

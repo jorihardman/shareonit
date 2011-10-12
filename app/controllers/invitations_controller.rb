@@ -52,7 +52,7 @@ class InvitationsController < ApplicationController
   def require_owner
     if current_user.email != Invitation.find(params[:id]).email
       redirect_to communities_path, :notice => 'That invitation doesn\'t belong to you.'
-      return false
+      false
     end
   end
   

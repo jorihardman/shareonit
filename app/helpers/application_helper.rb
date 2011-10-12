@@ -2,9 +2,9 @@ module ApplicationHelper
 
   def login_link
     if current_user
-      return link_to "Logout #{current_user.full_name}", logout_path, :method => :delete
+      link_to "Logout #{current_user.full_name}", logout_path, :method => :delete
     else
-      return link_to 'Login', login_path
+      link_to 'Login', login_path
     end
   end
 
