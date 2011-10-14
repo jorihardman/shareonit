@@ -1,38 +1,41 @@
 module PostingsHelper
 
   def posting_div(posting)
-    if current_user.id != posting.user_id
-      link_text = 'Offer' if params[:scope] == 'requests'
-      if params[:scope] == 'inventory'
+    buttonset = if current_user.id != posting.user_id
+      link_text = if params[:scope] == 'inventory'
         if posting.for_sale
-          link_text = posting.free ? 'Take' : 'Buy'
+          posting.free ? 'Take' : 'Buy'
         else
-          link_text = 'Borrow'
+          'Borrow'
         end
+      elsif params[:scope] == 'requests'
+        'Offer'
       end
-      buttonset = link_to(link_text, posting, :rel => 'facebox')
+      link_to(link_text, posting, :rel => 'facebox')
     else
-      buttonset = link_to('Edit', edit_posting_path(posting), :rel => 'facebox') <<
-        link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'Are you sure?')
+      link_to('Edit', edit_posting_path(posting), :rel => 'facebox') <<
+          link_to('Delete', posting_path(posting), :method => :delete, :remote => true, :confirm => 'Are you sure?')
     end
     
     unless posting.photo_file_name.blank?
-      image = '<div class="photo">' <<
-        link_to(image_tag(posting.photo.url(:thumb)), posting.photo.url, :rel => 'facebox') <<
-        '</div>'
+      image = <<-TEXT
+        <div class="photo">
+          #{link_to image_tag(posting.photo.url(:thumb)), posting.photo.url, :rel => 'facebox'}
+        </div>
+      TEXT
     end
     
-    if params[:scope] == 'my_stuff'
-      subtext = "I #{posting.have ? 'have' : 'want'} this"
+    subtext = if params[:scope] == 'my_stuff'
+      "I #{posting.have ? 'have' : 'want'} this"
     else
-      subtext = (posting.have ? 'Posted' : 'Requested') << ' by ' << posting.user.full_name
+      "#{posting.have ? 'Posted' : 'Requested'} by #{posting.user.full_name}"
     end
-    subtext << ' in ' << link_to(posting.category, request_path(:category => posting.category))
+    subtext << "in #{link_to posting.category, request_path(:category => posting.category)}"
     
-    if posting.free
-      price = 'FREE to ' << (posting.for_sale ? 'take' : 'borrow')
+    price = if posting.free
+      "FREE to #{posting.for_sale ? 'take' : 'borrow'}"
     else
-      price = number_to_currency(posting.price, :unit => '$') << ' to ' << (posting.for_sale ? 'buy' : 'borrow')
+      "#{number_to_currency(posting.price, :unit => '$')} to #{posting.for_sale ? 'buy' : 'borrow'}"
     end
     
     raw <<-TEXT

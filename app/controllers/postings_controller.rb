@@ -15,7 +15,7 @@ class PostingsController < ApplicationController
   
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @postings }
+      format.xml { render :xml => @postings }
     end
   end
 
@@ -51,10 +51,10 @@ class PostingsController < ApplicationController
     respond_to do |format|
       if @posting.save
         format.js
-        format.xml  { render :xml => @posting, :status => :created, :location => @posting }
+        format.xml { render :xml => @posting, :status => :created, :location => @posting }
       else
         format.js
-        format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -68,7 +68,7 @@ class PostingsController < ApplicationController
         format.xml  { head :ok }
       else
         format.js
-        format.xml  { render :xml => @posting.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @posting.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -106,10 +106,10 @@ class PostingsController < ApplicationController
   def require_community
     if current_user.active_communities.count == 0
       redirect_to communities_path, 
-        :notice => <<-ENDNOTICE
+        :notice => <<-TEXT
           You don't have any active communities! 
           Activate a community or request membership to a new one to start sharing.
-        ENDNOTICE
+        TEXT
       false
     end
   end
