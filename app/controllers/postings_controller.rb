@@ -65,7 +65,7 @@ class PostingsController < ApplicationController
     respond_to do |format|
       if @posting.update_attributes(params[:posting])
         format.js
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.js
         format.xml { render :xml => @posting.errors, :status => :unprocessable_entity }
@@ -80,7 +80,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
   

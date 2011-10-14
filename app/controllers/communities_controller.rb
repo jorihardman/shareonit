@@ -13,8 +13,8 @@ class CommunitiesController < ApplicationController
     @invitations = Invitation.where(:email => current_user.email)
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @communities }
+      format.html
+      format.xml { render :xml => @communities }
     end
   end
 
@@ -24,8 +24,8 @@ class CommunitiesController < ApplicationController
     @requests = @community.memberships.where(:accepted => false).paginate(:page => params[:req_page], :per_page => 10)
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @community }
+      format.html
+      format.xml { render :xml => @community }
     end
   end
 
@@ -53,10 +53,10 @@ class CommunitiesController < ApplicationController
       if @community.save
         @community.send_invitations(params[:emails])
         format.js
-        format.xml  { render :xml => @community, :status => :created, :location => @community }
+        format.xml { render :xml => @community, :status => :created, :location => @community }
       else
         format.js
-        format.xml  { render :xml => @community.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @community.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -67,10 +67,10 @@ class CommunitiesController < ApplicationController
     respond_to do |format|
       if @community.update_attributes(params[:community])
         format.js
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.js
-        format.xml  { render :xml => @community.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @community.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -81,7 +81,7 @@ class CommunitiesController < ApplicationController
     @community.destroy
 
     respond_to do |format|
-      format.html { redirect_to(communities_path) }
+      format.html { redirect_to communities_path }
       format.xml  { head :ok }
     end
   end

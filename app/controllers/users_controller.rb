@@ -4,8 +4,8 @@ class UsersController < ApplicationController
     @users = User.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.html
+      format.xml { render :xml => @users }
     end
   end
 
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @user }
+      format.xml { render :xml => @user }
     end
   end
 
@@ -39,10 +39,10 @@ class UsersController < ApplicationController
         #Notifier.delay.welcome(@user)
         flash[:notice] = 'Account created!'
         format.js
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         format.js
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
