@@ -6,6 +6,7 @@ Shareonit::Application.routes.draw do
     resources :memberships do
       member do
         get 'accept'
+        post 'toggle'
       end
     end
     

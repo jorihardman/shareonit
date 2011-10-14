@@ -5,8 +5,7 @@ class MembershipsController < ApplicationController
   
   def accept
     @membership = Membership.find(params[:id])
-    @membership.update_attributes(:accepted => true, :active => true)
-    MembershipNotifier.delay.request_accepted(@membership)
+    @membership.accept
     
     respond_to do |format|
       format.html { redirect_to community_path(@membership.community_id),
@@ -33,9 +32,9 @@ class MembershipsController < ApplicationController
     end
   end
   
-  def update
+  def toggle
     @membership = Membership.find(params[:id])
-    @membership.update_attribute(:active, !@membership.active)
+    @membership.toggle
     
     respond_to do |format|
       format.js
@@ -46,7 +45,7 @@ class MembershipsController < ApplicationController
   
   def require_owner
     if current_user.id != Membership.find(params[:id]).community.user_id
-      redirect_to communities_path, :notice => 'That community doesn\'t belong to you.'
+      redirect_to communities_path, :notice => "That community doesn't belong to you."
       false
     end
   end

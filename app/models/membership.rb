@@ -14,4 +14,13 @@ class Membership < ActiveRecord::Base
     community.postings.delete(postings) unless postings.blank?
   end
   
+  def accept
+    MembershipNotifier.delay.request_accepted(@membership)
+    self.update_attributes(:accepted => true, :active => true)
+  end
+  
+  def toggle
+    self.update_attribute(:active, !@membership.active)
+  end
+  
 end

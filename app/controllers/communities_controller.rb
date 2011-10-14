@@ -77,7 +77,6 @@ class CommunitiesController < ApplicationController
 
   def destroy
     @community = Community.find(params[:id])
-    @community.postings.clear
     @community.destroy
 
     respond_to do |format|

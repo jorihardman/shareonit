@@ -22,19 +22,11 @@ class InvitationsController < ApplicationController
   
   def accept
     @invitation = Invitation.find(params[:id])
-    @invitation.destroy
-    membership = Membership.where(:user_id => current_user.id, :community_id => @invitation.community_id).first
-    if membership.nil?
-      membership = Membership.new(:user_id => current_user.id, :community_id => @invitation.community_id,
-          :active => true, :accepted => true)
-      membership.save
-    else
-      membership.update_attributes(:active => true, :accepted => true)
-    end
+    @invitation.accept
     
     respond_to do |format|
       format.js
-      format.html { redirect_to root_path, :notice => "#{membership.community.name} joined." }
+      format.html { redirect_to root_path, :notice => "#{@invitation.community.name} joined." }
     end
   end
   

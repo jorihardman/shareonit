@@ -77,4 +77,9 @@ class Posting < ActiveRecord::Base
     end
   end
   
+  def delete
+    self.communities.clear
+    self.update_attribute(:deleted, true)
+  end
+  
 end
