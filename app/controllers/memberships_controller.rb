@@ -6,7 +6,7 @@ class MembershipsController < ApplicationController
   def accept
     @membership = Membership.find(params[:id])
     @membership.update_attributes(:accepted => true, :active => true)
-    Notifier.delay.request_accepted(@membership)
+    MembershipNotifier.delay.request_accepted(@membership)
     
     respond_to do |format|
       format.html { redirect_to community_path(@membership.community_id),
@@ -26,7 +26,7 @@ class MembershipsController < ApplicationController
     
   def create
     @membership = Membership.new(:user_id => current_user.id, :community_id => params[:community_id])
-    Notifier.delay.membership_request(@membership) if @membership.save
+    MembershipNotifier.delay.membership_request(@membership) if @membership.save
     
     respond_to do |format|
       format.js

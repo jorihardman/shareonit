@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email, :password, :password_confirmation
   
   before_save :init
+  after_create :welcome
 
   def full_name
     "#{first_name} #{last_name}"
@@ -34,6 +35,10 @@ class User < ActiveRecord::Base
   def init
     self.first_name = first_name.capitalize
     self.last_name = last_name.capitalize
+  end
+  
+  def welcome
+    UserNotifier.delay.welcome(self)
   end
   
 end

@@ -35,7 +35,7 @@ class Community < ActiveRecord::Base
       invitation = Invitation.new(:email => email, :community_id => self.id)
       
       if membership.nil?
-        Notifier.delay.invitation(invitation) if invitation.save
+        MembershipNotifier.delay.invitation(invitation) if invitation.save
       end
     end
   end
