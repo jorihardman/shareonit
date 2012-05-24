@@ -36,7 +36,7 @@ Shareonit::Application.routes.draw do
   match 'about' => 'home#about', :as => 'about'
   match 'contact' => 'home#contact', :as => 'contact'
   
-  post 'feedback/submit_feedback', :as => :submit_feedback
+  post 'feedback/submit_feedback', :as => 'submit_feedback'
 	get 'feedback' => 'feedback#index'
   
   root :to => 'user_sessions#new'

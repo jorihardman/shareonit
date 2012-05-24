@@ -13,7 +13,7 @@ class Posting < ActiveRecord::Base
       },
       :styles => { 
         :thumb => ["100x100>"]
-      }    
+      }
   process_in_background :photo
   
   belongs_to :user
